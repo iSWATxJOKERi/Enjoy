@@ -8,7 +8,9 @@
     <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track': 'reload' %>
     <%= javascript_include_tag 'application', 'data-turbolinks-track': 'reload' %>
   </head>
-
+  <script type="text/javascript">
+    window.ytLogo = "<%= image_url('yt_logo_rgb_light.png') %>";
+  </script>
   <body>
     <%= yield %>
   </body>

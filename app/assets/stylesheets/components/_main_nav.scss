@@ -1,0 +1,49 @@
+.nav-bar {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    background-color: #ffffff;
+    height: 56px;
+}
+
+.left-nav {
+    display: flex;
+    width: 185px;
+    height: 40px;
+    align-items: center;
+    justify-content: space-evenly;
+}
+
+.search-bar {
+    height: 40px;
+    width: 50%;
+}
+
+.right-nav {
+    display: flex;
+    width: 240px;
+    height: 40px;
+    justify-content: space-evenly;
+    align-items: center;
+}
+
+.sign-in {
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
+    width: 105px;
+    height: 100%;
+    border: 1px solid blue;
+    color: blue;
+}
+
+.ytlogo {
+    height: 24px;
+    width: 80px;
+}
+
+.svg-inline--fa {
+    height: 24px;
+    width: 24px;
+}
+
