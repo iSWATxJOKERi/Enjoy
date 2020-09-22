@@ -1,4 +1,5 @@
 import React from 'react';
+import SideBar from './sidebar/sidebar_content';
 
 class MainContent extends React.Component {
     constructor(props) {
@@ -8,9 +9,7 @@ class MainContent extends React.Component {
     render() {
         return (
             <section className="main-content">
-                <section className="sidebar">
-                    
-                </section>
+                <SideBar />
                 <section className="video-section">
 
                 </section>
