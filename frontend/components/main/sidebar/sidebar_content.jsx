@@ -16,19 +16,19 @@ class SideBar extends React.Component {
         return (
             <section className="sidebar">
                 <section className="sidebar-items">
-                    <div className="item">
+                    <div className="item home-item">
                         { home }
                         <span>Home</span>
                     </div>
-                    <div className="item">
+                    <div className="item trending-item">
                         { trending }
                         <span>Trending</span>
                     </div>
-                    <div className="item">
+                    <div className="item subs-item">
                         { subscriptions }
                         <span>Subscriptions</span>
                     </div>
-                    <div className="item">
+                    <div className="item library-item">
                         { library }
                         <span>Library</span>
                     </div>

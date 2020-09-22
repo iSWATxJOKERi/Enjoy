@@ -1,9 +1,21 @@
 class User < ApplicationRecord
     validates :username, :email, :session_token, presence: true, uniqueness: true
     validates :password_digest, presence: true
-    validates :password, length: { minimum: 8, allow_nil: true}
+    validates :password, length: { minimum: 8, allow_nil: true} 
     after_initialize :ensure_session_token
     attr_reader :password
+
+    has_many :likes, :as => :likeable
+
+    has_many :videos,
+        primary_key: :id,
+        foreign_key: :uploader_id,
+        class_name: 'Video'
+        
+    has_many :comments,
+        primary_key: :id,
+        foreign_key: :commenter_id,
+        class_name: 'Comment'
 
     def self.find_by_credentials(username, password)
         user = User.find_by(username: username)

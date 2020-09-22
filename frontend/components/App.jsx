@@ -9,8 +9,8 @@ import MainContent from './main/main_content';
 const App = () => {
     return (
         <section className="application">
-            <Route path="/" component={ NavBarContainer } />
-            <MainContent />
+            <Route exact path="/" component={ NavBarContainer } />
+            <Route exact path="/" component={ MainContent } />
             <AuthRoute path="/login" component={ LoginFormContainer } />
             <AuthRoute path="/signup" component={ SignupFormContainer } />
         </section>
