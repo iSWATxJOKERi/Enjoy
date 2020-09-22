@@ -10,6 +10,17 @@ html, body {
     height: 100%;
 }
 .main-content {
+    display: flex;
     height: 100%;
     background-color: lightgray;
+}
+
+.sidebar {
+    height: 100%;
+    width: 4%;
+}
+
+.video-section {
+    height: 100%;
+    width: 96%;
 }

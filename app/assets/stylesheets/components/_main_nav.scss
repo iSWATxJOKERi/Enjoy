@@ -14,9 +14,18 @@
     justify-content: space-evenly;
 }
 
-.search-bar {
+.middle-nav {
+    display: flex;
+    align-items: center;
     height: 40px;
     width: 50%;
+}
+
+.search-container {
+    height: 100%;
+    width: 100%;
+    display: flex;
+    border: 1px solid gray;
 }
 
 .right-nav {
@@ -40,6 +49,19 @@
 .ytlogo {
     height: 24px;
     width: 80px;
+}
+
+.search-bar {
+    width: 90%
+}
+
+.search-btn {
+    display: flex;
+    justify-content: center;
+    border-left: 1px solid gray;
+    color: gray;
+    width: 10%;
+    align-items: center;
 }
 
 .svg-inline--fa {

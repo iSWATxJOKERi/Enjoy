@@ -20,7 +20,9 @@ export default ({ currentUser, logout }) => {
             <div className="middle-nav">
                 <div className="search-container">
                     <input className="search-bar" type="text"/>
-
+                    <div className="search-btn">
+                        { search }
+                    </div>
                 </div>
             </div>
             <div className="right-nav">

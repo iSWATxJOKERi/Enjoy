@@ -8,7 +8,12 @@ class MainContent extends React.Component {
     render() {
         return (
             <section className="main-content">
-                
+                <section className="sidebar">
+                    
+                </section>
+                <section className="video-section">
+
+                </section>
             </section>
         )
     }
