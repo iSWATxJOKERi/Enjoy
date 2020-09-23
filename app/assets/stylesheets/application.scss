@@ -15,3 +15,7 @@
 
  @import "base/*";
  @import "components/*";
+
+ body {
+     overflow-x: hidden;
+ }
