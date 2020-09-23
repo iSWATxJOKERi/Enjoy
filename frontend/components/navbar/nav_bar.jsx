@@ -3,7 +3,7 @@ import React from 'react';
 import '../../font_awesome';
 
 
-export default ({ currentUser, logout }) => {
+export default (props) => {
     const bar = <FontAwesomeIcon icon="bars" />
     const user = <FontAwesomeIcon icon="user-circle" />
     const upload = <FontAwesomeIcon icon="video" />
@@ -14,7 +14,7 @@ export default ({ currentUser, logout }) => {
         <header className="nav-bar">
             <div className="left-nav">
                 { bar }
-                <img className="ytlogo" src={ window.ytLogo } />
+                <img onClick={ () => props.history.push("/") } className="ytlogo" src={ window.ytLogo } />
             </div>
             <div className="middle-nav">
                 <div className="search-container">
@@ -28,7 +28,7 @@ export default ({ currentUser, logout }) => {
                 { upload }
                 { menu }
                 { settings }
-                <div className="sign-in">
+                <div onClick={ () => props.history.push("/login") }className="sign-in">
                     { user }
                     <span>SIGN IN</span>
                 </div>
