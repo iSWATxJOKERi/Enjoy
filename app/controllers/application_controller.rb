@@ -1,9 +1,16 @@
 class ApplicationController < ActionController::Base
-    helper_method :current_user, :ensure_logged_in, :login, :logged_in?, :logout
+    helper_method :current_user, :ensure_logged_in, :login, :logged_in?, :logout, :current_video
 
     def current_user
         return nil unless session[:session_token]
         @current_user ||= User.find_by(session_token: session[:session_token])
+    end
+
+    def current_video
+        url = request.env['PATH_INFO']
+        arr = url.split("/")
+        id = arr[-1]
+        @current_video ||= Video.find_by(id: id)
     end
 
     def ensure_logged_in
