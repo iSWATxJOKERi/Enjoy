@@ -46,11 +46,11 @@ class SessionForm extends React.Component {
         let errors = this.props.errors;
         if(this.props.formType === 'Sign in') {
             form = <div className="session-form">
-                <div className="one">
+                <div className={ this.state.active ? "show one" : "hidden"}>
                     <input className={ this.state.active ? "show email-field" : "hidden email"} placeholder="Email" type="text" value={ this.state.email } onChange={ this.handleInput('email') } />
                     <span className={ this.state.active ? "show" : "hidden"} onClick={ () => this.toggleForm() }>Next</span>
                 </div>
-                <div className="two">
+                <div className={ this.state.active ? "hidden" : "show two"}>
                     <input className={ this.state.active ? "hidden password" : "show password password-field"} placeholder="Password" type="password" value={ this.state.password } onChange={ this.handleInput('password') } />
                     <span className={ this.state.active ? "hidden" : "show"} onClick={ () => this.toggleForm() }>Go Back</span>
                     <button className={ this.state.active ? "hidden submit-session password" : "show submit-session password" } type="submit">Submit</button>
