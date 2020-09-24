@@ -17,7 +17,7 @@ export default (props) => {
             </div>
             <ul className="middle">
                 <li>Your Channel</li>
-                <li onClick={ props.allProps.logout }>Logout</li>
+                <li className="logout" onClick={ props.allProps.logout }>Logout</li>
             </ul>
         </section>
     )
