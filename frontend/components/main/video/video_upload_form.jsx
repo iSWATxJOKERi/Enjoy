@@ -33,7 +33,7 @@ class VideoUpload extends React.Component {
             <section className="modal">
                 <div className="modal-content">
                     <span className="close">&times;</span>
-                    <div className="middle">
+                    <div className="middle-icon">
                         { uploadsign }
                         <h2>Drag and drop video  files to upload</h2>
                         <div className="submit-btn">

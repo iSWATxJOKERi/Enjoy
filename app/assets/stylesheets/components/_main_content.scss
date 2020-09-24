@@ -81,13 +81,14 @@ html, body {
     margin: 2% auto;
     padding: 20px;
     border: 1px solid #888;
-    width: 80%;
+    border-radius: 7px;
+    width: 60%;
     flex-direction: column;
     justify-content: center;
     align-items: center;
 }
 
-.middle {
+.middle-icon {
     height: 33%;
     width: 33%;
     display: flex;
@@ -102,7 +103,21 @@ html, body {
     font-size: 28px;
     font-weight: bold;
     top: 40px;
-    right: 180px;
+    right: 380px;
+}
+
+#center-modal {
+    color: gray;
+    height: 50px;
+    width: 50px;
+}
+
+.video-submit {
+    border: 1px;
+    border-radius: 7px;
+    background: blue;
+    color: white;
+    padding: 10px 30px;
 }
 
 .close:hover, .close:focus {
