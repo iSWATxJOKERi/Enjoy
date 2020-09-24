@@ -68,6 +68,7 @@ class SessionForm extends React.Component {
                     <input className="username-field2" type="text" placeholder="Username" value={ this.state.username } onChange={ this.handleInput('username') } />
                     <input className="password-field2" type="password" placeholder="Password" value={ this.state.password } onChange={ this.handleInput('password') } />
                     <input className="email-field2" type="email" value={ this.state.email } placeholder="Email" onChange={ this.handleInput('email') } />
+                    <Link id="slink2" to="/login">Sign in instead</Link>
                     <button className="submit-session2" type="submit">Submit</button>
                 </div>
                 <div className="formright">
