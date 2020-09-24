@@ -129,7 +129,7 @@
        color: blue;
        // padding: 10px 20px;
    }
-   .submit-session:hover, span.show {
+   .submit-session:hover, span.show, #slink {
        cursor: pointer;
    }
 }
@@ -193,4 +193,16 @@
    span:hover {
        cursor: pointer;
    }
+}
+
+
+#slink {
+   position: absolute;
+   top: 100px;
+   left: 30px;
+   // border: 1px;
+   // border-radius: 7px;
+   // background: blue;
+   color: blue;
+   // padding: 10px 20px;
 }

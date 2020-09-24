@@ -6,7 +6,7 @@ class User < ApplicationRecord
     attr_reader :password
 
     has_many :likes, :as => :likeable
-
+    has_one_attached :video
     has_many :videos,
         primary_key: :id,
         foreign_key: :uploader_id,

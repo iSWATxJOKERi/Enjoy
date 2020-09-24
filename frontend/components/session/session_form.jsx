@@ -1,4 +1,5 @@
 import React from 'react';
+import { Link } from 'react-router-dom';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../../font_awesome';
 
@@ -52,6 +53,7 @@ class SessionForm extends React.Component {
             form = <div className="session-form">
                 <div className={ this.state.active ? "show one" : "hidden"}>
                     <input className={ this.state.active ? "show email-field" : "hidden email"} placeholder="Email" type="text" value={ this.state.email } onChange={ this.handleInput('email') } />
+                    <Link id="slink" to="/signup">Create an account</Link>
                     <span className={ this.state.active ? "show" : "hidden"} onClick={ () => this.toggleForm() }>Next</span>
                 </div>
                 <div className={ this.state.active ? "hidden" : "show two"}>
