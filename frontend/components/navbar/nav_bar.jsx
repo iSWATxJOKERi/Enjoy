@@ -8,7 +8,7 @@ class NavBar extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            online: false
+            online: false,
         }
         this.toggleClass = this.toggleClass.bind(this);
     }
@@ -29,7 +29,7 @@ class NavBar extends React.Component {
         const settings = <FontAwesomeIcon icon="ellipsis-v" />
         const search = <FontAwesomeIcon icon="search" />
         const bell = <FontAwesomeIcon icon="bell" />
-        const dropdown = <UserIconDropdown allProps={ this.props } state={ this.state } toggle= { this.toggleClass }/>
+        const dropdown = <UserIconDropdown allProps={ this.props } state={ this.state } toggle={ this.toggleClass }/>
         const display = this.props.currentUser ? clickableUser  :
             <div onClick={ () => this.props.history.push("/login") } className="sign-in">
                 { user }
@@ -40,6 +40,7 @@ class NavBar extends React.Component {
                 <div className="left-nav">
                     { bar }
                     <img onClick={ () => this.props.history.push("/") } className="ytlogo" src={ window.ytLogo } />
+                    { this.state.pop ? sidebar : null }
                 </div>
                 <div className="middle-nav">
                     <div className="search-container">

@@ -13,6 +13,7 @@ class SideBar extends React.Component {
         const trending = <FontAwesomeIcon icon="fire" />
         const subscriptions = <FontAwesomeIcon icon="users" />
         const library = <FontAwesomeIcon icon="photo-video" />
+        const history = <FontAwesomeIcon icon="history" />
         return (
             <section className="sidebar">
                 <section className="sidebar-items">
@@ -31,6 +32,10 @@ class SideBar extends React.Component {
                     <div className="item library-item">
                         { library }
                         <span>Library</span>
+                    </div>
+                    <div className="item history-item">
+                        { history }
+                        <span>History</span>
                     </div>
                 </section>
             </section>
