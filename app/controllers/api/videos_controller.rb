@@ -4,7 +4,7 @@ class Api::VideosController < ApplicationController
     def create
         @video = Video.new(video_params)
         if @video.save
-            render json: ['Video Uploaded!']
+            render json: @video
         else
             render json: @video.errors.full_messages
         end
