@@ -98,3 +98,22 @@
     position: relative;
     display: none;
 }
+
+.video-drop {
+    display: flex;
+    flex-direction: row;
+    align-items: center;
+    justify-content: space-evenly;
+    position: absolute;
+    height: 5%;
+    top: 50px;
+    right: 50px;
+    width: 10%;
+    #video-up {
+        color: red;
+    }
+}
+
+.up-video {
+    cursor: pointer;
+}

@@ -1,6 +1,7 @@
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import React from 'react';
 import UserIconDropdown from './user_icon_dropdown';
+import VideoUploadDropdown from '../main/video/upload_dropdown';
 import '../../font_awesome';
 
 
@@ -9,8 +10,10 @@ class NavBar extends React.Component {
         super(props);
         this.state = {
             online: false,
+            up: false
         }
         this.toggleClass = this.toggleClass.bind(this);
+        this.toggleUpload = this.toggleUpload.bind(this);
     }
 
     toggleClass() {
@@ -20,16 +23,24 @@ class NavBar extends React.Component {
         })
     }
 
+    toggleUpload() {
+        const cs = this.state.up
+        this.setState({
+            up: !cs
+        })
+    }
+
     render() {
         const bar = <FontAwesomeIcon icon="bars" />
         const user = <FontAwesomeIcon icon="user-circle" />
         const clickableUser = <FontAwesomeIcon id="user" onClick={ this.toggleClass } icon="user-circle" />
-        const upload = <FontAwesomeIcon icon="video" />
+        const upload = <FontAwesomeIcon onClick={ this.toggleUpload } icon="video" />
         const menu = <FontAwesomeIcon icon="th" />
         const settings = <FontAwesomeIcon icon="ellipsis-v" />
         const search = <FontAwesomeIcon icon="search" />
         const bell = <FontAwesomeIcon icon="bell" />
         const dropdown = <UserIconDropdown allProps={ this.props } state={ this.state } toggle={ this.toggleClass }/>
+        const vdropdown = <VideoUploadDropdown allProps={ this.props } state={ this.state } toggle={ this.toggleUpload } />
         const display = this.props.currentUser ? clickableUser  :
             <div onClick={ () => this.props.history.push("/login") } className="sign-in">
                 { user }
@@ -56,6 +67,7 @@ class NavBar extends React.Component {
                     { this.props.currentUser ? bell : settings }
                     { display }
                     { this.props.currentUser ? dropdown : null }
+                    { vdropdown }
                 </div>
             </header>
         )
