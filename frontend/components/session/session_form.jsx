@@ -65,6 +65,11 @@ class SessionForm extends React.Component {
         }else {
             form2 = <div className="session-form2">
                 <div className="formleft">
+                    <div className="top-form">
+                        <img onClick={ () => this.props.history.push("/") } className={ this.props.formType === 'Sign in' ? "logo" : "logo-signup" } src={ window.logo } />
+                        <h1 className={ this.props.formType === 'Sign in' ? "form-type" : "form-type2"}>{ this.props.formType }</h1>
+                        <p className={ this.props.formType === 'Sign in' ? "p" : "p-signup" }>to continue to Enjoy</p>
+                    </div>
                     <input className="username-field2" type="text" placeholder="Username" value={ this.state.username } onChange={ this.handleInput('username') } />
                     <input className="password-field2" type="password" placeholder="Password" value={ this.state.password } onChange={ this.handleInput('password') } />
                     <input className="email-field2" type="email" value={ this.state.email } placeholder="Email" onChange={ this.handleInput('email') } />
@@ -81,11 +86,15 @@ class SessionForm extends React.Component {
                 return <li key={ idx }>{ error }</li>
             })
         }
+        const signin = <div className="sb"><img onClick={ () => this.props.history.push("/") } className={ this.props.formType === 'Sign in' ? "logo" : "logo-signup" } src={ window.logo } />
+        <h1 className={ this.props.formType === 'Sign in' ? "form-type" : "form-type2"}>{ this.props.formType }</h1>
+        <p className={ this.props.formType === 'Sign in' ? "p" : "p-signup" }>to continue to Enjoy</p></div>
         return (
             <section className="container">
                 <div className={ this.props.formType === 'Sign in' ? "form" : "otherform" }>
                     <form className={ this.props.formType === 'Sign in' ? "form1" : "form2" } onSubmit={ this.handleSubmit }>
-                        <h1 className={ this.props.formType === 'Sign in' ? "form-type" : "form-type2"}>{ this.props.formType }</h1>
+                        { this.props.formType === 'Sign in' ? 
+                        signin: null }
                         { this.props.formType === 'Sign in' ? form : form2}
                     </form>
                     <ul className="errors">

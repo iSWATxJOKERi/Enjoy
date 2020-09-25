@@ -7,25 +7,7 @@ class VideoUpload extends React.Component {
         super(props);
     }
 
-    componentDidMount() {
-        const modal = document.getElementsByClassName("modal")[0];
-        const button = document.getElementById("modal-btn");
-        const x = document.getElementsByClassName("close")[0];
-
-        button.onclick = function() {
-            modal.style.display = "block";
-        }
-
-        x.onclick = function() {
-            modal.style.display = "none";
-        }
-
-        window.onclick = function(e) {
-            if(e.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    }
+ 
 
     render() {
         const uploadsign = <FontAwesomeIcon id="center-modal" icon="upload" />

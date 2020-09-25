@@ -50,7 +50,7 @@ class NavBar extends React.Component {
             <header className="nav-bar">
                 <div className="left-nav">
                     { bar }
-                    <img onClick={ () => this.props.history.push("/") } className="ytlogo" src={ window.ytLogo } />
+                    <img onClick={ () => this.props.history.push("/") } className="logo" src={ window.logo } />
                     { this.state.pop ? sidebar : null }
                 </div>
                 <div className="middle-nav">

@@ -8,6 +8,30 @@ class VideoUploadDropdown extends React.Component {
         super(props)
     }
     
+    componentDidMount() {
+        this.props.allProps.currentUser ? this.modal() : null
+        
+    }
+
+    modal() {
+        const modal = document.getElementsByClassName("modal")[0];
+        const button = document.getElementById("modal-btn");
+        const x = document.getElementsByClassName("close")[0];
+
+        button.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        x.onclick = function() {
+            modal.style.display = "none";
+        }
+
+        window.onclick = function(e) {
+            if(e.target == modal) {
+                modal.style.display = "none";
+            }
+        }
+    }
 
     render() {
         const uploadicon = <FontAwesomeIcon id="video-up" icon="upload" />
