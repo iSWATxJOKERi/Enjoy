@@ -1,5 +1,14 @@
 class Api::VideosController < ApplicationController
     before_action :ensure_logged_in, only: [:create, :destroy]
+    def index
+        @videos = Video.all
+        render :index
+    end
+
+    def show
+        @video = Video.find_by(id: params[:id])
+        render json: @video
+    end
 
     def create
         @video = Video.new(video_params)

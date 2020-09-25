@@ -16,6 +16,7 @@ class SessionForm extends React.Component {
             email: ""
         }
         this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleInput = this.handleInput.bind(this);
         this.toggleForm = this.toggleForm.bind(this);
     }
 

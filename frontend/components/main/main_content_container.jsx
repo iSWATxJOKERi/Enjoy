@@ -1,18 +1,18 @@
 import React from 'react';
-import NavBar from './nav_bar';
 import { connect } from 'react-redux';
-import { logout } from '../../actions/session_actions';
 import MainContent from './main_content';
+import { fetchVideos } from '../../actions/video_actions';
 
 const mapStateToProps = state => {
     return {
-        currentUser: state.session.id
+        currentUser: state.session.id,
+        videos: Object.values(state.entities.videos)
     }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        logout: () => dispatch(logout())
+        getVideos: () => dispatch(fetchVideos())
     }
 }
 
