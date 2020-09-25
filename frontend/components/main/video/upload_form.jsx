@@ -6,6 +6,7 @@ export default class UploadForm extends React.Component {
         this.state = {
             title: "",
             description: "",
+            photoFile: null,
             videoFile: null
         }
         this.handleSubmit = this.handleSubmit.bind(this)
@@ -21,14 +22,22 @@ export default class UploadForm extends React.Component {
         }
     }
 
-    handleFile(e) {
-        this.setState({
-            videoFile: e.currentTarget.files[0]
-        })
+    handleFile(field) {
+        return (e) => {
+            this.setState({
+                [field]: e.currentTarget.files[0]
+            })
+        }
     }
 
-    handleSubmit() {
-
+    handleSubmit(e) {
+        e.preventDefault();
+        const formData = new FormData();
+        formData.append('video[title]', this.state.title);
+        formData.append('video[description]', this.state.description);
+        formData.append('video[thumbnail]', this.state.photoFile)
+        formData.append('video[clip]', this.state.videoFile);
+        this.props.processForm(formData);
     }
 
     render() {
@@ -38,8 +47,9 @@ export default class UploadForm extends React.Component {
                 <span className="close">&times;</span>
                 <input type="text" id="form-title" placeholder="Title" value={ this.state.title } onChange={ this.handleInput('title') } />
                 <textarea value={ this.state.description } id="form-description" placeholder="Description" onChange={ this.handleInput('description')} />
-                <input type="file" onChange={ this.handleFile }/>
-                <button>Upload Video</button>
+                <label>Upload Thumbnail<input type="file" onChange={ this.handleFile('photoFile') }/></label>
+                <label>Upload Video<input type="file" onChange={ this.handleFile('videoFile') }/></label>
+                <button>Upload</button>
             </form>
         )
     }

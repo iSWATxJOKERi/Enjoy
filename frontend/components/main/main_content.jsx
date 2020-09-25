@@ -39,8 +39,13 @@ class MainContent extends React.Component {
             <section className="main-content">
                 { bar }
                 { this.state.pop ? popout : <SideBar /> }
-                <section className="video-section">
-                    <VideoIndex videos={ this.props.videos } />
+                <section className="index-section">
+                    <div className="list-of-tags">
+                        
+                    </div>
+                    <section className="video-section">
+                        <VideoIndex videos={ this.props.videos } />
+                    </section>
                 </section>
             </section>
         )
