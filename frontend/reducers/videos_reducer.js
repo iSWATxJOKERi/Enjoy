@@ -4,8 +4,11 @@ const videosReducer = (state = {}, action) => {
     Object.freeze(state);
     switch(action.type) {
         case RECEIVE_VIDEOS:
-            // debugger
-            return Object.assign({}, state, action.videos)
+            let newstate = Object.assign({}, state);
+            action.videos.map(video => {
+                newstate[video.id] = video
+            })
+            return newstate
         case RECEIVE_VIDEO:
             return Object.assign({}, state, { [action.video.id]: action.video })
         case REMOVE_VIDEO:

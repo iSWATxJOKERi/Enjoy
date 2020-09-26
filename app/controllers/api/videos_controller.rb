@@ -7,12 +7,21 @@ class Api::VideosController < ApplicationController
 
     def show
         @video = Video.find_by(id: params[:id])
-        render json: @video
+        render :show
     end
 
     def create
         @video = Video.new(video_params)
         if @video.save
+            render json: @video
+        else
+            render json: @video.errors.full_messages
+        end
+    end
+
+    def update
+        @video = Video.find_by(id: params[:id])
+        if @video.update_attributes(video_params)
             render json: @video
         else
             render json: @video.errors.full_messages

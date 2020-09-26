@@ -1,5 +1,6 @@
 import React from 'react';
 import { createVideo } from '../../../actions/video_actions';
+import { connect } from 'react-redux';
 import UploadForm from './upload_form';
 
 const mapStateToProps = state => {

@@ -3,6 +3,10 @@
     width: 100%;
 }
 
+.video-clip > img:hover {
+    cursor: pointer;
+}
+
 .video-clip {
     height: 290px;
     width: 343px;
