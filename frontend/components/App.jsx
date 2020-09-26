@@ -6,12 +6,14 @@ import SignupFormContainer from './session/signup_form_container';
 import { AuthRoute } from '../util/route_util';
 import MainContentContainer from './main/main_content_container';
 import VideoModal from './main/video/video_modal';
+import VideoUploadContainer from './main/video/video_upload_container';
 import VideoShowContainer from './main/video/video_show_container';
 
 const App = () => {
     return (
         <section className="application">
-            <VideoModal />
+            {/* <VideoModal /> */}
+            <Route path="/" component={ VideoUploadContainer } />
             <Route  path="/" component={ NavBarContainer } />
             <Route exact path="/" component={ MainContentContainer } />
             <AuthRoute path="/login" component={ LoginFormContainer } />

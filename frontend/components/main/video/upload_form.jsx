@@ -8,8 +8,8 @@ export default class UploadForm extends React.Component {
             description: "",
             photoFile: null,
             videoFile: null
-        }
-        this.handleSubmit = this.handleSubmit.bind(this)
+        };
+        this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFile = this.handleFile.bind(this);
         this.handleInput = this.handleInput.bind(this);
     }
@@ -21,6 +21,7 @@ export default class UploadForm extends React.Component {
             })
         }
     }
+  
 
     handleFile(field) {
         return (e) => {
@@ -32,16 +33,18 @@ export default class UploadForm extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        const formData = new FormData();
-        formData.append('video[title]', this.state.title);
-        formData.append('video[description]', this.state.description);
-        formData.append('video[thumbnail]', this.state.photoFile)
-        formData.append('video[clip]', this.state.videoFile);
-        this.props.processForm(formData);
+        const video = new FormData();
+        video.append('video[title]', this.state.title);
+        video.append('video[description]', this.state.description);
+        video.append('video[thumbnail]', this.state.photoFile)
+        video.append('video[clip]', this.state.videoFile);
+        debugger
+        this.props.processForm(video).then(() => this.props.history.push("/"));
     }
 
     render() {
         console.log(this.state)
+        // debugger
         return (
             <form onSubmit={ this.handleSubmit } className={ this.props.state.uploading ? "modal-content2" : "hide" }>
                 <span className="close">&times;</span>
@@ -49,7 +52,7 @@ export default class UploadForm extends React.Component {
                 <textarea value={ this.state.description } id="form-description" placeholder="Description" onChange={ this.handleInput('description')} />
                 <label>Upload Thumbnail<input type="file" onChange={ this.handleFile('photoFile') }/></label>
                 <label>Upload Video<input type="file" onChange={ this.handleFile('videoFile') }/></label>
-                <button>Upload</button>
+                <button type="submit">Upload</button>
             </form>
         )
     }

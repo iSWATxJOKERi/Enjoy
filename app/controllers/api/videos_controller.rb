@@ -11,11 +11,13 @@ class Api::VideosController < ApplicationController
     end
 
     def create
+        debugger
         @video = Video.new(video_params)
+        @video.uploader_id = current_user.id
         if @video.save
             render json: @video
         else
-            render json: @video.errors.full_messages
+            render json: @video.errors.full_messages, status: 422
         end
     end
 
@@ -24,7 +26,7 @@ class Api::VideosController < ApplicationController
         if @video.update_attributes(video_params)
             render json: @video
         else
-            render json: @video.errors.full_messages
+            render json: @video.errors.full_messages, status: 422
         end
     end
 

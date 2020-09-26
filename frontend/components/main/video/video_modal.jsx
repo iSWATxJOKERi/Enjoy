@@ -9,10 +9,8 @@ class VideoModal extends React.Component {
         this.state = {
             uploading: false
         }
-
         this.handleSelectFiles = this.handleSelectFiles.bind(this)
     }
-
 
     handleSelectFiles() {
         const cs = this.state.uploading;
@@ -23,6 +21,7 @@ class VideoModal extends React.Component {
 
     render() {
         const uploadsign = <FontAwesomeIcon id="center-modal" icon="upload" />
+        // debugger
         return (
             <section className="modal">
                 <div className={ this.state.uploading ? "hide" : "modal-content" }>
@@ -33,9 +32,9 @@ class VideoModal extends React.Component {
                         <div className="submit-btn">
                             <button className="video-submit" onClick={ this.handleSelectFiles } type="submit">Select Files</button>
                         </div>
-                    </div>
+                    </div> 
                 </div>
-                <UploadForm state={ this.state }/>
+                <UploadForm history={ this.props.history } processForm={ this.props.processForm } state={ this.state } />
             </section>
         )
     }

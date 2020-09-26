@@ -12,7 +12,7 @@ class VideoShow extends React.Component {
             <section className="show-child">
                 <div className="primary">
                     <div className="primary-inner">
-                        { this.props.video ? <video className="video"><source src={ this.props.video.videoUrl } /></video> : null }
+                        { this.props.video ? <video controls preload="auto" className="video"><source src={ this.props.video.videoUrl } /></video> : null }
                     </div>
                 </div>
                 <div className="secondary">
