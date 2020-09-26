@@ -1,4 +1,5 @@
 import React from 'react';
+import NavBar from '../../navbar/nav_bar';
 
 class VideoShow extends React.Component {
     componentDidMount() {
@@ -8,9 +9,16 @@ class VideoShow extends React.Component {
 
     render() {
         return (
-            <div>
-                { this.props.video ? <video width="320" height="220"><source src={ this.props.video.videoUrl } /></video> : null }
-            </div>
+            <section className="show-child">
+                <div className="primary">
+                    <div className="primary-inner">
+                        { this.props.video ? <video className="video"><source src={ this.props.video.videoUrl } /></video> : null }
+                    </div>
+                </div>
+                <div className="secondary">
+                    UP NEXT
+                </div>
+            </section>
         )
     }
 }

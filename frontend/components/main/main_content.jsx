@@ -35,6 +35,7 @@ class MainContent extends React.Component {
     render() {
         const bar = <FontAwesomeIcon id="side" onClick={ this.toggleSidebar } icon="bars" />
         const popout = <PopoutSidebar allProps={ this.props } pop={ this.state.pop } toggle={ this.toggleSidebar } />
+
         return (
             <section className="main-content">
                 { bar }
@@ -44,7 +45,7 @@ class MainContent extends React.Component {
                         
                     </div>
                     <section className="video-section">
-                        <VideoIndex videos={ this.props.videos } />
+                        <VideoIndex allProps={ this.props } videos={ this.props.videos } />
                     </section>
                 </section>
             </section>

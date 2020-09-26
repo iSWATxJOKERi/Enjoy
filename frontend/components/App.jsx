@@ -12,7 +12,7 @@ const App = () => {
     return (
         <section className="application">
             <VideoModal />
-            <Route exact path="/" component={ NavBarContainer } />
+            <Route  path="/" component={ NavBarContainer } />
             <Route exact path="/" component={ MainContentContainer } />
             <AuthRoute path="/login" component={ LoginFormContainer } />
             <AuthRoute path="/signup" component={ SignupFormContainer } />

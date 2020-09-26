@@ -10,7 +10,7 @@ export default class VideoIndex extends React.Component {
     render() {
         // debugger
         const allvids = this.props.videos.map(video => {
-            return <VideoIndexItem key={ video.id } video={ video } />
+            return <VideoIndexItem key={ video.id } allProps={ this.props.allProps } video={ video } />
         })
         return (
             <section className="recommended">
