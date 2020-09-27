@@ -6,7 +6,8 @@ import VideoModal from './video_modal';
 const mapStateToProps = state => {
     // debugger
     return {
-        errors: state.errors.videos
+        errors: state.errors.videos,
+        currentUser: state.session.id
     }
 }
 

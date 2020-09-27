@@ -13,8 +13,8 @@ const App = () => {
     return (
         <section className="application">
             {/* <VideoModal /> */}
-            <Route path="/" component={ VideoUploadContainer } />
-            <Route  path="/" component={ NavBarContainer } />
+            <Route exact path="/" component={ VideoUploadContainer } />
+            <Route exact path="/" component={ NavBarContainer } />
             <Route exact path="/" component={ MainContentContainer } />
             <AuthRoute path="/login" component={ LoginFormContainer } />
             <AuthRoute path="/signup" component={ SignupFormContainer } />

@@ -47,7 +47,7 @@ export default class UploadForm extends React.Component {
         // debugger
         return (
             <form onSubmit={ this.handleSubmit } className={ this.props.state.uploading ? "modal-content2" : "hide" }>
-                <span className="close">&times;</span>
+                <span className="close2">&times;</span>
                 <input type="text" id="form-title" placeholder="Title" value={ this.state.title } onChange={ this.handleInput('title') } />
                 <textarea value={ this.state.description } id="form-description" placeholder="Description" onChange={ this.handleInput('description')} />
                 <label>Upload Thumbnail<input type="file" onChange={ this.handleFile('photoFile') }/></label>

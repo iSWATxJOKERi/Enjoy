@@ -55,7 +55,7 @@ class NavBar extends React.Component {
                 </div>
                 <div className="middle-nav">
                     <div className="search-container">
-                        <input className="search-bar" type="text"/>
+                        <input className="search-bar" placeholder="Search" type="text"/>
                         <div className="search-btn">
                             { search }
                         </div>

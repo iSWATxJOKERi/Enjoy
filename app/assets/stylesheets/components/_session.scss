@@ -43,9 +43,16 @@
 .submit-session2 {
    border: 1px;
    border-radius: 7px;
-   background: blue;
+   background: #1a73e8;
    color: white;
    padding: 10px 20px;
+   // position: absolute;
+   // bottom: 190px;
+   // left: 700px;
+}
+
+.submit-session2:hover {
+   background: blue;
 }
 
 .form2 {
@@ -152,7 +159,7 @@
        right: 20px;
        border: 1px;
        border-radius: 7px;
-       background: blue;
+       background: #1a73e8;
        color: white;
        padding: 10px 20px;
    }
@@ -163,11 +170,14 @@
        // border: 1px;
        // border-radius: 7px;
        // background: blue;
-       color: blue;
+       color: #1a73e8;
        // padding: 10px 20px;
    }
    .submit-session:hover, span.show, #slink {
        cursor: pointer;
+   }
+   .submit-session:hover {
+      background: blue;
    }
 }
 
@@ -231,12 +241,13 @@
        right: 20px;
        border: 1px;
        border-radius: 7px;
-       background: blue;
+       background: #1a73e8;
        color: white;
        padding: 10px 30px;
    }
    span:hover {
        cursor: pointer;
+       background: blue;
    }
 }
 
@@ -248,17 +259,23 @@
    // border: 1px;
    // border-radius: 7px;
    // background: blue;
-   color: blue;
+   color: #1a73e8;
    // padding: 10px 20px;
 }
 
+.instead {
+   display: flex;
+   flex-direction: row;
+   justify-content: space-between;
+   align-items: center;
+   width: 90%;
+}
+
 #slink2 {
-   position: absolute;
-   bottom: 190px;
-   left: 700px;
-   // border: 1px;
-   // border-radius: 7px;
-   // background: blue;
-   color: blue;
-   // padding: 10px 20px;
+   color: #1a73e8;
+}
+
+#slink2:hover {
+   background-color:rgba(107, 185, 240, .2);
+   padding: 10px 20px;
 }
