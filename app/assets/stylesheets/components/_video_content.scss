@@ -51,11 +51,24 @@
 }
 
 .list-of-tags {
+    display: flex;
     height: 55px;
     width: 100%;
     background-color: #ffffff;
     border-top: 1px solid lightgray;
     border-bottom: 1px solid lightgray;
+    flex-direction: row;
+    list-style: none;
+    align-items: center;
+    justify-content: space-evenly;
+    li {
+        border: 1px solid gray;
+        border-radius: 14px;
+        background-color: lightgray;
+        font-family: sans-serif;
+        padding: 5px 10px;
+        font-size: 14px;
+    }
 }
 
 .recommended {

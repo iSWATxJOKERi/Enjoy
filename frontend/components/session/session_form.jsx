@@ -53,12 +53,12 @@ class SessionForm extends React.Component {
         if(this.props.formType === 'Sign in') {
             form = <div className="session-form">
                 <div className={ this.state.active ? "show one" : "hidden"}>
-                    <input className={ this.state.active ? "show email-field" : "hidden email"} placeholder="Email" type="text" value={ this.state.email } onChange={ this.handleInput('email') } />
+                    <input className={ this.state.active ? "show email-field" : "hidden email"} placeholder="   Email" type="text" value={ this.state.email } onChange={ this.handleInput('email') } />
                     <Link id="slink" to="/signup">Create an account</Link>
                     <span className={ this.state.active ? "show" : "hidden"} onClick={ () => this.toggleForm() }>Next</span>
                 </div>
                 <div className={ this.state.active ? "hidden" : "show two"}>
-                    <input className={ this.state.active ? "hidden password" : "show password password-field"} placeholder="Password" type="password" value={ this.state.password } onChange={ this.handleInput('password') } />
+                    <input className={ this.state.active ? "hidden password" : "show password password-field"} placeholder="   Password" type="password" value={ this.state.password } onChange={ this.handleInput('password') } />
                     <span className={ this.state.active ? "hidden" : "show"} onClick={ () => this.toggleForm() }>Go Back</span>
                     <button className={ this.state.active ? "hidden submit-session password" : "show submit-session password" } type="submit">Submit</button>
                 </div>
@@ -71,9 +71,9 @@ class SessionForm extends React.Component {
                         <h1 className={ this.props.formType === 'Sign in' ? "form-type" : "form-type2"}>{ this.props.formType }</h1>
                         <p className={ this.props.formType === 'Sign in' ? "p" : "p-signup" }>to continue to Enjoy</p>
                     </div>
-                    <input className="username-field2" type="text" placeholder="Username" value={ this.state.username } onChange={ this.handleInput('username') } />
-                    <input className="password-field2" type="password" placeholder="Password" value={ this.state.password } onChange={ this.handleInput('password') } />
-                    <input className="email-field2" type="email" value={ this.state.email } placeholder="Email" onChange={ this.handleInput('email') } />
+                    <input className="username-field2" type="text" placeholder="   Username" value={ this.state.username } onChange={ this.handleInput('username') } />
+                    <input className="password-field2" type="password" placeholder="   Password" value={ this.state.password } onChange={ this.handleInput('password') } />
+                    <input className="email-field2" type="email" value={ this.state.email } placeholder="   Email" onChange={ this.handleInput('email') } />
                     <Link id="slink2" to="/login">Sign in instead</Link>
                     <button className="submit-session2" type="submit">Submit</button>
                 </div>
