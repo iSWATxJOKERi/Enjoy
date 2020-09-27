@@ -36,6 +36,7 @@ class VideoShow extends React.Component {
                 </div>
                 <div className="secondary">
                     UP NEXT
+                    
                 </div>
             </section>
         )
