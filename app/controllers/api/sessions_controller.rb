@@ -8,7 +8,10 @@ class Api::SessionsController < ApplicationController
             login(@user)
             render json: @user
         else
-            render json: ['Invalid Email and/or Password'], status: 404
+            render json: {
+                email: "Invalid Email or Password",
+                password: "Invalid Email or Password"
+            }, status: 404
         end
     end
 

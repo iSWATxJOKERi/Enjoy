@@ -205,8 +205,16 @@
    border-radius: 7px;
 }
 
-.password-field {
+#field-errors {
+   border: 1px solid  red;
    height: 30%;
+   width: 90%;
+   border-radius: 7px;
+}
+
+.field-errors {
+   border: 1px solid  red;
+   height: 10%;
    width: 90%;
    border-radius: 7px;
 }
@@ -246,7 +254,7 @@
 
 #slink2 {
    position: absolute;
-   bottom: 250px;
+   bottom: 190px;
    left: 700px;
    // border: 1px;
    // border-radius: 7px;

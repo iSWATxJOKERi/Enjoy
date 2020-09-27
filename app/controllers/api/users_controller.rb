@@ -6,7 +6,11 @@ class Api::UsersController < ApplicationController
             login(@user)
             render json: @user
         else
-            render json: @user.errors.full_messages, status: 422
+            render json: { 
+                username: @user.errors.full_messages_for(:username),
+                password: @user.errors.full_messages_for(:password),
+                email: @user.errors.full_messages_for(:email)
+            }, status: 422
         end
     end
 
