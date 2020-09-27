@@ -38,7 +38,7 @@ export default class UploadForm extends React.Component {
         video.append('video[description]', this.state.description);
         video.append('video[thumbnail]', this.state.photoFile)
         video.append('video[clip]', this.state.videoFile);
-        debugger
+        // debugger
         this.props.processForm(video).then(() => this.props.history.push("/"));
     }
 

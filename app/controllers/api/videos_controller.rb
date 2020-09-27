@@ -11,7 +11,7 @@ class Api::VideosController < ApplicationController
     end
 
     def create
-        debugger
+        # debugger
         @video = Video.new(video_params)
         @video.uploader = current_user
         @video.uploader_id = current_user.id
