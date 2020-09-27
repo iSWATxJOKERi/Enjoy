@@ -1,7 +1,7 @@
 class Api::VideosController < ApplicationController
     before_action :ensure_logged_in, only: [:create, :destroy]
     def index
-        @videos = Video.all
+        @videos = Video.all.includes(:uploader).all
         render :index
     end
 
@@ -13,6 +13,7 @@ class Api::VideosController < ApplicationController
     def create
         debugger
         @video = Video.new(video_params)
+        @video.uploader = current_user
         @video.uploader_id = current_user.id
         if @video.save
             render json: @video

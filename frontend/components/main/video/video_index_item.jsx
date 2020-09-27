@@ -12,10 +12,10 @@ export default (props) => {
                 <div className="left-part-of-clip-box">{ user }</div>
                 <div className="right-part-of-clip-box">
                     <h1>{ props.video.title }</h1>
-                    <span>Uploader Name</span>
+                    <span>{ props.video.uploader.username }</span>
                     <div className="details">
                         <span>View Count</span>
-                        <span>Upload Date</span>
+                        <span>{ props.video.created_at }</span>
                     </div>
                 </div>
             </div>
