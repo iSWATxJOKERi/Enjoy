@@ -11,7 +11,7 @@ class MainContent extends React.Component {
         super(props)
         // debugger
         this.state = {
-            pop: false,
+            pop: true,
             allVideos: []
         }
         this.toggleSidebar = this.toggleSidebar.bind(this);
@@ -45,7 +45,7 @@ class MainContent extends React.Component {
                         
                     </div>
                     <section className="video-section">
-                        <VideoIndex allProps={ this.props } videos={ this.props.videos } />
+                        <VideoIndex allProps={ this.props } pop={ this.state.pop } videos={ this.props.videos } />
                     </section>
                 </section>
             </section>
