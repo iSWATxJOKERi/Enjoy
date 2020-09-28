@@ -20,6 +20,7 @@
 
 .secondary {
     width: 25%;
+    height: 767px;
 }
 
 video {
@@ -116,4 +117,55 @@ video {
     display: flex;
     flex-direction: row;
     height: 570px;
+}
+
+
+.video-box {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-between;
+    // padding-bottom: 5px;
+}
+
+.up-next {
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    font-family: sans-serif;
+    height: 16%;
+    border-bottom: .5px solid lightgray;
+    padding-bottom: 10px;
+}
+
+.video-box-details {
+    padding-left: 5px;
+}
+
+.video-box-title {
+    font-weight: 600;
+    font-size: 14px;
+}
+
+.up-next-image {
+    height: 100%;
+    width: 40%;
+}
+
+.list-of-videos {
+    height: 84%;
+    padding-top: 10px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+}
+
+.listed-vid {
+    display: flex;
+    height: 16%;
+    flex-direction: row;
+    padding-bottom: 10px;
+}
+
+.listed-vid:hover, .video-box:hover {
+    cursor: pointer;
 }

@@ -9,7 +9,7 @@
 
 .video-clip {
     height: 290px;
-    width: 343px;
+    width: 342px;
     margin-left: 8px;
     margin-right: 8px;
     margin-bottom: 16px;
@@ -36,10 +36,8 @@
     align-items: baseline;
     width: 90%;
     h1 {
-        font-size: 1.6rem;
-        font-weight: 500;
-        line-height: 2.2rem;
-        max-height: 4.4rem;
+        font-size: 24px;
+        font-weight: lighter;
         text-overflow: ellipsis;
         overflow: hidden;
     }

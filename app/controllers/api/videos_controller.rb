@@ -7,6 +7,7 @@ class Api::VideosController < ApplicationController
 
     def show
         @video = Video.find_by(id: params[:id])
+        @upnext = Video.all.includes(:uploader).all
         render :show
     end
 

@@ -36,7 +36,7 @@ class MainContent extends React.Component {
             if(popbar.style.display == "flex" || popbar.style.display == "block") {
                 popbar.style.display = "none";
                 videos.style.marginLeft = "4.02%";
-                dup.style.flexWrap = "nowrap";
+                dup.style.flexWrap = "wrap";
                 dup.style.paddingLeft = "0";
                 sidebar.style.display = "flex";
             } else {
