@@ -10,7 +10,6 @@ class VideoUploadDropdown extends React.Component {
     
     componentDidMount() {
         this.props.allProps.currentUser ? this.modal() : null
-        
     }
 
     modal() {

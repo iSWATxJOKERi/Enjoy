@@ -1,5 +1,5 @@
 import React from 'react';
-import { Route } from 'react-router-dom';
+import { Route, Switch } from 'react-router-dom';
 import NavBarContainer from './navbar/nav_bar_container';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
@@ -11,10 +11,14 @@ import VideoShowContainer from './main/video/video_show_container';
 import EENavBarContainer from './navbar/eenb_container';
 import ShowPageModal from './main/video/show_page_modal';
 
+
 const App = () => {
     return (
         <section className="application">
-            <Route exact path="/" component={ VideoUploadContainer } />
+            <Switch>
+                <Route exact path="/" component={ VideoUploadContainer } />
+                <Route exact path="/videos/:id" component={ VideoUploadContainer } />
+            </Switch>
             <Route exact path="/" component={ NavBarContainer } />
             <Route exact path="/" component={ MainContentContainer } />
             <AuthRoute path="/login" component={ LoginFormContainer } />
