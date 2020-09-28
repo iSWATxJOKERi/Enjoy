@@ -7,6 +7,9 @@ class User < ApplicationRecord
 
     has_many :likes, :as => :likeable
     
+    has_one_attached :avatar
+    has_one_attached :banner
+
     has_many :videos,
         primary_key: :id,
         foreign_key: :uploader_id,

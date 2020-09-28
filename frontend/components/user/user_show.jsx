@@ -1,6 +1,8 @@
 import React from 'react';
 import PopoutSidebar from '../main/popout_sidebar';
 import SideBar from '../main/sidebar/sidebar_content';
+import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import '../../font_awesome';
 
 class UserShow extends React.Component {
     constructor(props) {
@@ -10,11 +12,8 @@ class UserShow extends React.Component {
 
     componentDidMount() {
         // debugger
-        const videos = this.props.getVideos();
+        this.props.fetchUser(this.props.match.params.id);
         this.toggleSidebar();
-        this.setState({
-            allVideos: videos,
-        })
     }
 
     toggleSidebar() {
@@ -49,19 +48,36 @@ class UserShow extends React.Component {
 
     render() {
         const popout = <PopoutSidebar />
-
+        const icon = <FontAwesomeIcon id="avatar" icon="user-circle" />
         return (
             <section className="main-content">
                 { popout }
                 <SideBar />
-                <section className="user-main">
-                    <div className="user-header">
-                        
-                    </div>
-                    <section className="user-content">
-                        
-                    </section>
-                </section>
+                { this.props.user ? 
+                    <section className="user-main">
+                        <div className="user-header">
+                            <div className="user-center-header">
+                                <div className="left-header">
+                                    { icon }
+                                </div>
+                                <div className="middle-header">
+                                    <h1 className="user-username">{ this.props.user.username }</h1>
+                                </div>
+                                <div className="right-header">
+                                    <button>CUSTOMIZE BANNER</button>
+                                </div>
+                            </div>
+                            <div className="parts-of-header">
+                                <li>Home</li>
+                                <li>Videos</li>
+                                <li>About</li>
+                            </div>
+                        </div>
+                        <section className="user-content">
+                            
+                        </section>
+                    </section> : null 
+                }   
             </section>
         )
     }

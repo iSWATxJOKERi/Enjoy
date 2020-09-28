@@ -1,5 +1,78 @@
 .user-main {
+    display: flex;
+    flex-direction: column;
     height: 100%;
     width: 96.98%;
     margin-left: 12.6%;
+    overflow-y: auto;
+    font-family: sans-serif;
 }
+
+.user-content {
+    height: 82%;
+    background-color: rgb(235, 235, 235);
+}
+
+.user-header {
+    display: flex;
+    background-color: rgb(247, 247, 247);
+    flex-direction: column;
+    height: 18%;
+}
+
+.user-center-header {
+    display: flex;
+    padding: 16px 107px 4px;
+    height: 60%;
+    flex-direction: row;
+}
+
+.left-header {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    width: 10%;
+}
+
+.middle-header {
+    display: flex;
+    width: 60%;
+    align-items: center;
+    h1 {
+        font-size: 26px;
+    }
+}
+
+#avatar {
+    height: 80%;
+    width: 80%;
+}
+
+.right-header {
+    display: flex;
+    width: 30%;
+    justify-content: center;
+    align-items: center;
+    button {
+        color: #ffffff;
+        height: 30%;
+        background-color: #1a73e8;
+        padding: 4px 22px;
+        border-radius: 2px;
+        font-weight: 600;
+        font-size: 14px;
+    }
+}
+
+.parts-of-header {
+    display: flex;
+    flex-direction: row;
+    padding-left: 172px;
+    list-style: none;
+    li {
+        padding: 13px 32px;
+        vertical-align: middle;
+    }
+}
+
+

@@ -1,18 +1,18 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchVideos } from '../../actions/video_actions';
+import { fetchUser } from '../../actions/user_actions';
 import UserShow from './user_show';
 
-const mapStateToProps = state => {
+const mapStateToProps = (state, ownProps) => {
     return {
-        currentUser: state.session.id,
+        user: state.entities.users[ownProps.match.params.id],
         videos: Object.values(state.entities.videos)
     }
 }
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        getVideos: () => dispatch(fetchVideos())
+        fetchUser: id => dispatch(fetchUser(id))
     }
 }
 
