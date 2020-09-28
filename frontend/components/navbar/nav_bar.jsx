@@ -31,7 +31,7 @@ class NavBar extends React.Component {
     }
 
     render() {
-        const bar = <FontAwesomeIcon icon="bars" />
+        const bar = <FontAwesomeIcon id="side-bar-pop" icon="bars" />
         const user = <FontAwesomeIcon icon="user-circle" />
         const clickableUser = <FontAwesomeIcon id="user" onClick={ this.toggleClass } icon="user-circle" />
         const upload = <FontAwesomeIcon onClick={ this.toggleUpload } icon="video" />
@@ -51,7 +51,6 @@ class NavBar extends React.Component {
                 <div className="left-nav">
                     { bar }
                     <img onClick={ () => this.props.history.push("/") } className="logo" src={ window.logo } />
-                    { this.state.pop ? sidebar : null }
                 </div>
                 <div className="middle-nav">
                     <div className="search-container">

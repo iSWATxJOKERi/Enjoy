@@ -73,27 +73,17 @@
 
 .recommended {
     display: flex;
+    width: 100%;
+    flex-direction: column;
     align-items: center;
-    // justify-content: space-around;
-    // flex-wrap: wrap;
+    justify-content: center;
 }
 
 .dup {
     display: flex;
-}
-
-.justify-recommended {
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    // align-content: center;
-}
-
-.justify-dup {
-    display: flex;
     flex-direction: row;
     flex-wrap: wrap;
     align-items: flex-start;
-    width: 88.90%;
+    width: 100%;
+    padding-left: 60px;
 }

@@ -87,3 +87,33 @@ video {
     padding-left: 18px;
     // justify-content: center;
 }
+
+.video-title {
+    font-size: 18px;
+    font-weight: 400;
+    height: 40%;
+}
+
+.video-info {
+    display: flex;
+    height: 8%;
+    padding: 12px 0px 8px 0px;
+    font-family: sans-serif;
+    flex-direction: column;
+    justify-content: center;
+    border-bottom: .5px solid lightgray;
+}
+
+.video-stats {
+    display: flex;
+    height: 60%;
+    flex-direction: row;
+    justify-content: space-between;
+    align-items: center;
+}
+
+.secondary-video-info {
+    display: flex;
+    flex-direction: row;
+    height: 570px;
+}

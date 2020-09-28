@@ -13,8 +13,8 @@ export default class VideoIndex extends React.Component {
             return <VideoIndexItem key={ video.id } allProps={ this.props.allProps } video={ video } />
         })
         return (
-            <section className={ this.props.pop ? "justify-recommended" : "recommended" }>
-                <div className={ this.props.pop ? "justify-dup" : "dup" }>
+            <section className="recommended">
+                <div className="dup">
                     { allvids }
                 </div>
             </section>

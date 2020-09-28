@@ -10,7 +10,7 @@ export default (props) => {
     const history = <FontAwesomeIcon icon="history" />
     
     return (
-        <section className={ props.pop ? "pop" : "hide" }>
+        <section className="pop">
             <section className="first-sidebar">
                 <div className="li home-sb">
                     <div id="fifty">{ home }</div>

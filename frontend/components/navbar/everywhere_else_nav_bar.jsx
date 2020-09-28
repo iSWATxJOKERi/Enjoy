@@ -31,6 +31,10 @@ class EENavBar extends React.Component {
         })
     }
 
+    componentDidMount() {
+        this.toggleModal();
+    }
+
     toggleModal() {
         const modal = document.getElementsByClassName("show-modal")[0];
         const content = document.getElementsByClassName("show-modal-content")[0];
@@ -73,7 +77,6 @@ class EENavBar extends React.Component {
                 <div className="left-nav">
                     { bar }
                     <img onClick={ () => this.props.history.push("/") } className="logo" src={ window.logo } />
-                    { this.state.pop ? sidebar : null }
                 </div>
                 <div className="middle-nav">
                     <div className="search-container">

@@ -11,7 +11,6 @@ class MainContent extends React.Component {
         super(props)
         // debugger
         this.state = {
-            pop: true,
             allVideos: []
         }
         this.toggleSidebar = this.toggleSidebar.bind(this);
@@ -19,27 +18,50 @@ class MainContent extends React.Component {
 
     componentDidMount() {
         // debugger
-        const videos = this.props.getVideos()
+        const videos = this.props.getVideos();
+        this.toggleSidebar();
         this.setState({
             allVideos: videos,
         })
     }
 
     toggleSidebar() {
-        const cs = this.state.pop
-        this.setState({
-            pop: !cs
-        })
+        const popbar = document.getElementsByClassName("pop")[0];
+        const button = document.getElementById("side-bar-pop");
+        const videos = document.getElementsByClassName("index-section")[0];
+        const dup = document.getElementsByClassName("dup")[0];
+        const sidebar = document.getElementsByClassName("sidebar")[0];
+
+        button.onclick = function() {
+            if(popbar.style.display == "flex" || popbar.style.display == "block") {
+                popbar.style.display = "none";
+                videos.style.marginLeft = "4.02%";
+                dup.style.flexWrap = "nowrap";
+                dup.style.paddingLeft = "0";
+                sidebar.style.display = "flex";
+            } else {
+                sidebar.style.display = "none";
+                popbar.style.display = "block";
+                videos.style.marginLeft = "285px";
+                dup.style.flexWrap = "wrap";
+                dup.style.paddingLeft = "60px";
+            }
+        }
+
+        window.onclick = function(e) {
+            if(e.target == popbar) {
+                popbar.style.display = "none";
+            }
+        }
     }
 
     render() {
-        const bar = <FontAwesomeIcon id="side" onClick={ this.toggleSidebar } icon="bars" />
-        const popout = <PopoutSidebar allProps={ this.props } pop={ this.state.pop } toggle={ this.toggleSidebar } />
+        const popout = <PopoutSidebar allProps={ this.props } />
 
         return (
             <section className="main-content">
-                { bar }
-                { this.state.pop ? popout : <SideBar /> }
+                { popout }
+                <SideBar />
                 <section className="index-section">
                     <div className="list-of-tags">
                         <li>All</li>
@@ -59,7 +81,7 @@ class MainContent extends React.Component {
                         <li>Halo</li>
                     </div>
                     <section className="video-section">
-                        <VideoIndex allProps={ this.props } pop={ this.state.pop } videos={ this.props.videos } />
+                        <VideoIndex allProps={ this.props } videos={ this.props.videos } />
                     </section>
                 </section>
             </section>

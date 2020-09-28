@@ -1,16 +1,12 @@
 .pop {
+    position: fixed;
     background-color: #ffffff;
     display: flex;
+    // z-index: 1;
     flex-direction: column;
     height: 100%;
     width: 15%;
     overflow-y: scroll;
-}
-
-#side {
-    position: absolute;
-    top: 16px;
-    left: 30px;
 }
 
 .li {
