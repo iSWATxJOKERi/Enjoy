@@ -42,9 +42,9 @@ class MainContent extends React.Component {
             } else {
                 sidebar.style.display = "none";
                 popbar.style.display = "block";
-                videos.style.marginLeft = "285px";
+                videos.style.marginLeft = "12.6%";
                 dup.style.flexWrap = "wrap";
-                dup.style.paddingLeft = "60px";
+                dup.style.paddingLeft = "80px";
             }
         }
 
