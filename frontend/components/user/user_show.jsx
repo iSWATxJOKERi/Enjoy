@@ -75,7 +75,7 @@ class UserShow extends React.Component {
                         </div>
                         <section className="user-content">
                             <div className="uploads-section">
-                                <span>Uploads</span>
+                                <span className="upload-title">Uploads</span>
                                 <div className="uploads">
                                     { vids }
                                 </div>
