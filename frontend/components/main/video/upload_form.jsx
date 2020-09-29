@@ -43,7 +43,7 @@ export default class UploadForm extends React.Component {
     }
 
     render() {
-        console.log(this.state)
+        // console.log(this.state)
         // debugger
         return (
             <form onSubmit={ this.handleSubmit } className={ this.props.state.uploading ? "modal-content2" : "hide" }>
