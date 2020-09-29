@@ -8,8 +8,8 @@ export default (props) => {
             <img id="user-video-images" onClick={ () => props.allProps.history.push(`/videos/${ props.vid.id }`) } src={ props.vid.photoUrl } />
             <h1>{ props.vid.title }</h1>
             <div className="-uploaded-box-date">
-                <span>6M views &#8226;</span>
-                <span> { dateConverter(props.vid.created_at) }</span>
+                <span id="deets">6M views &#8226;</span>
+                <span id="deets"> { dateConverter(props.vid.created_at) }</span>
             </div>
             {/* { props.allProps.currentUser ?  */}
             <div className="edit-delete-hover">

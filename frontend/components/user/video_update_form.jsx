@@ -38,7 +38,7 @@ class VideoUpdateForm extends React.Component {
     toggleVideos() {
         const videos = document.getElementsByClassName("abs-pos-modal")[0];
         const button = document.getElementsByClassName("edit-video")[0];
-        const close = document.getElementsByClassName("update-modal")[0];
+        const close = document.getElementsByClassName("close3")[0];
 
         button.onclick = function() {
             videos.style.display = "block";
@@ -64,6 +64,7 @@ class VideoUpdateForm extends React.Component {
             <section className="abs-pos-modal">
                 <section className="update-modal">
                     <form onSubmit={ this.handleSubmit } className="update-section">
+                        <span className="close3">&times;</span>
                         <label>Change Title<input type="text" id="form-title" value={ this.state.title } placeholder={ this.props.video.title } onChange={ this.handleInput('title') } /></label>
                         <label>Change Description<textarea value={ this.state.description } placeholder={ this.props.video.description } id="form-description"  onChange={ this.handleInput('description')} /></label>
                         <label>Change Thumbnail<input type="file" onChange={ this.handleFile('photoFile') }/></label>

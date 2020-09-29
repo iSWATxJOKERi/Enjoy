@@ -51,14 +51,17 @@ class VideoModal extends React.Component {
         return (
             <section className="modal">
                 <div className={ this.state.uploading ? "hide" : "modal-content" }>
+                    <div className="top-of-modal"><h1>Upload videos</h1></div>
                     <span className="close">&times;</span>
-                    <div className="middle-icon">
-                        { uploadsign }
-                        <h2>Drag and drop video  files to upload</h2>
-                        <div className="submit-btn">
-                            <button className="video-submit" onClick={ this.handleSelectFiles } type="submit">Select Files</button>
-                        </div>
-                    </div> 
+                    <div className="second-part">
+                        <div className="middle-icon">
+                            { uploadsign }
+                            <h2>Drag and drop video  files to upload</h2>
+                            <div className="submit-btn">
+                                <button className="video-submit" onClick={ this.handleSelectFiles } type="submit">Select Files</button>
+                            </div>
+                        </div> 
+                    </div>
                 </div>
                 <UploadForm history={ this.props.history } processForm={ this.props.processForm } state={ this.state } />
             </section>
