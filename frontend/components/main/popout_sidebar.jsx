@@ -2,7 +2,7 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../../font_awesome';
 
-export default (props) => {
+export default () => {
     const home = <FontAwesomeIcon id="smaller" icon="home" />
     const trending = <FontAwesomeIcon id="smaller" icon="fire" />
     const subscriptions = <FontAwesomeIcon id="smaller" icon="users" />

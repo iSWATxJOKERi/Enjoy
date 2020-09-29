@@ -26,7 +26,7 @@ const App = () => {
             <Route exact path="/" component={ MainContentContainer } />
             <AuthRoute path="/login" component={ LoginFormContainer } />
             <AuthRoute path="/signup" component={ SignupFormContainer } />
-            <ShowPageModal />
+            <Route exact path="/videos/:id" component={ ShowPageModal } />
             <Route exact path="/videos/:id" component={ EENavBarContainer } />
             <Route exact path="/videos/:id" component={ VideoShowContainer } />
             <Route exact path="/users/:id" component={ UserShowContainer } />

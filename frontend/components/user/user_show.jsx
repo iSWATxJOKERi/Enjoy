@@ -1,60 +1,60 @@
 import React from 'react';
 import PopoutSidebar from '../main/popout_sidebar';
 import SideBar from '../main/sidebar/sidebar_content';
+import UserUploadedVids from './user_uploaded_vids_item';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../../font_awesome';
 
 class UserShow extends React.Component {
     constructor(props) {
         super(props);
-        this.toggleSidebar = this.toggleSidebar.bind(this);
+        this.toggleSide = this.toggleSide.bind(this);
     }
 
     componentDidMount() {
         // debugger
         this.props.fetchUser(this.props.match.params.id);
-        this.toggleSidebar();
+        this.props.fetchVideos();
+        this.toggleSide();
     }
 
-    toggleSidebar() {
+    
+    toggleSide() {
         const popbar = document.getElementsByClassName("pop")[0];
         const button = document.getElementById("side-bar-pop");
         const user = document.getElementsByClassName("user-main")[0];
-        // const dup = document.getElementsByClassName("dup")[0];
         const sidebar = document.getElementsByClassName("sidebar")[0];
 
         button.onclick = function() {
             if(popbar.style.display == "flex" || popbar.style.display == "block") {
                 popbar.style.display = "none";
                 user.style.marginLeft = "4.02%";
-                // dup.style.flexWrap = "wrap";
-                // dup.style.paddingLeft = "0";
                 sidebar.style.display = "flex";
             } else {
                 sidebar.style.display = "none";
                 popbar.style.display = "block";
-                user.style.marginLeft = "285px";
-                // dup.style.flexWrap = "wrap";
-                // dup.style.paddingLeft = "60px";
-            }
-        }
-
-        window.onclick = function(e) {
-            if(e.target == popbar) {
-                popbar.style.display = "none";
+                user.style.marginLeft = "12.6%";
             }
         }
     }
 
     render() {
-        const popout = <PopoutSidebar />
         const icon = <FontAwesomeIcon id="avatar" icon="user-circle" />
+        let vids;
+        if(this.props.videos.length > 0) {
+            // debugger
+            vids = this.props.videos.map(video => {
+                if(video.uploader.id === this.props.user.id) {
+                    return <UserUploadedVids key={ video.id } vid={ video }/>
+                }
+            })
+        }
         return (
             <section className="main-content">
-                { popout }
+                <PopoutSidebar />
                 <SideBar />
-                { this.props.user ? 
-                    <section className="user-main">
+                <section className="user-main">
+                    { this.props.user ? <>
                         <div className="user-header">
                             <div className="user-center-header">
                                 <div className="left-header">
@@ -74,10 +74,14 @@ class UserShow extends React.Component {
                             </div>
                         </div>
                         <section className="user-content">
-                            
-                        </section>
-                    </section> : null 
-                }   
+                            <div className="uploads-section">
+                                <span>Uploads</span>
+                                <div className="uploads">
+                                    { vids }
+                                </div>
+                            </div>
+                        </section> </> : null }
+                </section> 
             </section>
         )
     }

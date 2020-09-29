@@ -47,12 +47,6 @@ class MainContent extends React.Component {
                 dup.style.paddingLeft = "80px";
             }
         }
-
-        window.onclick = function(e) {
-            if(e.target == popbar) {
-                popbar.style.display = "none";
-            }
-        }
     }
 
     render() {
