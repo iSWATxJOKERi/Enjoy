@@ -53,6 +53,7 @@ export default class UploadForm extends React.Component {
                 <label>Upload Thumbnail<input type="file" onChange={ this.handleFile('photoFile') }/></label>
                 <label>Upload Video<input type="file" onChange={ this.handleFile('videoFile') }/></label>
                 <button type="submit">Upload</button>
+                
             </form>
         )
     }
