@@ -41,14 +41,17 @@ class UserShow extends React.Component {
 
     render() {
         const icon = <FontAwesomeIcon id="avatar" icon="user-circle" />
-        let vids;
+        let vids = [];
+        let show;
         if(this.props.videos.length > 0) {
             // debugger
-            vids = this.props.videos.map(video => {
-                if(video.uploader.id === this.props.user.id) {
-                    return <UserUploadedVids key={ video.id } vid={ video }/>
+            for(let i = 0; i < this.props.videos.length; i++) {
+                if(this.props.videos[i].uploader.id === this.props.user.id) {
+                    vids.push(<UserUploadedVids key={ this.props.videos[i].id } vid={ this.props.videos[i] }/>)
                 }
-            })
+            }
+            // debugger
+            show = vids.slice(0,4)
         }
         return (
             <section className="main-content">
@@ -78,7 +81,7 @@ class UserShow extends React.Component {
                             <div className="uploads-section">
                                 <span className="upload-title">Uploads</span>
                                 <div className="uploads">
-                                    { vids }
+                                    { show }
                                 </div>
                             </div>
                             <Videos user={ this.props.user } videos={ this.props.videos } cu={ this.props.currentUser } />
