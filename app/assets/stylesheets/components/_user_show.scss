@@ -89,6 +89,7 @@
 
 .upload-title {
     padding-top: 10px;
+    padding-left: 115px;
 }
 
 .uploads-section {
@@ -101,10 +102,11 @@
 .uploads {
     display: flex;
     flex-direction: row;
-    height: 80%;
+    height: 100%;
     width: 100%;
     flex-wrap: wrap;
     padding-top: 10px;
+    justify-content: center;
 }
 
 .uploaded-item {
