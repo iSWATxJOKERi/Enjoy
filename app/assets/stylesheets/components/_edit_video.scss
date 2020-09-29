@@ -1,0 +1,43 @@
+.edit-delete-hover {
+    display: none;
+}
+
+.edit-item:hover {
+    .edit-delete-hover{
+        display: flex;
+    }
+}
+
+.all-user-vids {
+    display: none;
+    flex-direction: column;
+    height: 100%;
+    .videos-name {
+        padding-top: 10px;
+        padding-left: 115px;
+    }
+}
+
+.all-videos {
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    height: 100%;
+    width: 100%;
+    justify-content: center;
+    padding-top: 10px;
+}
+
+.edit-item {
+    height: 30%;
+    width: 20%;
+    padding: 0 5px;
+    h1 {
+        font-size: 12px;
+        font-weight: 600;
+    }
+    span {
+        font-size: 10px;
+    }
+
+}

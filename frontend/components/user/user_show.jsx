@@ -3,6 +3,7 @@ import PopoutSidebar from '../main/popout_sidebar';
 import SideBar from '../main/sidebar/sidebar_content';
 import UserUploadedVids from './user_uploaded_vids_item';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
+import Videos from './videos';
 import '../../font_awesome';
 
 class UserShow extends React.Component {
@@ -68,8 +69,8 @@ class UserShow extends React.Component {
                                 </div>
                             </div>
                             <div className="parts-of-header">
-                                <li>Home</li>
-                                <li>Videos</li>
+                                <li id="back-home">Home</li>
+                                <li id="show-all-vids">Videos</li>
                                 <li>About</li>
                             </div>
                         </div>
@@ -80,6 +81,7 @@ class UserShow extends React.Component {
                                     { vids }
                                 </div>
                             </div>
+                            <Videos user={ this.props.user } videos={ this.props.videos } cu={ this.props.currentUser } />
                         </section> </> : null }
                 </section> 
             </section>
