@@ -18,6 +18,7 @@ const App = () => {
             <Switch>
                 <Route exact path="/" component={ VideoUploadContainer } />
                 <Route exact path="/videos/:id" component={ VideoUploadContainer } />
+                <Route exact path="/users/:id" component={ VideoUploadContainer } />
             </Switch>
             <Switch>
                 <Route exact path="/" component={ NavBarContainer } />

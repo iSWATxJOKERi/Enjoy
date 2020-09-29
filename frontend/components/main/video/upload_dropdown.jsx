@@ -6,9 +6,11 @@ import '../../../font_awesome';
 class VideoUploadDropdown extends React.Component {
     constructor(props) {
         super(props)
+        this.modal = this.modal.bind(this);
     }
     
     componentDidMount() {
+        // debugger
         this.props.allProps.currentUser ? this.modal() : null
     }
 

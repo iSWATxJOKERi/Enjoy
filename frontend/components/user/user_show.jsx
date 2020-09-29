@@ -47,7 +47,7 @@ class UserShow extends React.Component {
             // debugger
             for(let i = 0; i < this.props.videos.length; i++) {
                 if(this.props.videos[i].uploader.id === this.props.user.id) {
-                    vids.push(<UserUploadedVids key={ this.props.videos[i].id } vid={ this.props.videos[i] }/>)
+                    vids.push(<UserUploadedVids key={ this.props.videos[i].id } history={ this.props.history } vid={ this.props.videos[i] }/>)
                 }
             }
             // debugger
@@ -84,7 +84,7 @@ class UserShow extends React.Component {
                                     { show }
                                 </div>
                             </div>
-                            <Videos user={ this.props.user } videos={ this.props.videos } cu={ this.props.currentUser } />
+                            <Videos allProps={ this.props } />
                         </section> </> : null }
                 </section> 
             </section>

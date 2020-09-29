@@ -1,6 +1,7 @@
 import { faHome } from '@fortawesome/free-solid-svg-icons';
 import React from 'react';
 import EditVids from './edit_vids_item';
+
 export default class Videos extends React.Component {
     constructor(props) {
         super(props);
@@ -33,10 +34,10 @@ export default class Videos extends React.Component {
 
     render() {
         let vids;
-        if(this.props.videos.length > 0) {
-            vids = this.props.videos.map(video => {
-                if(video.uploader.id === this.props.user.id) {
-                    return <EditVids key={ video.id } vid={ video }/>
+        if(this.props.allProps.videos.length > 0) {
+            vids = this.props.allProps.videos.map(video => {
+                if(video.uploader.id === this.props.allProps.user.id) {
+                    return <EditVids key={ video.id } allProps={ this.props.allProps } vid={ video }/>
                 }
             })
         }

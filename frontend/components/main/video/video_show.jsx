@@ -27,13 +27,14 @@ class VideoShow extends React.Component {
                 }
             })
         }
+        // debugger
         return (
             <section className="show-video-section">
                 <section className="show-child">
                     <div className="primary">
                         { this.props.videos.length > 1 ? 
                             <div className="primary-inner">
-                                <video controls preload="auto" autoPlay className="video"><source src={ this.props.video.videoUrl } /></video>
+                                <video controls preload="auto" className="video"><source src={ this.props.video.videoUrl } /></video>
                                 <div className="video-info">
                                     <h2 className="video-title">{ this.props.video.title }</h2>
                                     <div className="video-stats">
