@@ -1,0 +1,58 @@
+.delete-modal{
+    position: fixed;
+    z-index: 1;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    background-color: rgb(0,0,0);
+    background-color: rgba(0,0,0,0.4);
+}
+
+.delete-section {
+    display: flex;
+    background-color: #fefefe;
+    height: 45%;
+    margin: 4% auto;
+    padding: 20px;
+    border: 1px solid #888;
+    border-radius: 7px;
+    width: 48%;
+    flex-direction: row;
+    justify-content: center;
+    align-items: center;
+    font-family: sans-serif;
+}
+
+.delete-middle {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height: 100%;
+    width: 50%;
+    align-items: center;
+    video {
+        height: 80%;
+        width: 80%;
+    }
+}
+
+.delete-buttons {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-evenly;
+    align-items: center;
+    height: 25%;
+    width: 100%;
+    button {
+        height: 100%;
+        border: 1px;
+        border-radius: 7px;
+        background: #1a73e8;
+        color: white;
+        text-align: center;
+        padding: 10px 20px;
+        height: 12%;
+    }
+}

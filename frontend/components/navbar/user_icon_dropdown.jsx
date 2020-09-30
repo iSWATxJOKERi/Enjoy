@@ -12,7 +12,7 @@ export default (props) => {
                 { user }
                 <div className="manage">
                     <h2>{ props.allProps.currentUser.username }</h2>
-                    <Link to={`/users/${ props.allProps.currentUser.id }` }>Manage your account</Link>
+                    <Link to={`/users/${ props.allProps.currentUser }` }>Manage your account</Link>
                 </div>
             </div>
             <ul className="middle">

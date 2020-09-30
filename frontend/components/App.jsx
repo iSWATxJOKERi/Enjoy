@@ -10,6 +10,8 @@ import VideoUploadContainer from './main/video/video_upload_container';
 import VideoShowContainer from './main/video/video_show_container';
 import EENavBarContainer from './navbar/eenb_container';
 import ShowPageModal from './main/video/show_page_modal';
+import VideoUpdateContainer from './user/update_container';
+import DeleteContainer from './user/delete_container';
 
 
 const App = () => {
@@ -31,6 +33,8 @@ const App = () => {
             <Route exact path="/videos/:id" component={ EENavBarContainer } />
             <Route exact path="/videos/:id" component={ VideoShowContainer } />
             <Route exact path="/users/:id" component={ UserShowContainer } />
+            <Route exact path="/videos/:id/edit" component={ VideoUpdateContainer } />
+            <Route exact path="/videos/:id/delete"component={ DeleteContainer } />
         </section>
     )
 }
