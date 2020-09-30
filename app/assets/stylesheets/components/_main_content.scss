@@ -96,17 +96,19 @@ html, body {
 
 #form-description {
     border: 1px solid lightgray;
-    height: 40%;
-    width: 100%;
+    height: 70%;
+    width: 60%;
     border-radius: 7px;
+    padding-left: 7px;
 }
 
 #form-title {
     border: 1px solid lightgray;
     height: 10%;
-    width: 100%;
+    width: 60%;
     margin: 10px 0;
     border-radius: 7px;
+    padding-left: 7px;
 }
 
 .top-of-modal {
@@ -134,8 +136,8 @@ html, body {
 .left-upload {
     display: flex;
     flex-direction: column;
-    height: 100%;
-    width: 50%;
+    height: 50%;
+    width: 100%;
     padding: 0 1px;
 }
 
@@ -146,17 +148,72 @@ textarea {
 .right-upload {
     display: flex;
     flex-direction: column;
-    width: 50%;
+    width: 100%;
+    height: 50%;
+    margin-top: 10px;
+    margin-left: 7px;
+    font-size: 12px;
 }
 
 .buttons {
     display: flex;
+    box-sizing: border-box;
     flex-direction: column;
-    height: 20%;
+    height: 100%;
+    width: 50%;
+    align-content: flex-end;
+    img {
+        display: block;
+        width: 100%;
+        height: auto;
+        padding: 2px;
+    }
+}
+
+.running {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+    height: 90%;
+}
+
+.hurry {
+    box-sizing: border-box;
+    display: flex;
+    flex-direction: column;
+    // justify-content: center;
+    // align-items: center;
+    height: 100%;
+    width: 50%;
+    video {
+        height: auto;
+        width: 100%;
+        padding: 2px;
+    }
+}
+
+.submit-the-video {
+    border: 1px;
+    border-radius: 7px;
+    background: #1a73e8;
+    color: white;
+    padding: 10px 20px;
+    height: 5%;
+    align-self: end;
+}
+
+// .video-preview {
+//     height: 50%;
+//     width: 50%;
+// }
+
+.image-preview {
+    height: 50%;
+    width: 50%;
 }
 
 .inputs {
-    height: 80%;;
+    height: 100%;
 }
 
 .modal-content2 {
@@ -168,9 +225,10 @@ textarea {
     border: 1px solid #888;
     border-radius: 7px;
     width: 48%;
-    flex-direction: row;
+    flex-direction: column;
     justify-content: center;
     align-items: center;
+    font-family: sans-serif;
 }
 
 .middle-icon {

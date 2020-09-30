@@ -8,7 +8,8 @@ export default class UploadForm extends React.Component {
             description: "",
             photoFile: null,
             videoFile: null,
-            photoUrl: null
+            photoUrl: null,
+            videoUrl: null
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFile = this.handleFile.bind(this);
@@ -39,9 +40,15 @@ export default class UploadForm extends React.Component {
                     fileReader.readAsDataURL(file);
                 }
             } else {
-                this.setState({
-                    [field]: e.currentTarget.files[0]
-                })
+                fileReader.onloadend = () => {
+                    this.setState({
+                        [field]: file,
+                        videoUrl: fileReader.result
+                    })
+                }
+                if(file) {
+                    fileReader.readAsDataURL(file);
+                }
             }
         }
     }
@@ -60,7 +67,9 @@ export default class UploadForm extends React.Component {
     render() {
         console.log(this.state)
         // debugger
-        const preview = this.state.photoUrl ? <img className="thumbnail-preview" src={ this.state.photoUrl } /> : null;
+        const preview1 = this.state.photoUrl ? <img className="thumbnail-preview" src={ this.state.photoUrl } /> : null;
+        const preview2 = this.state.videoUrl ? <video height="50%" width="50%" className="video-preview" controls><source src={ this.state.videoUrl }/></video>  : null;
+        
         return (
             <form onSubmit={ this.handleSubmit } className={ this.props.state.uploading ? "modal-content2" : "hide" }>
                 <span className="close2">&times;</span>
@@ -69,14 +78,19 @@ export default class UploadForm extends React.Component {
                         <input type="text" id="form-title" placeholder="Title" value={ this.state.title } onChange={ this.handleInput('title') } />
                         <textarea value={ this.state.description } id="form-description" placeholder="Description" onChange={ this.handleInput('description')} />
                     </div>
-                    <div className="buttons">
-                        <label>Upload Thumbnail<input type="file" onChange={ this.handleFile('photoFile') }/></label>
-                        { preview }
-                    </div>
                 </div>
                 <div className="right-upload">
-                    <label>Upload Video<input type="file" onChange={ this.handleFile('videoFile') }/></label>
-                    <button type="submit">Upload</button>
+                    <div className="running">
+                        <div className="buttons">
+                            { preview1 }
+                            <label>Upload Thumbnail<input type="file" onChange={ this.handleFile('photoFile') }/></label>
+                        </div>
+                        <div className="hurry">
+                            { preview2 }
+                            <label>Upload Video<input type="file" onChange={ this.handleFile('videoFile') }/></label>
+                        </div>
+                    </div>
+                    <button className="submit-the-video" type="submit">Upload</button>
                 </div>
             </form>
         )
