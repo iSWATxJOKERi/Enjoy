@@ -8,6 +8,8 @@ class Api::VideosController < ApplicationController
     def show
         @video = Video.find_by(id: params[:id])
         @upnext = Video.all.includes(:uploader).all
+        @likes = @video.likes.where("kind_of = 'like'")
+        @dislikes = @video.likes.where("kind_of = 'dislike'")
         render :show
     end
 

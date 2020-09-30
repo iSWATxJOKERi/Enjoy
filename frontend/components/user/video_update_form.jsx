@@ -61,7 +61,8 @@ class VideoUpdateForm extends React.Component {
         video.append('video[title]', this.state.title);
         video.append('video[description]', this.state.description);
         video.append('video[thumbnail]', this.state.photoFile)
-        this.props.processForm(video).done(() => this.props.history.push(`/users/${ this.props.currentUser }`));
+        debugger
+        this.props.processForm(video).then(() => this.props.history.push(`/users/${ this.props.currentUser }`));
     }
 
     render() {

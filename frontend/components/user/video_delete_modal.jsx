@@ -25,7 +25,7 @@ class VideoDeleteModal extends React.Component {
 
     handleSubmit(e) {
         e.preventDefault();
-        this.props.deleteVideo(this.props.match.params.id).done(() => this.props.history.push(`/users/${ this.props.currentUser }`));
+        this.props.deleteVideo(this.props.match.params.id).then(() => this.props.history.push(`/users/${ this.props.currentUser }`));
     }
 
     render() {

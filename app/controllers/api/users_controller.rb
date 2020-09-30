@@ -6,7 +6,13 @@ class Api::UsersController < ApplicationController
 
     def show
         @user = User.find_by(id: params[:id])
-        render :show
+        if @user 
+            @liked_videos = @user.likes.select("likeable_id").where("kind_of = 'like'")
+            @disliked_videos = @user.likes.select("likeable_id").where("kind_of = 'dislike'")
+            render :show
+        else
+            render json: { "session" => "No logged in user"}
+        end
     end
 
     def update

@@ -5,7 +5,14 @@ class User < ApplicationRecord
     after_initialize :ensure_session_token
     attr_reader :password
 
-    has_many :likes, :as => :likeable
+    has_many :likes,
+        primary_key: :id,
+        foreign_key: :liker_id,
+        class_name: 'Like'
+
+    has_many :liked_videos,
+        through: :likes,
+        source: :likeable, source_type: 'Video'
     
     has_one_attached :avatar
     has_one_attached :banner

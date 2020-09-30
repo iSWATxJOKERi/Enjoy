@@ -127,6 +127,10 @@ video {
     // padding-bottom: 5px;
 }
 
+.right-stats {
+    width: 10%;
+}
+
 .up-next {
     display: flex;
     flex-direction: column;
@@ -168,4 +172,32 @@ video {
 
 .listed-vid:hover, .video-box:hover {
     cursor: pointer;
+}
+
+.likes-container {
+    display: flex;
+    flex-direction: row;
+    width: 100%;
+}
+
+.like {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    width: 50%;
+}
+
+.dislike {
+    display: flex;
+    justify-content: center;
+    align-items: center; 
+    width: 50%;
+}
+
+.fa-thumbs-up:hover, .fa-thumbs-down:hover {
+    cursor: pointer;
+}
+
+.blue {
+    color: blue;
 }

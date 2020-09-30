@@ -29,11 +29,12 @@ export const fetchVideo = id => {
 }
 
 export const updateVideo = video => {
+    // debugger
     return (
         $.ajax({
             method: 'PATCH',
             url: `/api/videos/${ video.id }/`,
-            data: { video },
+            data: video,
             contentType: false,
             processData: false
         })

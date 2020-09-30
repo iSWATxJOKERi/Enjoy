@@ -13,7 +13,6 @@ import ShowPageModal from './main/video/show_page_modal';
 import VideoUpdateContainer from './user/update_container';
 import DeleteContainer from './user/delete_container';
 
-
 const App = () => {
     return (
         <section className="application">
