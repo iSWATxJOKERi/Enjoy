@@ -12,26 +12,26 @@ class SideBar extends React.Component {
         // debugger
         const dir = this.props.allProps.location.pathname
         const home = <FontAwesomeIcon id={ dir === "/" ? "red" : "regular "} icon="home" />
-        const trending = <FontAwesomeIcon icon="fire" />
-        const subscriptions = <FontAwesomeIcon icon="users" />
+        const github = <FontAwesomeIcon icon={["fab", "github"]} />
+        const linkedin = <FontAwesomeIcon icon={["fab", "linkedin"]} />
         const library = <FontAwesomeIcon icon="photo-video" />
         const history = <FontAwesomeIcon icon="history" />
         return (
             <section className="sidebar">
                 <section className="sidebar-items">
-                    <div className={ dir === "/" ? "item home-item red" : "item home-item" }>
+                    <div onClick={ () => this.props.allProps.history.push("/") } className={ dir === "/" ? "item home-item red" : "item home-item" }>
                         { home }
                         <span>Home</span>
                     </div>
-                    <div className="item trending-item">
-                        { trending }
-                        <span>Trending</span>
+                    <div onClick={ () => window.location.href = "https://github.com/iSWATxJOKERi" } className="item trending-item">
+                        { github }
+                        <span>Github</span>
                     </div>
-                    <div className="item subs-item">
-                        { subscriptions }
-                        <span>Subscriptions</span>
+                    <div onClick= { () => window.location.href = "https://github.com/iSWATxJOKERi" }className="item subs-item">
+                        { linkedin }
+                        <span>LinkedIn</span>
                     </div>
-                    <div className="item library-item">
+                    <div onClick={ () => this.props.allProps.history.push(`/users/${ this.props.allProps.currentUser }`) } className={ dir === `/users/${ this.props.allProps.currentUser }` ? "red item library-item" : "item library-item" }>
                         { library }
                         <span>Library</span>
                     </div>

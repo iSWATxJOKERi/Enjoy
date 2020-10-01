@@ -55,8 +55,8 @@ class UserShow extends React.Component {
         }
         return (
             <section className="main-content">
-                <PopoutSidebar />
-                <SideBar />
+                <PopoutSidebar allProps={ this.props }/>
+                <SideBar allProps={ this.props }/>
                 <section className="user-main">
                     { this.props.user ? <>
                         <div className="user-header">
