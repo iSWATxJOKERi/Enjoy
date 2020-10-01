@@ -11,12 +11,12 @@ export default (props) => {
             <div className="top">
                 { user }
                 <div className="manage">
-                    <h2>{ props.allProps.currentUser.username }</h2>
+                    <h2 onClick={ () => props.allProps.history.push(`/users/${ props.allProps.currentUser }`)}>{ props.allProps.user.username }</h2>
                     <Link to={`/users/${ props.allProps.currentUser }` }>Manage your account</Link>
                 </div>
             </div>
             <ul className="middle">
-                <li>Your Channel</li>
+                <li id="li-1" onClick={ () => props.allProps.history.push(`/users/${ props.allProps.currentUser }`)}>Your Channel</li>
                 <li className="logout" onClick={ props.allProps.logout }>Logout</li>
             </ul>
         </section>

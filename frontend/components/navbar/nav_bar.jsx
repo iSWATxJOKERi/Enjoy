@@ -65,7 +65,7 @@ class NavBar extends React.Component {
                     { menu }
                     { this.props.currentUser ? bell : settings }
                     { display }
-                    { this.props.currentUser ? dropdown : null }
+                    { this.props.user ? dropdown : null }
                     { vdropdown }
                 </div>
             </header>
