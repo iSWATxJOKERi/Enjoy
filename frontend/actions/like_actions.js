@@ -12,13 +12,6 @@ const receiveLike = like => {
     }
 }
 
-const receiveLikes = like => {
-    return {
-        type: RECEIVE_LIKES,
-        like
-    }
-}
-
 const removeLike = like => {
     return {
         type: REMOVE_LIKE,
@@ -35,6 +28,7 @@ const receiveLikeErrors = errors => {
 
 export const createLike = like => dispatch => {
     return LikeApiUtil.createLike(like).then(like => {
+        debugger
         dispatch(receiveLike(like))
     }, errors => {
         // debugger
@@ -43,7 +37,7 @@ export const createLike = like => dispatch => {
 }
 
 export const deleteLike = like => dispatch => {
-    // debugger
+    debugger
     return LikeApiUtil.deleteLike(like).then(like => {
         dispatch(removeLike(like))
     }, errors => {
@@ -51,9 +45,10 @@ export const deleteLike = like => dispatch => {
     })
 }
 
-export const fetchLikes = id => dispatch => {
-    return LikeApiUtil.fetchLikes(id).then(like => {
-        receiveLikes(like)
+export const fetchLike = id => dispatch => {
+    // debugger
+    return LikeApiUtil.fetchLike(id).then(like => {
+        dispatch(receiveLike(like))
     }, errors => {
         dispatch(receiveLikeErrors(errors.responseJSON))
     })

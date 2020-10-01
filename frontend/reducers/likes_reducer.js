@@ -6,6 +6,7 @@ const likesReducer = (state = {}, action) => {
 
     switch(action.type) {
         case RECEIVE_LIKE:
+            // debugger
             return Object.assign({}, state, { [action.like.id]: action.like })
         case RECEIVE_LIKES:
             let newstate = Object.assign({}, state);
@@ -14,6 +15,7 @@ const likesReducer = (state = {}, action) => {
             })
             return newstate
         case REMOVE_LIKE:
+            // debugger
             let ns = Object.assign({}, state);
             delete ns[action.like.id];
             return ns;

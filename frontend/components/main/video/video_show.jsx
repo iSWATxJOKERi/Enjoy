@@ -15,6 +15,7 @@ class VideoShow extends React.Component {
         // debugger
         this.props.fetchUser(this.props.currentUser);
         this.props.fetchVideo(this.props.match.params.id);
+        // this.props.fetchLike(this.props.match.params.id);
         this.props.fetchVideos();
     }
 

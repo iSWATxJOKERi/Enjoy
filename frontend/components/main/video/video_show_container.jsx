@@ -3,7 +3,7 @@ import { connect } from 'react-redux';
 import { fetchUser } from '../../../actions/user_actions';
 import { fetchVideo, fetchVideos } from '../../../actions/video_actions';
 import VideoShow from './video_show';
-import { createLike, deleteLike, fetchLikes } from '../../../actions/like_actions';
+import { createLike, deleteLike, fetchLike } from '../../../actions/like_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -13,7 +13,8 @@ const mapStateToProps = (state, ownProps) => {
         videos: Object.values(state.entities.videos),
         currentUser: state.session.id,
         user: state.entities.users[state.session.id],
-        errors: state.errors.likes
+        errors: state.errors.likes,
+        like: state
     }
 }
 
@@ -25,7 +26,7 @@ const mapDispatchToProps = dispatch => {
         fetchVideos: () => dispatch(fetchVideos()),
         createLike: like => dispatch(createLike(like)),
         removeLike: like => dispatch(deleteLike(like)),
-        // fetchLikes: id => dispatch(fetchLikes(id))
+        fetchLike: id => dispatch(fetchLike(id))
     }
 }
 

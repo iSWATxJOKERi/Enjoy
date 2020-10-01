@@ -3,8 +3,8 @@ class Api::LikesController < ApplicationController
 
     def index
         # debugger
-        @likes = Like.all.where("likeable_id = (?)", params[:video_id])
-        render :index
+        @like = Like.all.where("likeable_id = (?)", params[:video_id])
+        render json: @like
     end
 
     def create
@@ -12,7 +12,7 @@ class Api::LikesController < ApplicationController
         # debugger
         if @like.save
             # debugger
-            render json: { success: "You did it" }
+            render json: @like
         else
             render json: @like.errors.full_messages
         end
@@ -23,6 +23,7 @@ class Api::LikesController < ApplicationController
         @like = Like.find_by(kind_of: params[:like][:kind_of], likeable_id: params[:like][:likeable_id], likeable_type: params[:like][:likeable_type])
         if @like && (@like.liker_id == current_user.id)
             @like.destroy
+            render json: @like.to_json
         else
             render json: ['Not yours!']
         end
