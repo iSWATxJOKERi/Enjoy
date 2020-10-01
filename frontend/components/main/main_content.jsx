@@ -55,7 +55,7 @@ class MainContent extends React.Component {
         return (
             <section className="main-content">
                 { popout }
-                <SideBar />
+                <SideBar allProps={ this.props }/>
                 <section className="index-section">
                     <div className="list-of-tags">
                         <li>All</li>

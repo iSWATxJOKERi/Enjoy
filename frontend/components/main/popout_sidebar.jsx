@@ -2,8 +2,9 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../../font_awesome';
 
-export default () => {
-    const home = <FontAwesomeIcon id="smaller" icon="home" />
+export default (props) => {
+    const dir = props.allProps.location.pathname
+    const home = <FontAwesomeIcon className={ dir === "/" ? "red" : "nada" } id="smaller" icon="home" />
     const trending = <FontAwesomeIcon id="smaller" icon="fire" />
     const subscriptions = <FontAwesomeIcon id="smaller" icon="users" />
     const library = <FontAwesomeIcon id="smaller" icon="photo-video" />
@@ -12,7 +13,7 @@ export default () => {
     return (
         <section className="pop">
             <section className="first-sidebar">
-                <div className="li home-sb">
+                <div className={ dir === "/" ? "li home-sb effect" : "li home-sb" }>
                     <div id="fifty">{ home }</div>
                     <span>Home</span>
                 </div>

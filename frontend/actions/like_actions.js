@@ -28,7 +28,7 @@ const receiveLikeErrors = errors => {
 
 export const createLike = like => dispatch => {
     return LikeApiUtil.createLike(like).then(like => {
-        debugger
+        // debugger
         dispatch(receiveLike(like))
     }, errors => {
         // debugger
@@ -37,7 +37,7 @@ export const createLike = like => dispatch => {
 }
 
 export const deleteLike = like => dispatch => {
-    debugger
+    // debugger
     return LikeApiUtil.deleteLike(like).then(like => {
         dispatch(removeLike(like))
     }, errors => {

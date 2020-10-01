@@ -1,5 +1,5 @@
 export const createLike = like => {
-    debugger
+    // debugger
     return (
         $.ajax({
             method: 'POST',
@@ -10,7 +10,7 @@ export const createLike = like => {
 }
 
 export const deleteLike = like => {
-    debugger
+    // debugger
     return (
         $.ajax({
             method: 'DELETE',

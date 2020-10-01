@@ -9,7 +9,9 @@ class SideBar extends React.Component {
     }
 
     render() {
-        const home = <FontAwesomeIcon icon="home" />
+        // debugger
+        const dir = this.props.allProps.location.pathname
+        const home = <FontAwesomeIcon id={ dir === "/" ? "red" : "regular "} icon="home" />
         const trending = <FontAwesomeIcon icon="fire" />
         const subscriptions = <FontAwesomeIcon icon="users" />
         const library = <FontAwesomeIcon icon="photo-video" />
@@ -17,7 +19,7 @@ class SideBar extends React.Component {
         return (
             <section className="sidebar">
                 <section className="sidebar-items">
-                    <div className="item home-item">
+                    <div className={ dir === "/" ? "item home-item red" : "item home-item" }>
                         { home }
                         <span>Home</span>
                     </div>

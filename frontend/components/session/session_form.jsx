@@ -20,6 +20,7 @@ class SessionForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleInput = this.handleInput.bind(this);
         this.toggleForm = this.toggleForm.bind(this);
+        this.handleDemoUser = this.handleDemoUser.bind(this);
     }
 
     handleSubmit(e) {
@@ -36,6 +37,11 @@ class SessionForm extends React.Component {
             this.setState({
                 errors: errors.responseJSON
             }))
+    }
+
+    handleDemoUser(e) {
+        let form = { email: "iswatxjokeri@gmail.com", password: "ilovehalo123" };
+        this.props.processForm(form).then(() => this.props.history.push("/"))
     }
 
     toggleForm() {
@@ -62,13 +68,14 @@ class SessionForm extends React.Component {
         if(this.props.formType === 'Sign in') {
             form = <div className="session-form">
                 <div className={ this.state.active ? "show one" : "hidden"}>
-                    <input id={ this.state.errors.email ? "field-errors" : ""} className={ this.state.active ? "show email-field" : "hidden email"} placeholder="   Email" type="text" value={ this.state.email } onChange={ this.handleInput('email') } />
+                    <input id={ this.state.errors.email ? "field-errors" : ""} className={ this.state.active ? "show email-field" : "hidden email"} placeholder="Email" type="text" value={ this.state.email } onChange={ this.handleInput('email') } />
                     <p className="text-errors">{ this.state.errors.email ? this.state.errors.email : ""}</p>
                     <Link id="slink" to="/signup">Create an account</Link>
+                    <p className="demo" onClick={ () => this.handleDemoUser() }>Demo User</p>
                     <span className={ this.state.active ? "show" : "hidden"} onClick={ () => this.toggleForm() }>Next</span>
                 </div>
                 <div className={ this.state.active ? "hidden" : "show two"}>
-                    <input id={ this.state.errors.password ? "field-errors" : "" } className={ this.state.active ? "hidden password" : "show password password-field"} placeholder="   Password" type="password" value={ this.state.password } onChange={ this.handleInput('password') } />
+                    <input id={ this.state.errors.password ? "field-errors" : "" } className={ this.state.active ? "hidden password" : "show password password-field"} placeholder="Password" type="password" value={ this.state.password } onChange={ this.handleInput('password') } />
                     <p className="text-errors">{ this.state.errors.password ? this.state.errors.password : ""}</p>
                     <span className={ this.state.active ? "hidden" : "show"} onClick={ () => this.toggleForm() }>Go Back</span>
                     <button className={ this.state.active ? "hidden submit-session password" : "show submit-session password" } type="submit">Submit</button>
@@ -82,11 +89,11 @@ class SessionForm extends React.Component {
                         <h1 className={ this.props.formType === 'Sign in' ? "form-type" : "form-type2"}>{ this.props.formType }</h1>
                         <p className={ this.props.formType === 'Sign in' ? "p" : "p-signup" }>to continue to Enjoy</p>
                     </div>
-                    <input className={ (this.state.errors.username && this.state.errors.username.length > 0) ? "field-errors" : "username-field2" } type="text" placeholder="   Username" value={ this.state.username } onChange={ this.handleInput('username') } />
+                    <input className={ (this.state.errors.username && this.state.errors.username.length > 0) ? "field-errors" : "username-field2" } type="text" placeholder="Username" value={ this.state.username } onChange={ this.handleInput('username') } />
                     <span className="text-errors">{ this.state.errors.username ? this.state.errors.username : ""}</span>
-                    <input className={ (this.state.errors.password && this.state.errors.password.length > 0) ? "field-errors" : "password-field2" } type="password" placeholder="   Password" value={ this.state.password } onChange={ this.handleInput('password') } />
+                    <input className={ (this.state.errors.password && this.state.errors.password.length > 0) ? "field-errors" : "password-field2" } type="password" placeholder="Password" value={ this.state.password } onChange={ this.handleInput('password') } />
                     <span className="text-errors">{ this.state.errors.password ? this.state.errors.password : ""}</span>
-                    <input className={ (this.state.errors.email && this.state.errors.email.length > 0) ? "field-errors" : "email-field2" } type="email" value={ this.state.email } placeholder="   Email" onChange={ this.handleInput('email') } />
+                    <input className={ (this.state.errors.email && this.state.errors.email.length > 0) ? "field-errors" : "email-field2" } type="email" value={ this.state.email } placeholder="Email" onChange={ this.handleInput('email') } />
                     <span className="text-errors">{ this.state.errors.email ? this.state.errors.email : ""}</span>
                     <div className="instead">
                         <Link id="slink2" to="/login">Sign in instead</Link>

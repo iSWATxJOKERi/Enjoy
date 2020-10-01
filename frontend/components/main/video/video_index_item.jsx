@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../../../font_awesome';
-import { Link } from 'react-router-dom';
+import dateConverter from '../../../util/date_converter';
 
 export default (props) => {
     const user = <FontAwesomeIcon icon="user-circle" />
@@ -14,8 +14,8 @@ export default (props) => {
                     <h1>{ props.video.title }</h1>
                     <span>{ props.video.uploader.username }</span>
                     <div className="details">
-                        <span>View Count</span>
-                        <span>{ props.video.created_at }</span>
+                        <span>400 views</span>
+                        <span id="date" >{ dateConverter(props.video.created_at) }</span>
                     </div>
                 </div>
             </div>

@@ -20,16 +20,17 @@
 .middle-nav {
     display: flex;
     align-items: center;
+    justify-content: center;
     height: 40px;
     width: 50%;
 }
 
 .search-container {
-    height: 100%;
-    width: 100%;
+    height: 72%;
+    width: 65%;
     display: flex;
-    border: 1px solid gray;
-    //hello
+    border: 1px solid lightgray;
+    font-family: sans-serif;
 }
 
 .right-nav {
@@ -70,6 +71,7 @@
 .search-btn {
     display: flex;
     justify-content: center;
+    background-color: rgb(235, 235, 235);
     border-left: 1px solid gray;
     color: gray;
     width: 10%;

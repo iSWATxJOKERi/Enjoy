@@ -201,6 +201,8 @@
 }
 
 .username-field2, .password-field2, .email-field2 {
+   box-sizing: border-box;
+   padding-left: 20px;
    border: 1px solid lightgray;
    height: 10%;
    width: 90%;
@@ -209,6 +211,8 @@
 
 
 .email-field, .password-field {
+   box-sizing: border-box;
+   padding-left: 20px;
    border: 1px solid lightgray;
    height: 30%;
    width: 90%;
@@ -261,6 +265,20 @@
    // background: blue;
    color: #1a73e8;
    // padding: 10px 20px;
+}
+
+.demo {
+   position: absolute;
+   top: 120px;
+   left: 30px;
+   // border: 1px;
+   // border-radius: 7px;
+   // background: blue;
+   color: #1a73e8;
+}
+
+.demo:hover {
+   cursor: pointer;
 }
 
 .instead {
