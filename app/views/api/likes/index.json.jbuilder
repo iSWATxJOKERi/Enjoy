@@ -1,1 +1,1 @@
-json.array! @likes
+json.num @likes.length

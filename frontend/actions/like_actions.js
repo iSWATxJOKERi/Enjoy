@@ -43,6 +43,7 @@ export const createLike = like => dispatch => {
 }
 
 export const deleteLike = like => dispatch => {
+    // debugger
     return LikeApiUtil.deleteLike(like).then(like => {
         dispatch(removeLike(like))
     }, errors => {

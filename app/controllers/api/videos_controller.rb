@@ -2,14 +2,16 @@ class Api::VideosController < ApplicationController
     before_action :ensure_logged_in, only: [:create, :destroy]
     def index
         @videos = Video.all.includes(:uploader).all
+        # debugger
         render :index
     end
 
     def show
         @video = Video.find_by(id: params[:id])
-        @upnext = Video.all.includes(:uploader).all
-        @likes = @video.likes.where("kind_of = 'like'")
-        @dislikes = @video.likes.where("kind_of = 'dislike'")
+        # debugger
+        @upnext = Video.all.includes(:uploader).all 
+        @likes = @video.likes.where("kind_of = 'like'").length
+        @dislikes = @video.likes.where("kind_of = 'dislike'").length
         render :show
     end
 
