@@ -44,12 +44,13 @@
         font-weight: 600;
     }
     #deets {
-        font-size: 10px;
+        font-size: 12px;
     }
 
 }
 
 .update-modal {
+    // display: block;
     position: fixed;
     z-index: 1;
     left: 0;

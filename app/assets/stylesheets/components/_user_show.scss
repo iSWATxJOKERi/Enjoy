@@ -24,6 +24,10 @@
     width: 100%;
 }
 
+.uploaded-box-date {
+    height: 15%;
+}
+
 .user-center-header {
     display: flex;
     padding: 10px 140px 4px;
@@ -118,7 +122,7 @@
         font-weight: 600;
     }
     span {
-        font-size: 10px;
+        font-size: 12px;
     }
 }
 
