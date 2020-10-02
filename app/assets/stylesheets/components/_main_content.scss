@@ -1,7 +1,6 @@
 html, body {
     height: 100%;
     width: 100%;
-    // overflow-y: auto;
 }
 
 #root {
@@ -256,13 +255,22 @@ textarea {
     }
 }
 
-.close, .close2 {
+.close {
     color: #aaa;
     position: absolute;
     font-size: 28px;
     font-weight: bold;
     top: 80px;
     right: 505px;
+}
+
+.close2 {
+    color: #aaa;
+    position: absolute;
+    font-size: 28px;
+    font-weight: bold;
+    top: 80px;
+    right: 483px;
 }
 
 #center-modal {

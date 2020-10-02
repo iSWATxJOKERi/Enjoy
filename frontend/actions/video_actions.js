@@ -46,6 +46,7 @@ export const fetchVideo = id => dispatch => {
 export const createVideo = video => dispatch => {
     return VideoApiUtil.createVideo(video).then(video => {
         dispatch(receiveVideo(video))
+        debugger
     }, errors => dispatch(receiveVideoErrors(errors.responseJSON)))
 }
 

@@ -9,7 +9,8 @@ export default class UploadForm extends React.Component {
             photoFile: null,
             videoFile: null,
             photoUrl: null,
-            videoUrl: null
+            videoUrl: null,
+            errors: this.props.errors
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFile = this.handleFile.bind(this);
@@ -56,12 +57,19 @@ export default class UploadForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const video = new FormData();
-        video.append('video[title]', this.state.title);
-        video.append('video[description]', this.state.description);
-        video.append('video[thumbnail]', this.state.photoFile)
-        video.append('video[clip]', this.state.videoFile);
-        // debugger
-        this.props.processForm(video).then(() => this.props.history.push("/"));
+        this.state.title.length > 0 ? video.append('video[title]', this.state.title) : video.append('video[title]', "");
+        this.state.description.length > 0 ? video.append('video[description]', this.state.description) : video.append('video[description]', "");
+        this.state.thumbnail ? video.append('video[thumbnail]', this.state.photoFile) : null;
+        this.state.clip ? video.append('video[clip]', this.state.videoFile) : null;
+        debugger
+        this.props.processForm(video).then(() => {
+            this.props.history.push("/")
+        }, errors => {
+            debugger
+            this.setState({
+                errors: errors.errors
+            })
+        })
     }
 
     render() {
@@ -75,19 +83,23 @@ export default class UploadForm extends React.Component {
                 <span className="close2">&times;</span>
                 <div className="left-upload">
                     <div className="inputs">
-                        <input type="text" id="form-title" placeholder="Title" value={ this.state.title } onChange={ this.handleInput('title') } />
-                        <textarea value={ this.state.description } id="form-description" placeholder="Description" onChange={ this.handleInput('description')} />
+                        <input className={ this.state.errors.title ? "field-errors" : ""} type="text" id="form-title" placeholder="Title" value={ this.state.title } onChange={ this.handleInput('title') } />
+                        <p className="text-errors">{ this.state.errors.title ? this.state.errors.title : ""}</p>
+                        <textarea className={ this.state.errors.description ? "field-errors" : ""} value={ this.state.description } id="form-description" placeholder="Description" onChange={ this.handleInput('description')} />
+                        <p className="text-errors">{ this.state.errors.description ? this.state.errors.description : ""}</p>
                     </div>
                 </div>
                 <div className="right-upload">
                     <div className="running">
                         <div className="buttons">
                             { preview1 }
-                            <label>Upload Thumbnail<input type="file" onChange={ this.handleFile('photoFile') }/></label>
+                            <label className={ this.state.errors.thumbnail ? "field-errors" : ""}>Upload Thumbnail<input type="file" onChange={ this.handleFile('photoFile') }/></label>
+                            <p className="text-errors">{ this.state.errors.thumbnail ? this.state.errors.thumbnail : ""}</p>
                         </div>
                         <div className="hurry">
                             { preview2 }
-                            <label>Upload Video<input type="file" onChange={ this.handleFile('videoFile') }/></label>
+                            <label className={ this.state.errors.clip ? "field-errors" : ""}>Upload Video<input type="file" onChange={ this.handleFile('videoFile') }/></label>
+                            <p className="text-errors">{ this.state.errors.clip ? this.state.errors.clip : ""}</p>
                         </div>
                     </div>
                     <button className="submit-the-video" type="submit">Upload</button>

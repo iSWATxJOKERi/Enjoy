@@ -63,7 +63,7 @@ class VideoModal extends React.Component {
                         </div> 
                     </div>
                 </div>
-                <UploadForm history={ this.props.history } processForm={ this.props.processForm } state={ this.state } />
+                <UploadForm history={ this.props.history } errors={ this.props.errors } processForm={ this.props.processForm } state={ this.state } />
             </section>
         )
     }
