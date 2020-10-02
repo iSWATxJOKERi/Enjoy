@@ -3,7 +3,7 @@ export const createVideo = video => {
         $.ajax({
             method: 'POST',
             url: 'api/videos/',
-            data: video,
+            data: { video },
             contentType: false,
             processData: false
         })
@@ -28,13 +28,13 @@ export const fetchVideo = id => {
     )
 }
 
-export const updateVideo = video => {
-    // debugger
+export const updateVideo = (video) => {
+    debugger
     return (
         $.ajax({
             method: 'PATCH',
-            url: `/api/videos/${ video.id }/`,
-            data: video,
+            url: `/api/videos/${ video[1] }/`,
+            data: video[0],
             contentType: false,
             processData: false
         })

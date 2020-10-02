@@ -32,29 +32,30 @@ const removeVideo = id => ({
 
 export const fetchVideos = () => dispatch => {
     // debugger
-    VideoApiUtil.fetchVideos().then(videos => {
+    return VideoApiUtil.fetchVideos().then(videos => {
         dispatch(receiveVideos(videos))
     }, errors => dispatch(receiveVideoErrors(errors.responseJSON)))
 }
 
 export const fetchVideo = id => dispatch => {
-    VideoApiUtil.fetchVideo(id).then(video => {
+    return VideoApiUtil.fetchVideo(id).then(video => {
         dispatch(receiveVideo(video))
     }, errors => dispatch(receiveVideoErrors(errors.responseJSON)))
 }
 
 export const createVideo = video => dispatch => {
-    VideoApiUtil.createVideo(video).then(video => {
+    return VideoApiUtil.createVideo(video).then(video => {
         dispatch(receiveVideo(video))
     }, errors => dispatch(receiveVideoErrors(errors.responseJSON)))
 }
 
-export const updateVideo = video => dispatch => {
-    VideoApiUtil.updateVideo(video).then(video => {
+export const updateVideo = (video) => dispatch => {
+    debugger
+    return VideoApiUtil.updateVideo(video).then(video => {
         dispatch(receiveVideo(video))
     }, errors => dispatch(receiveVideoErrors(errors.responseJSON)))
 }
 
 export const deleteVideo = id => dispatch => {
-    VideoApiUtil.deleteVideo(id).then(() => dispatch(removeVideo(id)))
+    return VideoApiUtil.deleteVideo(id).then(() => dispatch(removeVideo(id)))
 }

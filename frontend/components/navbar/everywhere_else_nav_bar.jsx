@@ -33,6 +33,7 @@ class EENavBar extends React.Component {
 
     componentDidMount() {
         this.toggleModal();
+        this.props.fetchUser(this.props.currentUser)
     }
 
     toggleModal() {

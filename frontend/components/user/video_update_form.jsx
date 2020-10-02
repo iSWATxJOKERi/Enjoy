@@ -59,11 +59,14 @@ class VideoUpdateForm extends React.Component {
     handleSubmit(e) {
         e.preventDefault();
         const video = new FormData();
-        video.append('video[title]', this.state.title);
-        video.append('video[description]', this.state.description);
-        video.append('video[thumbnail]', this.state.photoFile)
-        // debugger
-        this.props.processForm(video).then(() => this.props.history.push(`/users/${ this.props.currentUser }`));
+        const id = this.props.match.params.id;
+        this.state.title ? video.append('video[title]', this.state.title) : null;
+        this.state.description ? video.append('video[description]', this.state.description) : null;
+        this.state.photoFile ? video.append('video[thumbnail]', this.state.photoFile) : null;
+        debugger
+        const arr = [video, id]
+        this.props.processForm(arr).done(vid => console.log(vid));
+        // () => this.props.history.push(`/users/${ this.props.currentUser }`));
     }
 
     render() {

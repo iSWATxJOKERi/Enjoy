@@ -1,5 +1,5 @@
 class Api::VideosController < ApplicationController
-    before_action :ensure_logged_in, only: [:create, :destroy]
+    before_action :ensure_logged_in, only: [:create, :destroy, :update]
     def index
         @videos = Video.all.includes(:uploader).all
         # debugger
@@ -20,8 +20,9 @@ class Api::VideosController < ApplicationController
         @video = Video.new(video_params)
         @video.uploader = current_user
         @video.uploader_id = current_user.id
+        debugger
         if @video.save
-            render json: @video
+            render json: { "id" => @video.id, "title" => @video.title, "description" => @video.description, "uploader" => @video.uploader, "created_at" => @video.created_at, "updated_at" => @video.updated_at }
         else
             render json: @video.errors.full_messages, status: 422
         end
@@ -29,7 +30,8 @@ class Api::VideosController < ApplicationController
 
     def update
         @video = Video.find_by(id: params[:id])
-        if @video.update_attributes(video_params)
+        debugger
+        if @video.update(video_params)
             render json: @video
         else
             render json: @video.errors.full_messages, status: 422
