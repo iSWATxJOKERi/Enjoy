@@ -45,7 +45,7 @@ file24 = open("https://active-storage-enjoy-seeds.s3.amazonaws.com/BFHVID4.mp4")
 file25 = open("https://active-storage-enjoy-seeds.s3.amazonaws.com/BFH6.jpg")
 file26 = open("https://active-storage-enjoy-seeds.s3.amazonaws.com/Hardline1.mp4")
 
-videos = Video.create([
+videos = Video.new([
     { title: "Battlefield Hardline Quickscoping Montage", description: "I really do this", uploader_id: User.first.id },
     { title: "Nobody's Safe", description: "I really do this", uploader_id: User.first.id },
     { title: "Lana del Rey - Blue Jeans", description: "Music in this video: Song - Blue Jeans (Album Version - Remastered) Artist Lana Del Rey", uploader_id: User.first.id },
@@ -99,3 +99,6 @@ videos[11].clip.attach(io: file24, filename: 'BFHVID4.mp4')
 
 videos[12].thumbnail.attach(io: file25, filename: 'BFH6.jpg')
 videos[12].clip.attach(io: file26, filename: 'Hardline1.mp4')
+
+
+videos.each { |video| video.save! }
