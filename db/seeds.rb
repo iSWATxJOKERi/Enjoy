@@ -45,7 +45,7 @@ file24 = open("https://active-storage-enjoy-seeds.s3.amazonaws.com/BFHVID4.mp4")
 file25 = open("https://active-storage-enjoy-seeds.s3.amazonaws.com/BFH6.jpg")
 file26 = open("https://active-storage-enjoy-seeds.s3.amazonaws.com/Hardline1.mp4")
 
-videos = Video.new([
+videos = [
     { title: "Battlefield Hardline Quickscoping Montage", description: "I really do this", uploader_id: User.first.id },
     { title: "Nobody's Safe", description: "I really do this", uploader_id: User.first.id },
     { title: "Lana del Rey - Blue Jeans", description: "Music in this video: Song - Blue Jeans (Album Version - Remastered) Artist Lana Del Rey", uploader_id: User.first.id },
@@ -59,7 +59,11 @@ videos = Video.new([
     { title: "Battlefield Hardline", description: "Sum'n lite", uploader_id: User.second.id },
     { title: "Battlefield Hardline 1", description: "Eh...", uploader_id: User.second.id },
     { title: "Battlefield Hardline 2", description: "K", uploader_id: User.second.id }
-])
+]
+
+videos.map! do |video|
+    Video.new(video)
+end
 
 videos[0].thumbnail.attach(io: file1, filename: 'BFH2.jpg')
 videos[0].clip.attach(io: file2, filename: 'BFHVID1.mp4')
