@@ -99,8 +99,3 @@ videos[11].clip.attach(io: file24, filename: 'BFHVID4.mp4')
 
 videos[12].thumbnail.attach(io: file25, filename: 'BFH6.jpg')
 videos[12].clip.attach(io: file26, filename: 'Hardline1.mp4')
-
-likes = Like.create([
-    { kind_of: "like", likeable_id: 1, likeable_type: Video, liker_id: 1},
-    { kind_of: "like", likeable_id: 2, likeable_type: Video, liker_id: 1}
-])
