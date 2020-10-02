@@ -7,7 +7,8 @@ class VideoUpdateForm extends React.Component {
             title: "",
             description: "",
             photoFile: null,
-            photoUrl: null
+            photoUrl: null,
+            errors: this.props.errors
         };
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFile = this.handleFile.bind(this);
@@ -60,13 +61,18 @@ class VideoUpdateForm extends React.Component {
         e.preventDefault();
         const video = new FormData();
         const id = this.props.match.params.id;
-        this.state.title ? video.append('video[title]', this.state.title) : null;
-        this.state.description ? video.append('video[description]', this.state.description) : null;
+        this.state.title.length > 0 ? video.append('video[title]', this.state.title) : video.append('video[title]', "");
+        this.state.description.length > 0 ? video.append('video[description]', this.state.description) : video.append('video[description]', "");
         this.state.photoFile ? video.append('video[thumbnail]', this.state.photoFile) : null;
-        debugger
+        // debugger
         const arr = [video, id]
-        this.props.processForm(arr).done(vid => console.log(vid));
-        // () => this.props.history.push(`/users/${ this.props.currentUser }`));
+        this.props.processForm(arr).then(() => {
+            this.props.history.push(`/users/${ this.props.currentUser }`)
+        }, errors => {
+            this.setState({
+                errors: errors.errors
+            })
+        })
     }
 
     render() {
@@ -79,14 +85,17 @@ class VideoUpdateForm extends React.Component {
                     <div className="left-update">
                         <div className="update-inputs">
                             <span>Edit your video</span>
-                            <input type="text" id="u-title" placeholder={ this.props.video.title } value={ this.state.title } onChange={ this.handleInput('title') } />
-                            <textarea value={ this.state.description } id="u-description" placeholder={ this.props.video.description } onChange={ this.handleInput('description')} />
+                            <input className={ this.state.errors.title ? "field-errors" : ""} type="text" id="u-title" placeholder={ this.props.video.title } value={ this.state.title } onChange={ this.handleInput('title') } />
+                            <p className="text-errors">{ this.state.errors.title ? this.state.errors.title : ""}</p>
+                            <textarea className={ this.state.errors.description ? "field-errors" : ""} value={ this.state.description } id="u-description" placeholder={ this.props.video.description } onChange={ this.handleInput('description')} />
+                            <p className="text-errors">{ this.state.errors.description ? this.state.errors.description : ""}</p>
                         </div>
                     </div>
                     <div className="right-update">
                         <div className="update-buttons">
                             { preview1 }
-                            <label>Upload Thumbnail<input type="file" onChange={ this.handleFile('photoFile') }/></label>
+                            <label className={ this.state.errors.thumbnail ? "field-errors" : ""}>Upload Thumbnail<input type="file" onChange={ this.handleFile('photoFile') }/></label>
+                            <p className="text-errors">{ this.state.errors.thumbnail ? this.state.errors.thumbnail : ""}</p>
                         </div>
                         <button className="submit-the-video2" type="submit">Update</button>
                     </div>

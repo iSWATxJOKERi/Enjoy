@@ -61,11 +61,11 @@ export default class UploadForm extends React.Component {
         this.state.description.length > 0 ? video.append('video[description]', this.state.description) : video.append('video[description]', "");
         this.state.thumbnail ? video.append('video[thumbnail]', this.state.photoFile) : null;
         this.state.clip ? video.append('video[clip]', this.state.videoFile) : null;
-        debugger
+        // debugger
         this.props.processForm(video).then(() => {
             this.props.history.push("/")
         }, errors => {
-            debugger
+            // debugger
             this.setState({
                 errors: errors.errors
             })
@@ -73,7 +73,7 @@ export default class UploadForm extends React.Component {
     }
 
     render() {
-        console.log(this.state)
+        // console.log(this.state)
         // debugger
         const preview1 = this.state.photoUrl ? <img className="thumbnail-preview" src={ this.state.photoUrl } /> : null;
         const preview2 = this.state.videoUrl ? <video height="50%" width="50%" className="video-preview" controls><source src={ this.state.videoUrl }/></video>  : null;

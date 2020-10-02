@@ -8,7 +8,8 @@ const mapStateToProps = (state, ownProps) => {
     return {
         user: state.entities.users[ownProps.match.params.id],
         video: state.entities.videos[ownProps.match.params.id],
-        currentUser: state.session.id
+        currentUser: state.session.id,
+        errors: state.errors.videos
     }
 }
 

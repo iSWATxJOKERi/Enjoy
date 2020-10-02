@@ -1,5 +1,5 @@
 export const createVideo = video => {
-    debugger
+    // debugger
     return (
         $.ajax({
             method: 'POST',
@@ -30,7 +30,7 @@ export const fetchVideo = id => {
 }
 
 export const updateVideo = (video) => {
-    debugger
+    // debugger
     return (
         $.ajax({
             method: 'PATCH',

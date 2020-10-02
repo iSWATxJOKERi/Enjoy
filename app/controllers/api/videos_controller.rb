@@ -16,11 +16,11 @@ class Api::VideosController < ApplicationController
     end
 
     def create
-        debugger
+        # debugger
         @video = Video.new(video_params)
         @video.uploader = current_user
         @video.uploader_id = current_user.id
-        debugger
+        # debugger
         if @video.save
             render json: { "id" => @video.id, "title" => @video.title, "description" => @video.description, "uploader" => @video.uploader, "created_at" => @video.created_at, "updated_at" => @video.updated_at }
         else
@@ -35,11 +35,15 @@ class Api::VideosController < ApplicationController
 
     def update
         @video = Video.find_by(id: params[:id])
-        debugger
+        # debugger
         if @video.update(video_params)
             render json: @video
         else
-            render json: @video.errors.full_messages, status: 422
+            render json: { 
+                title: @video.errors.full_messages_for(:title),
+                description: @video.errors.full_messages_for(:description),
+                thumbnail: @video.errors.full_messages_for(:thumbnail)
+            }, status: 422
         end
     end
 
