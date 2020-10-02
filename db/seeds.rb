@@ -46,19 +46,19 @@ file25 = open("https://active-storage-enjoy-seeds.s3.amazonaws.com/BFH6.jpg")
 file26 = open("https://active-storage-enjoy-seeds.s3.amazonaws.com/Hardline1.mp4")
 
 videos = Video.create([
-    { title: "Battlefield Hardline Quickscoping Montage", description: "I really do this", uploader_id: 1 },
-    { title: "Nobody's Safe", description: "I really do this", uploader_id: 1 },
-    { title: "Lana del Rey - Blue Jeans", description: "Music in this video: Song - Blue Jeans (Album Version - Remastered) Artist Lana Del Rey", uploader_id: 1 },
-    { title: "Halo 5", description: "Free-for-all on Eden", uploader_id: 1 },
-    { title: "PUBG 1-Man Squads", description: "Shoulda captured my other clips, woulda came in handy for this seedsject...but for now...", uploader_id: 1 },
-    { title: "PUBG 1-Man Squads 2", description: "Shoulda captured my other clips, woulda came in handy for this seedsject...but for now...", uploader_id: 1 },
-    { title: "Ninjaed", description: "Dummy", uploader_id: 1 },
-    { title: "FIFA 19", description: "Boring", uploader_id: 1 },
-    { title: "Free Kick", description: "Boring....", uploader_id: 1 },
-    { title: "Big Dogging it", description: "I really do this", uploader_id: 2 },
-    { title: "Battlefield Hardline", description: "Sum'n lite", uploader_id: 2 },
-    { title: "Battlefield Hardline 1", description: "Eh...", uploader_id: 2 },
-    { title: "Battlefield Hardline 2", description: "K", uploader_id: 2 }
+    { title: "Battlefield Hardline Quickscoping Montage", description: "I really do this", uploader_id: User.first.id },
+    { title: "Nobody's Safe", description: "I really do this", uploader_id: User.first.id },
+    { title: "Lana del Rey - Blue Jeans", description: "Music in this video: Song - Blue Jeans (Album Version - Remastered) Artist Lana Del Rey", uploader_id: User.first.id },
+    { title: "Halo 5", description: "Free-for-all on Eden", uploader_id: User.first.id },
+    { title: "PUBG 1-Man Squads", description: "Shoulda captured my other clips, woulda came in handy for this seedsject...but for now...", uploader_id: User.first.id },
+    { title: "PUBG 1-Man Squads 2", description: "Shoulda captured my other clips, woulda came in handy for this seedsject...but for now...", uploader_id: User.first.id },
+    { title: "Ninjaed", description: "Dummy", uploader_id: User.first.id },
+    { title: "FIFA 19", description: "Boring", uploader_id: User.first.id },
+    { title: "Free Kick", description: "Boring....", uploader_id: User.first.id },
+    { title: "Big Dogging it", description: "I really do this", uploader_id: User.second.id },
+    { title: "Battlefield Hardline", description: "Sum'n lite", uploader_id: User.second.id },
+    { title: "Battlefield Hardline 1", description: "Eh...", uploader_id: User.second.id },
+    { title: "Battlefield Hardline 2", description: "K", uploader_id: User.second.id }
 ])
 
 videos[0].thumbnail.attach(io: file1, filename: 'BFH2.jpg')
