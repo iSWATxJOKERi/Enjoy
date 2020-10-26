@@ -15,11 +15,11 @@ export default class EditVids extends React.Component {
                     <span id="deets">6M views &#8226;</span>
                     <span id="deets"> { dateConverter(this.props.vid.created_at) }</span>
                 </div>
-                { (this.props.allProps.currentUser && (this.props.vid.uploader.id === this.props.allProps.currentUser)) ?
+                {/* { (this.props.allProps.currentUser && (this.props.vid.uploader.id === this.props.allProps.currentUser)) ?
                 <div className="edit-delete-hover">
                     <button onClick={ ()=> this.props.allProps.history.push(`/videos/${ this.props.vid.id }/edit`) } className="edit-video">EDIT</button>
                     <button onClick={ ()=> this.props.allProps.history.push(`/videos/${ this.props.vid.id }/delete`) } className="delete-video">DELETE</button>
-                </div> : null }
+                </div> : null } */}
             </section>
         )
     }

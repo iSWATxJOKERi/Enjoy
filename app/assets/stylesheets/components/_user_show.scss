@@ -8,7 +8,7 @@
     margin-left: 12.6%;
     // overflow-y: auto;
     font-family: 'Roboto';
-    background-color: rgb(235, 235, 235);
+    background-color: rgb(241, 241, 241);
 }
 
 .user-content {
@@ -26,6 +26,7 @@
 
 .uploaded-box-date {
     height: 15%;
+    color: rgb(94, 94, 94);
 }
 
 .user-center-header {
@@ -56,9 +57,16 @@
     width: 80%;
 }
 
+.right-head {
+    display: flex;
+    flex-direction: row;
+    width: 30%;
+    justify-content: space-around;
+}
+
 .right-header {
     display: flex;
-    width: 30%;
+    width: 50%;
     justify-content: center;
     align-items: center;
     button {
@@ -118,8 +126,8 @@
     height: 30%;
     padding: 0 5px;
     h1 {
-        font-size: 12px;
-        font-weight: 600;
+        font-size: 1rem;
+        font-weight: 500;
     }
     span {
         font-size: 12px;

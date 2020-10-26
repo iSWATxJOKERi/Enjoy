@@ -67,8 +67,13 @@ class UserShow extends React.Component {
                                 <div className="middle-header">
                                     <h1 className="user-username">{ this.props.user.username }</h1>
                                 </div>
-                                <div className="right-header">
-                                    <button>CUSTOMIZE BANNER</button>
+                                <div className="right-head">
+                                    <div className="right-header">
+                                        <button>CUSTOMIZE BANNER</button>
+                                    </div>
+                                    <div className="right-header">
+                                        <button>MANAGE VIDEOS</button>
+                                    </div>
                                 </div>
                             </div>
                             <div className="parts-of-header">
