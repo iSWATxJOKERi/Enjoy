@@ -37,10 +37,6 @@ class Likes extends React.Component {
                     const real = this.props.allProps.like.entities.users.like[0] ? this.props.allProps.like.entities.users.like[0] : this.props.allProps.like.entities.users.like;
                     // debugger
                     this.props.allProps.removeLike(real).then(() => {
-                        this.setState({
-                            [field]: this.props.allProps.video.num_likes - 1,
-                            liked_already: false
-                        })
                     }, () => {
                             this.setState({
                                 errors: this.props.allProps.errors
@@ -48,51 +44,55 @@ class Likes extends React.Component {
                     }).then(() => {
                         this.props.allProps.fetchUser(this.props.allProps.currentUser)
                     }).then(() => {
-                        this.props.allProps.fetchVideo(this.props.allProps.match.params.id)
+                        this.props.allProps.fetchVideo(this.props.allProps.match.params.id).then(() => {
+                            this.setState({
+                                [field]: this.props.allProps.video.num_likes,
+                                liked_already: false
+                            })
+                        })
                     })
                 } else if(this.state.disliked_already) {
                     const real = this.props.allProps.like.entities.users.like[0] ? this.props.allProps.like.entities.users.like[0] : this.props.allProps.like.entities.users.like;
                     this.props.allProps.removeLike(real).then(() => {
-                        this.setState({
-                            [field]: this.props.allProps.video.num_dislikes - 1,
-                            disliked_already: false
-                        })
                     }, () => {
                             this.setState({
                                 errors: this.props.allProps.errors
                             })
                     }).then(() => {
                         this.props.allProps.createLike(like).then(() => {
-                            // debugger
-                            this.setState({
-                                [field]: this.props.allProps.video.num_likes + 1,
-                                liked_already: true
-                            })
                         }, () => {
                             this.setState({
                                 errors: this.props.allProps.errors
                             })
+                        }).then(() => {
+                            this.props.allProps.fetchUser(this.props.allProps.currentUser).then(() => {
+                                this.props.allProps.fetchVideo(this.props.allProps.match.params.id).then(() => {
+                                    this.setState({
+                                        dislike: this.props.allProps.video.num_dislikes,
+                                        disliked_already: false,
+                                        [field]: this.props.allProps.video.num_likes,
+                                        liked_already: true
+                                    })
+                                })
+                            })
                         })
-                    }).then(() => {
-                        this.props.allProps.fetchUser(this.props.allProps.currentUser)
-                    }).then(() => {
-                        this.props.allProps.fetchVideo(this.props.allProps.match.params.id)
                     })
                 } else {
                     this.props.allProps.createLike(like).then(() => {
                         // debugger
-                        this.setState({
-                            [field]: this.props.allProps.video.num_likes + 1,
-                            liked_already: true
-                        })
                     }, () => {
                         this.setState({
                             errors: this.props.allProps.errors
                         })
                     }).then(() => {
-                        this.props.allProps.fetchUser(this.props.allProps.currentUser)
-                    }).then(() => {
-                        this.props.allProps.fetchVideo(this.props.allProps.match.params.id)
+                        this.props.allProps.fetchUser(this.props.allProps.currentUser).then(() => {
+                            this.props.allProps.fetchVideo(this.props.allProps.match.params.id).then(() => {
+                                this.setState({
+                                    [field]: this.props.allProps.video.num_likes,
+                                    liked_already: true
+                                })
+                            })
+                        })
                     })
                 }
             } else {
@@ -112,62 +112,61 @@ class Likes extends React.Component {
                     // debugger
                     const real = this.props.allProps.like.entities.users.like[0] ? this.props.allProps.like.entities.users.like[0] : this.props.allProps.like.entities.users.like;
                     this.props.allProps.removeLike(real).then(() => {
-                        this.setState({
-                            [field]: this.props.allProps.video.num_dislikes - 1,
-                            disliked_already: false
-                        })
                     }, () => {
                             this.setState({
                                 errors: this.props.allProps.errors
                             })
                     }).then(() => {
-                        this.props.allProps.fetchUser(this.props.allProps.currentUser)
-                    }).then(() => {
-                        this.props.allProps.fetchVideo(this.props.allProps.match.params.id)
+                        this.props.allProps.fetchUser(this.props.allProps.currentUser).then(() => {
+                            this.props.allProps.fetchVideo(this.props.allProps.match.params.id).then(() => {
+                                this.setState({
+                                    [field]: this.props.allProps.video.num_dislikes,
+                                    disliked_already: false
+                                })
+                            })
+                        })
                     })
                 } else if(this.state.liked_already) {
                     const real = this.props.allProps.like.entities.users.like[0] ? this.props.allProps.like.entities.users.like[0] : this.props.allProps.like.entities.users.like;
                     this.props.allProps.removeLike(real).then(() => {
-                        this.setState({
-                            [field]: this.props.allProps.video.num_likes - 1,
-                            liked_already: false
-                        })
                     }, () => {
                             this.setState({
                                 errors: this.props.allProps.errors
                             })
                     }).then(() => {
                         this.props.allProps.createLike(like).then(() => {
-                            // debugger
-                            this.setState({
-                                [field]: this.props.allProps.video.num_dislikes + 1,
-                                disliked_already: true
-                            })
                         }, () => {
                             this.setState({
                                 errors: this.props.allProps.errors
                             })
                         }).then(() => {
-                            this.props.allProps.fetchUser(this.props.allProps.currentUser)
-                        }).then(() => {
-                            this.props.allProps.fetchVideo(this.props.allProps.match.params.id)
+                            this.props.allProps.fetchUser(this.props.allProps.currentUser).then(() => {
+                                this.props.allProps.fetchVideo(this.props.allProps.match.params.id).then(() => {
+                                    this.setState({
+                                        like: this.props.allProps.video.num_likes,
+                                        liked_already: false,
+                                        [field]: this.props.allProps.video.num_dislikes,
+                                        disliked_already: true
+                                    })
+                                })
+                            })
                         })
                     })
                 } else {
                     this.props.allProps.createLike(like).then(() => {
-                        // debugger
-                        this.setState({
-                            [field]: this.props.allProps.video.num_dislikes + 1,
-                            disliked_already: true
-                        })
                     }, () => {
                         this.setState({
                             errors: this.props.allProps.errors
                         })
                     }).then(() => {
-                        this.props.allProps.fetchUser(this.props.allProps.currentUser)
-                    }).then(() => {
-                        this.props.allProps.fetchVideo(this.props.allProps.match.params.id)
+                        this.props.allProps.fetchUser(this.props.allProps.currentUser).then(() => {
+                            this.props.allProps.fetchVideo(this.props.allProps.match.params.id).then(() => {
+                                this.setState({
+                                    [field]: this.props.allProps.video.num_dislikes,
+                                    disliked_already: true
+                                })
+                            })
+                        })
                     })
                 }
             } else {
