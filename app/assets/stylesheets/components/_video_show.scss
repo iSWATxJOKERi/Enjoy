@@ -97,8 +97,7 @@ video {
 
 .video-info {
     display: flex;
-    height: 8%;
-    padding: 12px 0px 8px 0px;
+    height: 6%;
     font-family: 'Roboto';
     flex-direction: column;
     justify-content: center;
@@ -111,11 +110,13 @@ video {
     flex-direction: row;
     justify-content: space-between;
     align-items: center;
+    font-size: .85rem;
+    color: rgb(88, 88, 88);
 }
 
 .secondary-video-info {
     display: flex;
-    flex-direction: row;
+    flex-direction: column;
     height: 570px;
 }
 
@@ -143,6 +144,11 @@ video {
 
 .video-box-details {
     padding-left: 5px;
+    span {
+        font-size: .9rem;
+        font-weight: 500;
+        color: rgb(88, 88, 88);
+    }
 }
 
 .video-box-title {

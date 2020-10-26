@@ -9,7 +9,7 @@ export default class UserIconDropdown extends React.Component {
     }
 
     render() {
-        const user = <FontAwesomeIcon icon="user-circle" />
+        const user = <span id="user2">{ this.props.allProps.user.username[0] }</span>
         return (
             <section className={ this.props.state.online ? "drop profile-dropdown" : "hide"}>
                 <div className="top">

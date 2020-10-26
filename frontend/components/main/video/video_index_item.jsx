@@ -4,7 +4,7 @@ import '../../../font_awesome';
 import dateConverter from '../../../util/date_converter';
 
 export default (props) => {
-    const user = <FontAwesomeIcon icon="user-circle" />
+    const user = <span id="user3">{ props.video.uploader.username[0] }</span>
     return(
         <div className="video-clip">
             <img id={ props.video.id } src={ props.video.photoUrl } onClick={ () => props.allProps.history.push(`/videos/${ props.video.id }`) } />

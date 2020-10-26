@@ -40,7 +40,6 @@ class UserShow extends React.Component {
     }
 
     render() {
-        const icon = <FontAwesomeIcon id="avatar" icon="user-circle" />
         let vids = [];
         let show;
         if(this.props.videos.length > 0) {
@@ -62,7 +61,7 @@ class UserShow extends React.Component {
                         <div className="user-header">
                             <div className="user-center-header">
                                 <div className="left-header">
-                                    { icon }
+                                    <span id="avatar">{ this.props.user.username[0] }</span>
                                 </div>
                                 <div className="middle-header">
                                     <h1 className="user-username">{ this.props.user.username }</h1>

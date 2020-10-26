@@ -84,7 +84,7 @@
 }
 
 .fa-ellipsis-v:hover, .fa-video:hover, .fa-th:hover, .fa-bars:hover,
-.sign-in:hover, .logo:hover, .search-btn:hover, .fa-bell:hover, .fa-user-circle:hover {
+.sign-in:hover, .logo:hover, .search-btn:hover, .fa-bell:hover, #user:hover {
     cursor: pointer;
 }
 
@@ -94,6 +94,27 @@
 
 #user {
     position: relative;
+    font-size: 14px;
+    height: 70%;
+    width: 11%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 70px;
+    background-color: darkgreen;
+    color: white;
+}
+
+#user2 {
+    font-size: 16px;
+    height: 68%;
+    width: 18%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 70px;
+    background-color: darkgreen;
+    color: white;
 }
 
 .profile-dropdown {
