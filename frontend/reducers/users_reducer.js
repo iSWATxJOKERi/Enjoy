@@ -7,9 +7,9 @@ const usersReducer = (state = {}, action) => {
     
     switch(action.type) {
         case RECEIVE_CURRENT_USER:
-            return Object.assign({}, { [action.user.id]: action.user });
+            return Object.assign({}, state, { [action.user.id]: action.user });
         case RECEIVE_USER:
-            return Object.assign({}, { [action.user.id]: action.user });
+            return Object.assign({}, state, { [action.user.id]: action.user });
         case RECEIVE_USERS:
             let newstate = Object.assign({}, state);
             action.users.map(user => {
@@ -18,10 +18,10 @@ const usersReducer = (state = {}, action) => {
             return newstate
         case RECEIVE_LIKE:
             // debugger
-            return Object.assign({}, state, { like: action.like });
+            return Object.assign({}, state, { like: action.like[0] ? action.like[0] : action.like });
         case REMOVE_LIKE:
             let ns = Object.assign({}, state);
-            delete ns[action.like.id];
+            delete ns['like'];
             return ns;
         default:
             return state;

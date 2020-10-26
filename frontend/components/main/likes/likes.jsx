@@ -32,9 +32,9 @@ class Likes extends React.Component {
     handleClickOnLike(field) {
         return (e) => {
             if(this.props.allProps.currentUser) {
-                let like = {"kind_of": `${ field }`, "likeable_id": `${ this.props.allProps.video.id }`, "likeable_type": "Video", "liker_id": `${ this.props.allProps.currentUser }` }
+                let like = { "kind_of": `${ field }`, "likeable_id": `${ this.props.allProps.video.id }`, "likeable_type": "Video", "liker_id": `${ this.props.allProps.currentUser }` }
                 if(this.state.liked_already) {
-                    const real = this.props.allProps.like.entities.users.like[0];
+                    const real = this.props.allProps.like.entities.users.like[0] ? this.props.allProps.like.entities.users.like[0] : this.props.allProps.like.entities.users.like;
                     // debugger
                     this.props.allProps.removeLike(real).then(() => {
                         this.setState({
@@ -45,9 +45,13 @@ class Likes extends React.Component {
                             this.setState({
                                 errors: this.props.allProps.errors
                             })
+                    }).then(() => {
+                        this.props.allProps.fetchUser(this.props.allProps.currentUser)
+                    }).then(() => {
+                        this.props.allProps.fetchVideo(this.props.allProps.match.params.id)
                     })
                 } else if(this.state.disliked_already) {
-                    const real = this.props.allProps.like.entities.users.like[0];
+                    const real = this.props.allProps.like.entities.users.like[0] ? this.props.allProps.like.entities.users.like[0] : this.props.allProps.like.entities.users.like;
                     this.props.allProps.removeLike(real).then(() => {
                         this.setState({
                             [field]: this.props.allProps.video.num_dislikes - 1,
@@ -69,6 +73,10 @@ class Likes extends React.Component {
                                 errors: this.props.allProps.errors
                             })
                         })
+                    }).then(() => {
+                        this.props.allProps.fetchUser(this.props.allProps.currentUser)
+                    }).then(() => {
+                        this.props.allProps.fetchVideo(this.props.allProps.match.params.id)
                     })
                 } else {
                     this.props.allProps.createLike(like).then(() => {
@@ -81,6 +89,10 @@ class Likes extends React.Component {
                         this.setState({
                             errors: this.props.allProps.errors
                         })
+                    }).then(() => {
+                        this.props.allProps.fetchUser(this.props.allProps.currentUser)
+                    }).then(() => {
+                        this.props.allProps.fetchVideo(this.props.allProps.match.params.id)
                     })
                 }
             } else {
@@ -95,10 +107,10 @@ class Likes extends React.Component {
             // debugger
             if(this.props.allProps.currentUser) {
                 // debugger
-                let like = {"kind_of": `${ field }`, "likeable_id": `${ this.props.allProps.video.id }`, "likeable_type": "Video", "liker_id": `${ this.props.allProps.currentUser }` }
+                let like = { "kind_of": `${ field }`, "likeable_id": `${ this.props.allProps.video.id }`, "likeable_type": "Video", "liker_id": `${ this.props.allProps.currentUser }` }
                 if(this.state.disliked_already) {
                     // debugger
-                    const real = this.props.allProps.like.entities.users.like[0];
+                    const real = this.props.allProps.like.entities.users.like[0] ? this.props.allProps.like.entities.users.like[0] : this.props.allProps.like.entities.users.like;
                     this.props.allProps.removeLike(real).then(() => {
                         this.setState({
                             [field]: this.props.allProps.video.num_dislikes - 1,
@@ -108,12 +120,16 @@ class Likes extends React.Component {
                             this.setState({
                                 errors: this.props.allProps.errors
                             })
+                    }).then(() => {
+                        this.props.allProps.fetchUser(this.props.allProps.currentUser)
+                    }).then(() => {
+                        this.props.allProps.fetchVideo(this.props.allProps.match.params.id)
                     })
                 } else if(this.state.liked_already) {
-                    const real = this.props.allProps.like.entities.users.like[0];
+                    const real = this.props.allProps.like.entities.users.like[0] ? this.props.allProps.like.entities.users.like[0] : this.props.allProps.like.entities.users.like;
                     this.props.allProps.removeLike(real).then(() => {
                         this.setState({
-                            [field]: this.props.allProps.video.num_dislikes - 1,
+                            [field]: this.props.allProps.video.num_likes - 1,
                             liked_already: false
                         })
                     }, () => {
@@ -124,13 +140,17 @@ class Likes extends React.Component {
                         this.props.allProps.createLike(like).then(() => {
                             // debugger
                             this.setState({
-                                [field]: this.props.allProps.video.num_likes + 1,
+                                [field]: this.props.allProps.video.num_dislikes + 1,
                                 disliked_already: true
                             })
                         }, () => {
                             this.setState({
                                 errors: this.props.allProps.errors
                             })
+                        }).then(() => {
+                            this.props.allProps.fetchUser(this.props.allProps.currentUser)
+                        }).then(() => {
+                            this.props.allProps.fetchVideo(this.props.allProps.match.params.id)
                         })
                     })
                 } else {
@@ -144,6 +164,10 @@ class Likes extends React.Component {
                         this.setState({
                             errors: this.props.allProps.errors
                         })
+                    }).then(() => {
+                        this.props.allProps.fetchUser(this.props.allProps.currentUser)
+                    }).then(() => {
+                        this.props.allProps.fetchVideo(this.props.allProps.match.params.id)
                     })
                 }
             } else {
