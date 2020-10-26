@@ -18,13 +18,15 @@ class Likes extends React.Component {
     }
 
     componentDidMount() {
-        if(this.props.allProps.user.liked_videos || this.props.allProps.disliked_videos) {
-            this.setState({
-                liked_already: this.props.allProps.user.liked_videos.includes(Number(this.props.allProps.match.params.id)),
-                disliked_already: this.props.allProps.user.disliked_videos.includes(Number(this.props.allProps.match.params.id))
-            })
+        if(this.props.allProps.user) {
+            if(this.props.allProps.user.liked_videos || this.props.allProps.disliked_videos) {
+                this.setState({
+                    liked_already: this.props.allProps.user.liked_videos.includes(Number(this.props.allProps.match.params.id)),
+                    disliked_already: this.props.allProps.user.disliked_videos.includes(Number(this.props.allProps.match.params.id))
+                })
+            }
+            this.props.allProps.fetchLike(this.props.allProps.match.params.id)
         }
-        this.props.allProps.fetchLike(this.props.allProps.match.params.id)
     }
 
     handleClickOnLike(field) {
