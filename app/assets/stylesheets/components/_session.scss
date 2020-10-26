@@ -1,8 +1,8 @@
 .container {
-    height: 100%;
-    display: flex;
-    font-family: sans-serif;
-    font-size: 14px;
+   height: 100vh;
+   display: flex;
+   font-family: 'Roboto';
+   font-size: 14px;
 }
 
 .form {
@@ -94,7 +94,7 @@
 .form-type2 {
    display: flex;
    font-size: 22px;
-   font-family: sans-serif;
+   font-family: 'Roboto';
    font-weight: lighter;
    height: 10%;
    // padding-left: 30px;
@@ -196,7 +196,7 @@
 
 .form-type {
    font-size: 22px;
-   font-family: sans-serif;
+   font-family: 'Roboto';
    font-weight: lighter;
 }
 
@@ -231,6 +231,7 @@
    height: 10%;
    width: 90%;
    border-radius: 7px;
+   padding-left: 20px;
 }
 
 .one {

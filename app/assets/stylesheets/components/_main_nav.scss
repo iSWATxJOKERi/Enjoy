@@ -30,7 +30,7 @@
     width: 65%;
     display: flex;
     border: 1px solid lightgray;
-    font-family: sans-serif;
+    font-family: 'Roboto';
 }
 
 .right-nav {
@@ -104,7 +104,7 @@
     padding: 10px;
     box-sizing: border-box;
     border: 1px solid lightgray;
-    font-family: sans-serif;
+    font-family: 'Roboto';
     font-size: 14px;
     h2:hover, a:hover, #li-1:hover, .logout:hover {
         cursor: pointer;
