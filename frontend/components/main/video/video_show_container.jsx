@@ -13,7 +13,7 @@ const mapStateToProps = (state, ownProps) => {
         videos: Object.values(state.entities.videos),
         currentUser: state.session.id,
         user: state.entities.users[state.session.id],
-        errors: state.errors.likes,
+        errors: state.errors.likes[0],
         like: state
     }
 }

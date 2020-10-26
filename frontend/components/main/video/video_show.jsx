@@ -20,7 +20,6 @@ class VideoShow extends React.Component {
     }
 
     render() {
-        const icon = <FontAwesomeIcon icon="user-circle" />
         let arr = [];
         if(this.props.videos.length > 1) {
             // debugger
@@ -53,7 +52,7 @@ class VideoShow extends React.Component {
                                 </div>
                                 <div className="secondary-video-info">
                                     <div className="left-info">
-                                        { icon }
+                                        <span id="user4">{ this.props.video.uploader.username[0] }</span>
                                         <div className="middle-content">
                                             <span>{ this.props.video.uploader.username }</span>
                                         </div>

@@ -151,6 +151,35 @@ video {
     }
 }
 
+
+.left-info {
+    display: flex;
+    flex-direction: row;
+    height: 10%;
+    padding-top: 10px;
+    .middle-content {
+        display: flex;
+        align-items: center;
+        width: 80%;
+        box-sizing: border-box;
+        padding-left: 10px;
+        font-weight: 600;
+    }
+}
+
+
+#user4 {
+    font-size: 16px;
+    height: 100%;
+    width: 5%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 70px;
+    background-color: darkgreen;
+    color: white;
+}
+
 .video-box-title {
     font-weight: 600;
     font-size: 14px;

@@ -12,9 +12,10 @@ class Api::LikesController < ApplicationController
         # debugger
         if @like.save
             # debugger
-            render json: @like
+            render json: @like.to_json
         else
-            render json: @like.errors.full_messages
+            # debugger
+            render json: @like.errors.full_messages, status: 422
         end
     end
 
@@ -22,9 +23,11 @@ class Api::LikesController < ApplicationController
         # debugger
         @like = Like.find_by(kind_of: params[:like][:kind_of], likeable_id: params[:like][:likeable_id], likeable_type: params[:like][:likeable_type])
         if @like && (@like.liker_id == current_user.id)
+            # debugger
             @like.destroy
             render json: @like.to_json
         else
+            # debugger
             render json: ['Not yours!']
         end
     end
