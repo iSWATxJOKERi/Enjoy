@@ -11,7 +11,13 @@ class Comments extends React.Component {
     }
 
     render() {
-        let sort = <FontAwesomeIcon id="sort-btn" icon="sort-amount-up" />
+        let sort = <FontAwesomeIcon id="sort-btn" icon="sort-amount-up" />;
+        let primary_comments = [];
+        for(let i = 0; i < this.props.video.comments.length; i++) {
+            if(!this.props.comments[this.props.video.comments[i]].parent_comment_id) {
+                primary_comments.push(<PrimaryComment allProps={ this.props } comment={ this.props.comments[this.props.video.comments[i]] } />)
+            }
+        }
         return (
             <section className="right-content">
                 <section className="comments-section">
