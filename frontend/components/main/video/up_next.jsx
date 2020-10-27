@@ -5,17 +5,11 @@ import UpNextItem from './list_vids_item';
 class UpNext extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            clicked: 0
-        }
         this.videoClick = this.videoClick.bind(this);
     }
 
     videoClick() {
         this.props.history.push(`/videos/${ this.props.videos[0].id }`);
-        // this.setState({
-        //     clicked: this.state.clicked + 1
-        // })
     }
 
     render() {

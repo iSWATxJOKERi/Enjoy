@@ -4,18 +4,12 @@ import dateConverter from '../../../util/date_converter';
 export default class UpNextItem extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            clicked: 0
-        }
         this.videoClick = this.videoClick.bind(this);
     }
 
     videoClick() {
         // debugger
         this.props.history.push(`/videos/${ this.props.video.id }`);
-        // this.setState({
-        //     clicked: this.state.clicked + 1
-        // })
     }
 
     render() {

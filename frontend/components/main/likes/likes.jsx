@@ -5,7 +5,6 @@ import '../../../font_awesome';
 class Likes extends React.Component {
     constructor(props) {
         super(props);
-        // debugger 
         this.state = {
             like: this.props.video.num_likes,
             dislike: this.props.video.num_dislikes,
@@ -18,7 +17,6 @@ class Likes extends React.Component {
     }
 
     componentDidMount() {
-        debugger
         if(this.props.allProps.user) {
             if(this.props.allProps.user.liked_videos || this.props.allProps.disliked_videos) {
                 this.setState({
@@ -26,6 +24,15 @@ class Likes extends React.Component {
                     disliked_already: this.props.allProps.user.disliked_videos.includes(Number(this.props.allProps.match.params.id))
                 })
             }
+        }
+    }
+
+    componentDidUpdate(prevProps) {
+        if(this.props.video !== prevProps.video) {
+            this.setState({
+                like: this.props.video.num_likes,
+                dislike: this.props.video.num_dislikes
+            })
         }
     }
 
@@ -178,7 +185,7 @@ class Likes extends React.Component {
     render() {
         const like = <FontAwesomeIcon onClick={ this.handleClickOnLike('like') } id="like-button" className={ this.state.liked_already ? "blue" : "black" } icon="thumbs-up" />
         const dislike = <FontAwesomeIcon onClick={ this.handleClickOnDislike('dislike') } id="dislike-button" className={ this.state.disliked_already ? "blue" : "black" } icon="thumbs-down" />
- 
+        // debugger
         return (
             <section className="likes-container">
                 <div className="like">

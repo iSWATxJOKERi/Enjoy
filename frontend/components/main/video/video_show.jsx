@@ -8,9 +8,6 @@ import Likes from '../likes/likes';
 class VideoShow extends React.Component {
     constructor(props) {
         super(props);
-        this.state = {
-            video: this.props.video
-        }
     }
 
     componentDidMount() {
@@ -21,14 +18,9 @@ class VideoShow extends React.Component {
         this.props.fetchVideos();
     }
 
-    componentDidUpdate(prevProps) {
-        if(this.props.video !== prevProps.video) {
-            this.props.fetchLike(this.props.match.params.id)
-        }
-    }
-
     render() {
         let arr = [];
+        let likes = this.props.video ? <Likes allProps={ this.props } video={ this.props.video } /> : null;
         if(this.props.videos.length > 1) {
             // debugger
             this.props.videos.map(video => {
@@ -51,10 +43,10 @@ class VideoShow extends React.Component {
                                         <div className="left-stats">
                                             <span>1,000 views </span>
                                             <span>&#8226;</span>
-                                            <span> { dateConverter(this.props.video.created_at) }</span>
+                                            <span>{ dateConverter(this.props.video.created_at) }</span>
                                         </div>
                                         <div className="right-stats">
-                                            <Likes allProps={ this.props } video={ this.props.video }/>
+                                            { likes }
                                         </div>
                                     </div>
                                 </div>
