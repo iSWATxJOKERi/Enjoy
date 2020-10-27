@@ -13,7 +13,7 @@ class UpNext extends React.Component {
             <section className="secondary">
                 <div className="up-next">
                     <span>Up next</span>
-                    <div className="video-box" onClick={ () => this.props.history.push(`/videos/${ this.props.videos[0].id }`) }>
+                    <div className="video-box" onClick={ () => window.location = `#/videos/${ this.props.videos[0].id }` }>
                         <img className="up-next-image" src={ this.props.videos[0].photoUrl } />
                         <div className="video-box-details">
                             <h2 className="video-box-title">{ this.props.videos[0].title }</h2>

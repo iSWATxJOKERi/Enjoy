@@ -24,7 +24,7 @@ class VideoShow extends React.Component {
         if(this.props.videos.length > 1) {
             // debugger
             this.props.videos.map(video => {
-                if(video.id !== this.props.match.params.id) {
+                if(video !== this.props.video) {
                     arr.push(video)
                 }
             })
@@ -36,7 +36,7 @@ class VideoShow extends React.Component {
                     <div className="primary">
                         { this.props.videos.length > 1 ? 
                             <div className="primary-inner">
-                                <video controls preload="auto" autoPlay src={ this.props.video.videoUrl } className="video"></video>
+                                <video controls autoplay="" src={`${ this.props.video.videoUrl }`} className="video"></video>
                                 <div className="video-info">
                                     <h2 className="video-title">{ this.props.video.title }</h2>
                                     <div className="video-stats">

@@ -3,7 +3,7 @@ import dateConverter from '../../../util/date_converter';
 
 export default (props) => {
     return (
-        <div className="listed-vid" onClick={ () => props.history.push(`/videos/${ props.video.id }`) }>
+        <div className="listed-vid" onClick={ () => window.location = `#/videos/${ props.video.id }` }>
             <img className="up-next-image" src={ props.video.photoUrl } />
             <div className="video-box-details">
                 <h2 className="video-box-title">{ props.video.title }</h2>
