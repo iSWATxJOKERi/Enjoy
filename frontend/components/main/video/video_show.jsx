@@ -18,6 +18,12 @@ class VideoShow extends React.Component {
         this.props.fetchVideos();
     }
 
+    componentDidUpdate(prevProps) {
+        if(this.props.video !== prevProps.video) {
+            this.props.fetchLike(this.props.match.params.id)
+        }
+    }
+
     render() {
         let arr = [];
         let likes = this.props.video ? <Likes allProps={ this.props } video={ this.props.video } /> : null;

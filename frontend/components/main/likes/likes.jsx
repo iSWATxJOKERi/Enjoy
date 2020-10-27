@@ -33,6 +33,14 @@ class Likes extends React.Component {
                 like: this.props.video.num_likes,
                 dislike: this.props.video.num_dislikes
             })
+            if(this.props.allProps.user) {
+                if(this.props.allProps.user.liked_videos || this.props.allProps.disliked_videos) {
+                    this.setState({
+                        liked_already: this.props.allProps.user.liked_videos.includes(Number(this.props.allProps.match.params.id)),
+                        disliked_already: this.props.allProps.user.disliked_videos.includes(Number(this.props.allProps.match.params.id))
+                    })
+                }
+            }
         }
     }
 
