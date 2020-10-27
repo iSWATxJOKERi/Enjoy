@@ -150,11 +150,23 @@ video {
 }
 
 
+.left-content {
+    display: flex;
+    flex-direction: column;
+    height: 30%;
+    border-bottom: 1px solid lightgray;
+}
+
+.video-description {
+    height: 50%;
+    padding-left: 70px;
+}
+
 .left-info {
     display: flex;
     flex-direction: row;
-    height: 10%;
-    padding-top: 10px;
+    height: 45%;
+    padding: 10px 0;
     .middle-content {
         display: flex;
         align-items: center;
@@ -165,6 +177,58 @@ video {
     }
 }
 
+.right-content {
+    height: 90%;
+    box-sizing: border-box;
+    padding-top: 10px;
+}
+
+.comments-section {
+    display: flex;
+    flex-direction: row;
+}
+
+#sort-btn {
+    padding: 0 5px 0 20px;
+}
+
+.comments-size {
+    align-self: center;
+}
+
+.sort {
+    align-self: center;
+}
+
+.create-comment {
+    padding-top: 50px;
+    padding-left: 70px;
+    align-items: end;
+    display: flex;
+    flex-direction: column;
+    textarea {
+        resize: unset;
+        width: 100%;
+        border-bottom: 1px solid lightgray;
+    }
+}
+
+.cmt {
+    display: flex;
+    flex-direction: row-reverse;
+    padding: 10px 0;
+    width: 20%;
+    justify-content: space-evenly;
+}
+
+.cancel-comment {
+    padding: 10px;
+}
+
+.make-comment {
+    background-color: #1a73e8;
+    padding: 10px;
+}
 
 #user4 {
     font-size: 30px;
@@ -227,7 +291,7 @@ video {
     width: 50%;
 }
 
-.fa-thumbs-up:hover, .fa-thumbs-down:hover {
+.fa-thumbs-up:hover, .fa-thumbs-down:hover, #sort-btn, .sort {
     cursor: pointer;
 }
 

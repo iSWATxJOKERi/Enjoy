@@ -1,9 +1,8 @@
 import React from 'react';
-import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
-import '../../../font_awesome';
 import dateConverter from '../../../util/date_converter.js';
 import UpNext from './up_next';
 import Likes from '../likes/likes';
+import Comments from '../comments/comments';
 
 class VideoShow extends React.Component {
     constructor(props) {
@@ -15,18 +14,21 @@ class VideoShow extends React.Component {
         this.props.fetchUser(this.props.currentUser);
         this.props.fetchVideo(this.props.match.params.id);
         this.props.fetchLike(this.props.match.params.id);
+        this.props.fetchComments(this.props.match.params.id);
         this.props.fetchVideos();
     }
 
     componentDidUpdate(prevProps) {
         if(this.props.video !== prevProps.video) {
             this.props.fetchLike(this.props.match.params.id)
+            this.props.fetchComments(this.props.match.params.id)
         }
     }
 
     render() {
         let arr = [];
         let likes = this.props.video ? <Likes allProps={ this.props } video={ this.props.video } /> : null;
+        let comments = this.props.comments ? <Comments allProps={ this.props } video={ this.props.video } comments={ this.props.comments } /> : null;
         if(this.props.videos.length > 1) {
             // debugger
             this.props.videos.map(video => {
@@ -57,15 +59,16 @@ class VideoShow extends React.Component {
                                     </div>
                                 </div>
                                 <div className="secondary-video-info">
-                                    <div className="left-info">
-                                        <span id="user4">{ this.props.video.uploader.username[0] }</span>
-                                        <div className="middle-content">
-                                            <span>{ this.props.video.uploader.username }</span>
+                                    <div className="left-content">
+                                        <div className="left-info">
+                                            <span id="user4">{ this.props.video.uploader.username[0] }</span>
+                                            <div className="middle-content">
+                                                <span>{ this.props.video.uploader.username }</span>
+                                            </div>
                                         </div>
+                                        <div className="video-description">Description</div>
                                     </div>
-                                    <div className="right-content">
-                                        {/* <Likes /> */}
-                                    </div>
+                                    { comments }
                                 </div>
                             </div> : null 
                         }

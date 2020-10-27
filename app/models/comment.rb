@@ -12,4 +12,9 @@ class Comment < ApplicationRecord
         primary_key: :id,
         foreign_key: :video_id,
         class_name: 'Video'
+
+    has_many :replies,
+        primary_key: :id,
+        foreign_key: :parent_comment_id,
+        class_name: 'Comment'
 end

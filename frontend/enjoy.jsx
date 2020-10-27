@@ -5,6 +5,7 @@ import configureStore from './store/store';
 import { signup, login, logout } from './util/session_api_util';
 import { createVideo, fetchVideo } from './util/video_api_util';
 import { fetchVideos, receiveVideos } from './actions/video_actions';
+import { fetchComments } from './util/comments_api_util';
 
 document.addEventListener("DOMContentLoaded", () => {
     let store;
@@ -31,6 +32,7 @@ document.addEventListener("DOMContentLoaded", () => {
     window.fetchVideos = fetchVideos;
     window.fetchVideo = fetchVideo;
     window.receiveVideos = receiveVideos;
+    window.fetchComments = fetchComments;
     const root = document.getElementById('root');
     ReactDOM.render(<Root store={ store } />, root)
 })

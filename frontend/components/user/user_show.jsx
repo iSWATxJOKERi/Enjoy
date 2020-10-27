@@ -42,7 +42,7 @@ class UserShow extends React.Component {
     render() {
         let vids = [];
         let show;
-        if(this.props.videos.length > 0) {
+        if(this.props.user) {
             // debugger
             for(let i = 0; i < this.props.videos.length; i++) {
                 if(this.props.videos[i].uploader.id === this.props.user.id) {
