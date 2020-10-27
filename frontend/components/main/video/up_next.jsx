@@ -3,6 +3,21 @@ import dateConverter from '../../../util/date_converter';
 import UpNextItem from './list_vids_item';
 
 class UpNext extends React.Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            clicked: 0
+        }
+        this.videoClick = this.videoClick.bind(this);
+    }
+
+    videoClick() {
+        this.props.history.push(`/videos/${ this.props.videos[0].id }`);
+        // this.setState({
+        //     clicked: this.state.clicked + 1
+        // })
+    }
+
     render() {
         let vids = this.props.videos.slice(1);
         let arr;
@@ -13,7 +28,7 @@ class UpNext extends React.Component {
             <section className="secondary">
                 <div className="up-next">
                     <span>Up next</span>
-                    <div className="video-box" onClick={ () => window.location = `#/videos/${ this.props.videos[0].id }` }>
+                    <div className="video-box" onClick={ () => this.videoClick() }>
                         <img className="up-next-image" src={ this.props.videos[0].photoUrl } />
                         <div className="video-box-details">
                             <h2 className="video-box-title">{ this.props.videos[0].title }</h2>

@@ -3,20 +3,28 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../../../font_awesome';
 import dateConverter from '../../../util/date_converter.js';
 import UpNext from './up_next';
-import { Route } from 'react-router-dom';
 import Likes from '../likes/likes';
 
 class VideoShow extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            video: this.props.video
+        }
     }
 
     componentDidMount() {
         // debugger
         this.props.fetchUser(this.props.currentUser);
         this.props.fetchVideo(this.props.match.params.id);
-        // this.props.fetchLike(this.props.match.params.id);
+        this.props.fetchLike(this.props.match.params.id);
         this.props.fetchVideos();
+    }
+
+    componentDidUpdate(prevProps) {
+        if(this.props.video !== prevProps.video) {
+            this.props.fetchLike(this.props.match.params.id)
+        }
     }
 
     render() {
@@ -36,7 +44,7 @@ class VideoShow extends React.Component {
                     <div className="primary">
                         { this.props.videos.length > 1 ? 
                             <div className="primary-inner">
-                                <video controls autoplay="" src={`${ this.props.video.videoUrl }`} className="video"></video>
+                                <video preload="auto" controls autoPlay muted src={`${ this.props.video.videoUrl }`} className="video"/>
                                 <div className="video-info">
                                     <h2 className="video-title">{ this.props.video.title }</h2>
                                     <div className="video-stats">

@@ -18,6 +18,7 @@ class Likes extends React.Component {
     }
 
     componentDidMount() {
+        debugger
         if(this.props.allProps.user) {
             if(this.props.allProps.user.liked_videos || this.props.allProps.disliked_videos) {
                 this.setState({
@@ -25,7 +26,6 @@ class Likes extends React.Component {
                     disliked_already: this.props.allProps.user.disliked_videos.includes(Number(this.props.allProps.match.params.id))
                 })
             }
-            this.props.allProps.fetchLike(this.props.allProps.match.params.id)
         }
     }
 

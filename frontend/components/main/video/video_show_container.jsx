@@ -9,12 +9,12 @@ import { createLike, deleteLike, fetchLike } from '../../../actions/like_actions
 const mapStateToProps = (state, ownProps) => {
     // debugger
     return {
-        video: state.entities.videos[ownProps.match.params.id],
         videos: Object.values(state.entities.videos),
         currentUser: state.session.id,
         user: state.entities.users[state.session.id],
         errors: state.errors.likes[0],
-        like: state
+        like: state,
+        video: Object.values(state.entities.videos)[ownProps.match.params.id - 1]
     }
 }
 
