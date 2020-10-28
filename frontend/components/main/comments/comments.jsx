@@ -1,7 +1,7 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../../../font_awesome';
-import PrimaryComment from './primary_comment';
+import PrimaryComments from './primary_comments';
 
 class Comments extends React.Component {
     constructor(props) {
@@ -29,8 +29,10 @@ class Comments extends React.Component {
             for(let i = 0; i < this.props.video.comments.length; i++) {
                 // debugger
                 if((this.props.comments && this.props.video.comments[i]) && this.props.comments[this.props.video.comments[i]]) {
+                    debugger
                     if(!this.props.comments[this.props.video.comments[i]].parent_comment_id) {
-                        primary_comments.push(<PrimaryComment allProps={ this.props } comment={ this.props.comments[this.props.video.comments[i]] } />)
+                        debugger
+                        primary_comments.push(<PrimaryComments allProps={ this.props } comment={ this.props.comments[this.props.video.comments[i]] } />)
                     }
                 }
             }
@@ -48,6 +50,9 @@ class Comments extends React.Component {
                         <span className="make-comment">COMMENT</span>
                         <span className="cancel-comment">CANCEL</span>
                     </div>
+                </section>
+                <section className="comments-list">
+                    { primary_comments }
                 </section>
             </section>
         )
