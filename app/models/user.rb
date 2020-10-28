@@ -13,6 +13,10 @@ class User < ApplicationRecord
     has_many :liked_videos,
         through: :likes,
         source: :likeable, source_type: 'Video'
+
+    has_many :liked_comments,
+        through: :likes,
+        source: :likeable, source_type: 'Comment'
     
     has_one_attached :avatar
     has_one_attached :banner

@@ -12,7 +12,8 @@ class Api::VideosController < ApplicationController
         @upnext = Video.all.includes(:uploader).all 
         @likes = @video.likes.where("kind_of = 'like'").length
         @dislikes = @video.likes.where("kind_of = 'dislike'").length
-        @comments = Comment.all.where("video_id = (?)", params[:video_id])
+        @comments = Comment.all.where("video_id = (?)", params[:id]).ids
+        # debugger
         render :show
     end
 

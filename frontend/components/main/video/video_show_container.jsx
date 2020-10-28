@@ -3,8 +3,8 @@ import { connect } from 'react-redux';
 import { fetchUser } from '../../../actions/user_actions';
 import { fetchVideo, fetchVideos } from '../../../actions/video_actions';
 import VideoShow from './video_show';
-import { createLike, deleteLike, fetchLike } from '../../../actions/like_actions';
-import { createComment, deleteComment, fetchComments, updateComment } from '../../../actions/comment_actions'
+import { createCommentLike, createLike, deleteCommentLike, deleteLike, fetchCommentLike, fetchLike } from '../../../actions/like_actions';
+import { createComment, deleteComment, fetchComments, updateComment } from '../../../actions/comment_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -32,7 +32,10 @@ const mapDispatchToProps = dispatch => {
         fetchComments: videoId => dispatch(fetchComments(videoId)),
         createComment: comment => dispatch(createComment(comment)),
         removeComment: comment => dispatch(deleteComment(comment)),
-        updateComment: comment => dispatch(updateComment(comment))
+        updateComment: comment => dispatch(updateComment(comment)),
+        fetchCommentLikes: (commentId, videoId) => dispatch(fetchCommentLike(commentId, videoId)),
+        createCommentLike: (commentId, videoId) => dispatch(createCommentLike(commentId, videoId)),
+        removeCommentLike: (commentId, videoId) => dispatch(deleteCommentLike(commentId, videoId)),
     }
 }
 

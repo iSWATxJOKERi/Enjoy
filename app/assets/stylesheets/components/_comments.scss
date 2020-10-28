@@ -6,4 +6,23 @@
 .actual-comment {
     display: flex;
     flex-direction: column;
+    padding-left: 10px;
+}
+
+.avatar {
+    width: 5%;
+}
+
+.commenter {
+    font-size: 12px;
+    font-weight: 600;
+}
+
+.commented {
+    font-size: 12px;
+    padding-left: 10px;
+}
+
+.the-comment {
+    font-size: 14px;
 }

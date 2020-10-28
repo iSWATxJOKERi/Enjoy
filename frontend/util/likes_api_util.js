@@ -29,3 +29,34 @@ export const fetchLike = (id) => {
     )
 }
 
+export const createCommentLike = (like, videoId) => {
+    // debugger
+    return (
+        $.ajax({
+            method: 'POST',
+            url: `/api/videos/${ videoId }/comments/${ like.likeable_id }/likes`,
+            data: { like }
+        })
+    )
+}
+
+export const deleteCommentLike = (like, videoId) => {
+    // debugger
+    return (
+        $.ajax({
+            method: 'DELETE',
+            url: `/api/videos/${ videoId }/comments/${ like.likeable_id }/likes/${ like.id }`,
+            data: { like } 
+        })
+    )
+}
+
+export const fetchCommentLike = (commentId, videoId) => {
+    return (
+        $.ajax({
+            method: 'GET',
+            url: `/api/videos/${ videoId }/comments/${ commentId }/likes`
+        })
+    )
+}
+

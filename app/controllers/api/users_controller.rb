@@ -7,10 +7,15 @@ class Api::UsersController < ApplicationController
     def show
         @user = User.find_by(id: params[:id])
         if @user 
-            arr = @user.likes.select("likeable_id").where("kind_of = 'like'")
+            arr = @user.likes.select("likeable_id").where("kind_of = 'like' AND likeable_type = 'Video'")
             @liked_videos = arr.map{ |ele| ele["likeable_id"] }
-            arr2 = @user.likes.select("likeable_id").where("kind_of = 'dislike'")
+            arr2 = @user.likes.select("likeable_id").where("kind_of = 'dislike' AND likeable_type = 'Video'")
             @disliked_videos = arr2.map{ |ele2| ele2["likeable_id"] }
+
+            arr3 = @user.likes.select("likeable_id").where("kind_of = 'like' AND likeable_type = 'Comment'")
+            @liked_comments = arr3.map{ |ele| ele["likeable_id"] }
+            arr4 = @user.likes.select("likeable_id").where("kind_of = 'dislike' AND likeable_type = 'Comment'")
+            @disliked_comments = arr4.map{ |ele2| ele2["likeable_id"] }
             render :show
         else
             render json: { "session" => "No logged in user"}

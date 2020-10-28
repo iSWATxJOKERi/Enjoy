@@ -29,10 +29,10 @@ class Comments extends React.Component {
             for(let i = 0; i < this.props.video.comments.length; i++) {
                 // debugger
                 if((this.props.comments && this.props.video.comments[i]) && this.props.comments[this.props.video.comments[i]]) {
-                    debugger
+                    // debugger
                     if(!this.props.comments[this.props.video.comments[i]].parent_comment_id) {
-                        debugger
-                        primary_comments.push(<PrimaryComments allProps={ this.props } comment={ this.props.comments[this.props.video.comments[i]] } />)
+                        // debugger
+                        primary_comments.push(<PrimaryComments key={ i } allProps={ this.props.allProps } comment={ this.props.comments[this.props.video.comments[i]] } />)
                     }
                 }
             }

@@ -3,8 +3,13 @@ class Api::LikesController < ApplicationController
 
     def index
         # debugger
-        @like = Like.all.where("likeable_id = (?)", params[:video_id])
-        render json: @like
+        if params[:video_id] && params[:comment_id]
+            @commentlikes = Like.all.where("likeable_id = (?) AND likeable_type = 'Comment'", params[:comment_id])
+            render :index
+        elsif params[:video_id]
+            @videolike = Like.all.where("likeable_id = (?) AND likeable_type = 'Video'", params[:video_id])
+            render :index
+        end
     end
 
     def create
