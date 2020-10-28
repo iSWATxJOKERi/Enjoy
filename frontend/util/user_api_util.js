@@ -15,3 +15,16 @@ export const fetchUsers = () => {
         })
     )
 }
+
+export const uploadAvatar = (avatar, id) => {
+    debugger
+    return (
+        $.ajax({
+            method: 'PATCH',
+            url: `/api/users/${ id }`,
+            data: avatar,
+            processData: false,
+            contentType: false
+        })
+    )
+}

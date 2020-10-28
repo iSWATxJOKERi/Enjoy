@@ -40,3 +40,11 @@ export const fetchUsers = () => dispatch => {
         dispatch(receiveUserErrors(errors.responseJSON))
     })
 }
+
+export const uploadAvatar = (avatar, id) => dispatch => {
+    return UserApiUtil.uploadAvatar(avatar, id).then(user => {
+        dispatch(receiveUser(user))
+    }, errors => {
+        dispatch(receiveUserErrors(errors.responseJSON))
+    })
+}

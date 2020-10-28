@@ -9,6 +9,10 @@ import '../../font_awesome';
 class UserShow extends React.Component {
     constructor(props) {
         super(props);
+        this.state = {
+            avatar: null,
+            avatarUrl: null
+        }
         this.toggleSide = this.toggleSide.bind(this);
         this.uploadAvatar = this.uploadAvatar.bind(this);
     }
@@ -22,8 +26,33 @@ class UserShow extends React.Component {
         })
     }
 
-    uploadAvatar() {
+    uploadAvatar(e) {
+        const file = e.target.files[0];
+        const fileReader = new FileReader();
+        fileReader.onloadend = () => {
+            this.setState({
+                avatar: file,
+                avatarUrl: fileReader.result
+            })
+        }
+        if(file) {
+            fileReader.readAsDataURL(file);
+            this.handleSubmit();
+        }
+    }
 
+    handleSubmit() {
+        const user = new FormData();
+        const id = this.props.match.params.id;
+        this.state.avatar.name ? user.append('user[avatar]', this.state.avatar) : user.append('user[avatar]', "");
+        debugger
+        this.props.processAvatar(user, id).then(() => {
+            window.location.href = `/#/users/1`;
+        }, errors => {
+            this.setState({
+                errors: errors.errors
+            })
+        })
     }
 
     toggleSide() {
@@ -48,7 +77,8 @@ class UserShow extends React.Component {
     render() {
         let vids = [];
         let show;
-        let edit_avatar = <FontAwesomeIcon id="edit-avatar" icon="camera" onClick={ () => this.uploadAvatar }/>
+        let edit_avatar = <FontAwesomeIcon id="edit-avatar" icon="camera" onClick={ () => document.getElementById("avatar-upload").click() }/>
+        let edit_avatar2 = <FontAwesomeIcon id="edit-avatar" icon="camera" onClick={ () => document.getElementById("avatar-upload").click() }/>
         if(this.props.user) {
             // debugger
             for(let i = 0; i < this.props.videos.length; i++) {
@@ -69,8 +99,12 @@ class UserShow extends React.Component {
                             <div className="user-center-header">
                                 <div className="left-header">
                                     { this.props.user.avatar ? 
-                                    <img src={ `${ this.props.user.avatar }` } onClick={ () => props.allProps.history.push(`/users/${ this.props.user.id }`) } /> : 
+                                    <div id="hoverme">
+                                        { edit_avatar2 }
+                                        <img className="user-avatar" src={ `${ this.props.user.avatar }` } onClick={ () => this.props.allProps.history.push(`/users/${ this.props.user.id }`) } />
+                                    </div> : 
                                     <span id="avatar">{ this.props.user.username[0] }{ edit_avatar }</span> }
+                                    <input id="avatar-upload" type="file" onChange={ this.uploadAvatar }/>
                                 </div>
                                 <div className="middle-header">
                                     <h1 className="user-username">{ this.props.user.username }</h1>

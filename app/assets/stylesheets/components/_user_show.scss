@@ -71,6 +71,25 @@
     position: absolute;
 }
 
+#hoverme {
+    position: relative;
+    height: 100%;
+    width: 100%;
+}
+
+#hoverme:hover {
+    cursor: pointer;
+    #edit-avatar {
+        display: flex;
+        z-index: 10000;
+        position: absolute;
+        height: 80%;
+        width: 30%;
+        color: white;
+        left: 20px;
+    }
+}
+
 #avatar:hover {
     cursor: pointer;
     #edit-avatar {
@@ -87,6 +106,16 @@
         background-color: darkgreen;
         color: white;
     }
+}
+
+.user-avatar {
+    height: 80%;
+    width: 60%;
+    border-radius: 50px;
+}
+
+#avatar-upload {
+    display: none;
 }
 
 .right-head {

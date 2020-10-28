@@ -1,4 +1,5 @@
 class Api::UsersController < ApplicationController
+    before_action :ensure_logged_in, only: [:update]
     def index
         @users = User.all
         render :index
@@ -24,8 +25,9 @@ class Api::UsersController < ApplicationController
 
     def update
         @user = User.find_by(id: params[:id])
+        debugger
         if @user.update_attributes(user_params)
-            render json: @user
+            render :show
         else
             render json: @user.errors.full_messages, status: 422
         end

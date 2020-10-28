@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { fetchUser } from '../../actions/user_actions';
+import { fetchUser, uploadAvatar } from '../../actions/user_actions';
 import { fetchVideos } from '../../actions/video_actions';
 import UserShow from './user_show';
 
@@ -16,6 +16,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         fetchUser: id => dispatch(fetchUser(id)),
         fetchVideos: () => dispatch(fetchVideos()),
+        processAvatar: (avatar, id) => dispatch(uploadAvatar(avatar, id))
     }
 }
 
