@@ -23,7 +23,7 @@ class UpNext extends React.Component {
                 <div className="up-next">
                     <span>Up next</span>
                     <div className="video-box" onClick={ () => this.videoClick() }>
-                        <img className="up-next-image" src={ this.props.videos[0].photoUrl } />
+                        <img className="up-next-image" src={ `${ this.props.videos[0].photoUrl }` } />
                         <div className="video-box-details">
                             <h2 className="video-box-title">{ this.props.videos[0].title }</h2>
                             <span>{ this.props.videos[0].uploader.username }</span>

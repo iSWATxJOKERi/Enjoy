@@ -15,7 +15,7 @@ export default class UpNextItem extends React.Component {
     render() {
         return (
             <div className="listed-vid" onClick={ () => this.videoClick() }>
-                <img className="up-next-image" src={ this.props.video.photoUrl } />
+                <img className="up-next-image" src={ `${ this.props.video.photoUrl }` } />
                 <div className="video-box-details">
                     <h2 className="video-box-title">{ this.props.video.title }</h2>
                     <span>{ this.props.video.uploader.username }</span>

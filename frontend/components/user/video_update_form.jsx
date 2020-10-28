@@ -76,7 +76,7 @@ class VideoUpdateForm extends React.Component {
     }
 
     render() {
-        const preview1 = this.state.photoUrl ? <img className="thumbnail-preview" src={ this.state.photoUrl } /> : null;
+        const preview1 = this.state.photoUrl ? <img className="thumbnail-preview" src={ `${ this.state.photoUrl }` } /> : null;
         return (
             <section className="update-modal">
                 { this.props.video ? 

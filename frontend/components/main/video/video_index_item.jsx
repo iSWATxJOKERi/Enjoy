@@ -7,7 +7,7 @@ export default (props) => {
     const user = <span id="user3">{ props.video.uploader.username[0] }</span>
     return(
         <div className="video-clip">
-            <img id={ props.video.id } src={ props.video.photoUrl } onClick={ () => props.allProps.history.push(`/videos/${ props.video.id }`) } />
+            <img id={ props.video.id } src={ `${ props.video.photoUrl }` } onClick={ () => props.allProps.history.push(`/videos/${ props.video.id }`) } />
             <div className="title-desc">
                 <div onClick={ () => props.allProps.history.push(`/users/${ props.video.uploader.id }`) } className="left-part-of-clip-box">{ user }</div>
                 <div className="right-part-of-clip-box">

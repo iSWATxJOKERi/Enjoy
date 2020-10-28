@@ -195,14 +195,14 @@ class CommentLikes extends React.Component {
         const dislike = <FontAwesomeIcon onClick={ this.handleClickOnDislike('dislike') } id="dislike-button" className={ this.state.disliked_already ? "blue" : "black" } icon="thumbs-down" />
         // debugger
         return (
-            <section className="likes-container">
-                <div className="like">
-                    { this.state.like }
+            <section className="likes-container2">
+                <div className="like2">
                     { like }
+                    { this.state.like }
                 </div>
-                <div className="dislike">
-                    { this.state.dislike }
+                <div className="dislike2">
                     { dislike }
+                    { this.state.dislike }
                 </div>
             </section>
         )
