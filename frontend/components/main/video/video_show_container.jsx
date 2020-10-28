@@ -16,7 +16,7 @@ const mapStateToProps = (state, ownProps) => {
         errors: state.errors.likes[0],
         like: state,
         video: Object.values(state.entities.videos)[ownProps.match.params.id - 1],
-        comments: Object.values(state.entities.comments)
+        comments: state.entities.comments
     }
 }
 

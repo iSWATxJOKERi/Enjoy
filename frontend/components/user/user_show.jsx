@@ -14,9 +14,11 @@ class UserShow extends React.Component {
 
     componentDidMount() {
         // debugger
-        this.props.fetchUser(this.props.match.params.id);
-        this.props.fetchVideos();
-        this.toggleSide();
+        this.props.fetchUser(this.props.match.params.id).then(() => {
+            this.props.fetchVideos().then(() => {
+                this.toggleSide();
+            })
+        })
     }
 
     

@@ -14,3 +14,5 @@ class PrimaryComment extends React.Component {
         )
     }
 }
+
+export default PrimaryComment;

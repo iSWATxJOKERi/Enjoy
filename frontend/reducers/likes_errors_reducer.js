@@ -6,8 +6,6 @@ const likesErrorsReducer = (state = [], action) => {
             return action.errors
         case RECEIVE_LIKE:
             return []
-        case RECEIVE_LIKES:
-            return []
         default:
             return state
     }

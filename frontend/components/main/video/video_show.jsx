@@ -11,24 +11,29 @@ class VideoShow extends React.Component {
 
     componentDidMount() {
         // debugger
-        this.props.fetchUser(this.props.currentUser);
-        this.props.fetchVideo(this.props.match.params.id);
-        this.props.fetchLike(this.props.match.params.id);
-        this.props.fetchComments(this.props.match.params.id);
-        this.props.fetchVideos();
+        this.props.fetchUser(this.props.currentUser).then(() => {
+            this.props.fetchVideos().then(() => {
+                this.props.fetchVideo(this.props.match.params.id).then(() => {
+                    this.props.fetchLike(this.props.match.params.id).then(() => {
+                        this.props.fetchComments(this.props.match.params.id)
+                    })
+                })
+            })
+        })
     }
 
     componentDidUpdate(prevProps) {
         if(this.props.video !== prevProps.video) {
-            this.props.fetchLike(this.props.match.params.id)
-            this.props.fetchComments(this.props.match.params.id)
+            this.props.fetchLike(this.props.match.params.id).then(() => {
+                this.props.fetchComments(this.props.match.params.id)
+            })
         }
     }
 
     render() {
         let arr = [];
         let likes = this.props.video ? <Likes allProps={ this.props } video={ this.props.video } /> : null;
-        let comments = this.props.comments ? <Comments allProps={ this.props } video={ this.props.video } comments={ this.props.comments } /> : null;
+        let comments = this.props.video ? <Comments allProps={ this.props } video={ this.props.video } comments={ this.props.comments } /> : null;
         if(this.props.videos.length > 1) {
             // debugger
             this.props.videos.map(video => {
@@ -42,7 +47,7 @@ class VideoShow extends React.Component {
             <section className="show-video-section">
                 <section className="show-child">
                     <div className="primary">
-                        { this.props.videos.length > 1 ? 
+                        { this.props.videos.length >= 1 ? 
                             <div className="primary-inner">
                                 <video preload="auto" controls autoPlay muted src={`${ this.props.video.videoUrl }`} className="video"/>
                                 <div className="video-info">
