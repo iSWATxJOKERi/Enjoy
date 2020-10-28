@@ -54,6 +54,7 @@
 }
 
 #avatar {
+    position: relative;
     font-size: 50px;
     height: 80%;
     width: 60%;
@@ -63,6 +64,29 @@
     border-radius: 70px;
     background-color: darkgreen;
     color: white;
+}
+
+#edit-avatar {
+    display: none;
+    position: absolute;
+}
+
+#avatar:hover {
+    cursor: pointer;
+    #edit-avatar {
+        display: flex;
+        z-index: 10000;
+        position: absolute;
+        font-size: 50px;
+        height: 80%;
+        width: 60%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 70px;
+        background-color: darkgreen;
+        color: white;
+    }
 }
 
 .right-head {

@@ -10,6 +10,7 @@ class UserShow extends React.Component {
     constructor(props) {
         super(props);
         this.toggleSide = this.toggleSide.bind(this);
+        this.uploadAvatar = this.uploadAvatar.bind(this);
     }
 
     componentDidMount() {
@@ -21,7 +22,10 @@ class UserShow extends React.Component {
         })
     }
 
-    
+    uploadAvatar() {
+
+    }
+
     toggleSide() {
         const popbar = document.getElementsByClassName("pop")[0];
         const button = document.getElementById("side-bar-pop");
@@ -44,6 +48,7 @@ class UserShow extends React.Component {
     render() {
         let vids = [];
         let show;
+        let edit_avatar = <FontAwesomeIcon id="edit-avatar" icon="camera" onClick={ () => this.uploadAvatar }/>
         if(this.props.user) {
             // debugger
             for(let i = 0; i < this.props.videos.length; i++) {
@@ -63,7 +68,9 @@ class UserShow extends React.Component {
                         <div className="user-header">
                             <div className="user-center-header">
                                 <div className="left-header">
-                                    <span id="avatar">{ this.props.user.username[0] }</span>
+                                    { this.props.user.avatar ? 
+                                    <img src={ `${ this.props.user.avatar }` } onClick={ () => props.allProps.history.push(`/users/${ this.props.user.id }`) } /> : 
+                                    <span id="avatar">{ this.props.user.username[0] }{ edit_avatar }</span> }
                                 </div>
                                 <div className="middle-header">
                                     <h1 className="user-username">{ this.props.user.username }</h1>

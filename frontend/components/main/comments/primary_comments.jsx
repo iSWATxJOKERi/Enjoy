@@ -21,7 +21,7 @@ class PrimaryComments extends React.Component {
     render() {
         return (
             <section className="comment-box">
-                <div className="avatar">A</div>
+                <div className="commenter-avatar">A</div>
                 <div className="actual-comment">
                     <div className="commenter-date">
                         <span className="commenter">{ this.props.comment.commenter.username }</span>
