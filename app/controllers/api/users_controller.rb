@@ -17,6 +17,9 @@ class Api::UsersController < ApplicationController
             @liked_comments = arr3.map{ |ele| ele["likeable_id"] }
             arr4 = @user.likes.select("likeable_id").where("kind_of = 'dislike' AND likeable_type = 'Comment'")
             @disliked_comments = arr4.map{ |ele2| ele2["likeable_id"] }
+
+            @liked_comments_video = @liked_comments.map{ |comment| Like.all.where("likeable_id = (?) AND likeable_type = 'Comment' AND kind_of = 'like'", comment)[0]}
+            @disliked_comments_video = @disliked_comments.map{ |comment2| Like.all.where("likeable_id = (?) AND likeable_type = 'Comment' AND kind_of = 'dislike'", comment2)[0]}
             render :show
         else
             render json: { "session" => "No logged in user"}
@@ -25,7 +28,7 @@ class Api::UsersController < ApplicationController
 
     def update
         @user = User.find_by(id: params[:id])
-        debugger
+        # debugger
         if @user.update_attributes(user_params)
             render :show
         else

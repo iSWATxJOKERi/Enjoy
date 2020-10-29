@@ -10,18 +10,26 @@ class Comments extends React.Component {
             sort: true,
             comments: Object.values(this.props.comments).length,
             options: false,
-            comment: ""
+            comment: "",
+            primary_comments: []
         }
         this.toggleOptions = this.toggleOptions.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleInput = this.handleInput.bind(this);
     }
 
+    // componentDidMount() {
+    //     this.props.allProps.fetchComments(this.props.allProps.match.params.id);
+    // }
+
     componentDidUpdate(prevProps) {
         if(this.props.comments !== prevProps.comments) {
             // debugger
-            this.setState({
-                comments: Object.values(this.props.comments).length
+            this.props.allProps.fetchCommentLikes(this.props.allProps.currentUser, this.props.allProps.match.params.id).then(() => {
+                this.setState({
+                    comments: Object.values(this.props.comments).length
+
+                })
             })
         }
     }

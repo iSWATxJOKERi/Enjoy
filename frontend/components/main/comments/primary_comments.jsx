@@ -13,15 +13,15 @@ class PrimaryComments extends React.Component {
         this.toggleEdit = this.toggleEdit.bind(this);
     }
 
-    componentDidMount() {
-        this.props.allProps.fetchCommentLikes(this.props.comment.id, this.props.allProps.video.id)
-    }
+    // componentDidMount() {
+    //     this.props.allProps.fetchCommentLikes(this.props.comment.id, this.props.allProps.video.id)
+    // }
 
-    componentDidUpdate(prevProps) {
-        if(prevProps.comment !== this.props.comment) {
-            this.props.allProps.fetchCommentLikes(this.props.comment.id, this.props.allProps.video.id)
-        }
-    }
+    // componentDidUpdate(prevProps) {
+    //     if(prevProps.comment !== this.props.comment) {
+    //         this.props.allProps.fetchCommentLikes(this.props.comment.id, this.props.allProps.video.id)
+    //     }
+    // }
 
     toggleEdit() {
         let ns = this.state.edit;

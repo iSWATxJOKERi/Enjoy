@@ -17,7 +17,7 @@ export const fetchUsers = () => {
 }
 
 export const uploadAvatar = (avatar, id) => {
-    debugger
+    // debugger
     return (
         $.ajax({
             method: 'PATCH',

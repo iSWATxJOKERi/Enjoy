@@ -1,4 +1,4 @@
-import { RECEIVE_COMMENT_LIKE, RECEIVE_LIKE, REMOVE_COMMENT_LIKE, REMOVE_LIKE } from '../actions/like_actions';
+import { RECEIVE_COMMENT_LIKE, RECEIVE_COMMENT_LIKES, RECEIVE_LIKE, REMOVE_COMMENT_LIKE, REMOVE_LIKE } from '../actions/like_actions';
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
 import { RECEIVE_USERS, RECEIVE_USER } from '../actions/user_actions';
 
@@ -25,9 +25,15 @@ const usersReducer = (state = {}, action) => {
             return ns;
         case RECEIVE_COMMENT_LIKE:
             // debugger
-            let com = Object.assign({}, state, { 'commentLikes' : {} });
-            action.like.commentlikes.map((like, idx) => {
-                com['commentLikes'][action.like.commentlikes[idx].id] = like
+            return Object.assign({}, state, { commentLike: action.like[0] ? action.like[0] : action.like });
+        case RECEIVE_COMMENT_LIKES:
+            let com = Object.assign({}, state, { 'commentLikes' : {}, 'commentDislikes' : {} });
+            // debugger
+            action.like.liked_comments_video.map((like, idx) => {
+                com['commentLikes'][action.like.liked_comments_video[idx].likeable_id] = like
+            })
+            action.like.disliked_comments_video.map((dislike, i) => {
+                com['commentDislikes'][action.like.disliked_comments_video[i].likeable_id] = dislike
             })
             return com
         case REMOVE_COMMENT_LIKE:

@@ -45,7 +45,7 @@ class UserShow extends React.Component {
         const user = new FormData();
         const id = this.props.match.params.id;
         this.state.avatar.name ? user.append('user[avatar]', this.state.avatar) : user.append('user[avatar]', "");
-        debugger
+        // debugger
         this.props.processAvatar(user, id).then(() => {
             window.location.href = `/#/users/1`;
         }, errors => {

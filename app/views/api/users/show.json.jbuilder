@@ -3,6 +3,8 @@ json.liked_videos @liked_videos
 json.disliked_videos @disliked_videos
 json.liked_comments @liked_comments
 json.disliked_comments @disliked_comments
+json.liked_comments_video @liked_comments_video
+json.disliked_comments_video @disliked_comments_video
 if @user.avatar.attached?
     json.avatar url_for(@user.avatar)
 else

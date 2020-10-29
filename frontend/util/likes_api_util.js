@@ -51,11 +51,11 @@ export const deleteCommentLike = (like, videoId) => {
     )
 }
 
-export const fetchCommentLike = (commentId, videoId) => {
+export const fetchCommentLike = (id, video_id) => {
     return (
         $.ajax({
             method: 'GET',
-            url: `/api/videos/${ videoId }/comments/${ commentId }/likes`
+            url: `/api/users/${ id }/?video_id=${ video_id }`
         })
     )
 }
