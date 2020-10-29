@@ -28,7 +28,7 @@ const removeComment = comment => {
 
 const receiveCommentsErrors = errors => {
     return {
-        type: RECIEVE_COMMENT_ERRORS,
+        type: RECEIVE_COMMENT_ERRORS,
         errors
     }
 }

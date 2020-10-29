@@ -8,8 +8,13 @@ class Comments extends React.Component {
         super(props);
         this.state = {
             sort: true,
-            comments: Object.values(this.props.comments).length
+            comments: Object.values(this.props.comments).length,
+            options: false,
+            comment: ""
         }
+        this.toggleOptions = this.toggleOptions.bind(this);
+        this.handleSubmit = this.handleSubmit.bind(this);
+        this.handleInput = this.handleInput.bind(this);
     }
 
     componentDidUpdate(prevProps) {
@@ -19,6 +24,27 @@ class Comments extends React.Component {
                 comments: Object.values(this.props.comments).length
             })
         }
+    }
+
+    toggleOptions() {
+        // debugger
+        let ns = this.state.options;
+        this.setState({
+            options: !ns
+        })
+    }
+
+    handleInput() {
+        return (e) => {
+            this.setState({
+                comment: e.currentTarget.value
+            })
+        }
+    }
+
+    handleSubmit() {
+        let comment = { body: this.state.comment, commenter_id: this.props.allProps.currentUser, video_id: this.props.allProps.match.params.id };
+        this.props.allProps.createComment(comment)
     }
 
     render() {
@@ -45,10 +71,10 @@ class Comments extends React.Component {
                     <span className="sort">{ this.state.sort ? "Newest First" : "Oldest First" }</span>
                 </section>
                 <section className="create-comment">
-                    <textarea rows="1" placeholder="Add a public comment..."/>
-                    <div className="cmt">
-                        <span className="make-comment">COMMENT</span>
-                        <span className="cancel-comment">CANCEL</span>
+                    <textarea id="comment-area" onClick={ this.state.options ? null : this.toggleOptions } rows="1" onChange={ this.handleInput() } placeholder="Add a public comment..."/>
+                    <div className={ this.state.options ? "cmt" : "hide" }>
+                        <span onClick={ this.handleSubmit } className="make-comment">COMMENT</span>
+                        <span onClick={ this.state.options ? this.toggleOptions : null }className="cancel-comment">CANCEL</span>
                     </div>
                 </section>
                 <section className="comments-list">

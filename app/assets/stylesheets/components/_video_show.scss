@@ -32,6 +32,7 @@ video {
     display: flex;
     flex-direction: row;
     height: 100%;
+    background-color: rgb(241, 241, 241);
 }
 
 .pop2 {
@@ -97,7 +98,7 @@ video {
 
 .video-info {
     display: flex;
-    height: 6%;
+    height: 5%;
     font-family: 'Roboto';
     flex-direction: column;
     justify-content: center;
@@ -117,7 +118,7 @@ video {
 .secondary-video-info {
     display: flex;
     flex-direction: column;
-    height: 570px;
+    height: 100%;
 }
 
 
@@ -153,7 +154,7 @@ video {
 .left-content {
     display: flex;
     flex-direction: column;
-    height: 30%;
+    height: 10%;
     border-bottom: 1px solid lightgray;
 }
 
@@ -165,7 +166,7 @@ video {
 .left-info {
     display: flex;
     flex-direction: row;
-    height: 45%;
+    height: 50%;
     padding: 10px 0;
     .middle-content {
         display: flex;
@@ -291,10 +292,16 @@ video {
     width: 50%;
 }
 
-.fa-thumbs-up:hover, .fa-thumbs-down:hover, #sort-btn, .sort {
+.fa-thumbs-up:hover, .fa-thumbs-down:hover, #sort-btn, .sort, #user-pic4 {
     cursor: pointer;
 }
 
 .blue {
     color: blue;
+}
+
+#user-pic4 {
+    height: 80%;
+    width: 5%;
+    border-radius: 70px;
 }

@@ -66,7 +66,9 @@ class VideoShow extends React.Component {
                                 <div className="secondary-video-info">
                                     <div className="left-content">
                                         <div className="left-info">
-                                            <span id="user4">{ this.props.video.uploader.username[0] }</span>
+                                        { this.props.video.avatarUrl ? 
+                                            <img id="user-pic4" src={ `${ this.props.video.avatarUrl }` } onClick={ () => this.props.history.push(`/users/${ this.props.video.uploader.id }`) } /> : 
+                                            <span id="user4">{ this.props.video.uploader.username[0] }</span> }
                                             <div className="middle-content">
                                                 <span>{ this.props.video.uploader.username }</span>
                                             </div>
