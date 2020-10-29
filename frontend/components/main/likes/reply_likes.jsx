@@ -2,13 +2,13 @@ import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../../../font_awesome';
 
-class CommentLikes extends React.Component {
+class ReplyLikes extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
-            like: this.props.allProps.comment.num_likes,
-            dislike: this.props.allProps.comment.num_dislikes,
-            errors: this.props.allProps.errors,
+            like: this.props.reply.num_likes,
+            dislike: this.props.reply.num_dislikes,
+            errors: this.props.allProps.allProps.errors,
             liked_already: null,
             disliked_already: null,
         }
@@ -20,24 +20,24 @@ class CommentLikes extends React.Component {
         if(this.props.allProps.allProps.user) {
             if(this.props.allProps.allProps.user.liked_comments || this.props.allProps.allProps.user.disliked_comments) {
                 this.setState({
-                    liked_already: this.props.allProps.allProps.user.liked_comments.includes(this.props.comment.id),
-                    disliked_already: this.props.allProps.allProps.user.disliked_comments.includes(this.props.comment.id)
+                    liked_already: this.props.allProps.allProps.user.liked_comments.includes(this.props.reply.id),
+                    disliked_already: this.props.allProps.allProps.user.disliked_comments.includes(this.props.reply.id)
                 })
             }
         }
     }
 
     componentDidUpdate(prevProps) {
-        if(this.props.comment !== prevProps.comment) {
+        if(this.props.reply !== prevProps.reply) {
             this.setState({
-                like: this.props.allProps.comment.num_likes,
-                dislike: this.props.allProps.comment.num_dislikes
+                like: this.props.reply.num_likes,
+                dislike: this.props.reply.num_dislikes
             })
             if(this.props.allProps.allProps.user) {
-                if(this.props.allProps.allProps.user.liked_comments || this.props.allProps.allProps.disliked_comments) {
+                if(this.props.allProps.allProps.user.liked_comments || this.props.allProps.allProps.user.disliked_comments) {
                     this.setState({
-                        liked_already: this.props.allProps.allProps.user.liked_comments.includes(this.props.comment.id),
-                        disliked_already: this.props.allProps.allProps.user.disliked_comments.includes(this.props.comment.id)
+                        liked_already: this.props.allProps.allProps.user.liked_comments.includes(this.props.reply.id),
+                        disliked_already: this.props.allProps.allProps.user.disliked_comments.includes(this.props.reply.id)
                     })
                 }
             }
@@ -49,10 +49,10 @@ class CommentLikes extends React.Component {
         return (e) => {
             // debugger
             if(this.props.allProps.allProps.currentUser) {
-                let like = { "kind_of": `${ field }`, "likeable_id": `${ this.props.comment.id }`, "likeable_type": "Comment", "liker_id": `${ this.props.allProps.allProps.currentUser }` }
+                let like = { "kind_of": `${ field }`, "likeable_id": `${ this.props.reply.id }`, "likeable_type": "Comment", "liker_id": `${ this.props.allProps.allProps.currentUser }` }
                 if(this.state.liked_already) {
                     // debugger
-                    const real = this.props.allProps.allProps.like.entities.users.commentLikes[this.props.comment.id] ? this.props.allProps.allProps.like.entities.users.commentLikes[this.props.comment.id] : this.props.allProps.allProps.like.entities.users.commentLikes;
+                    const real = this.props.allProps.allProps.like.entities.users.commentLikes[this.props.reply.id] ? this.props.allProps.allProps.like.entities.users.commentLikes[this.props.reply.id] : this.props.allProps.allProps.like.entities.users.commentLikes;
                     // debugger
                     this.props.allProps.allProps.removeCommentLike(real).then(() => {
                     }, () => {
@@ -64,13 +64,13 @@ class CommentLikes extends React.Component {
                     }).then(() => {
                         this.props.allProps.allProps.fetchVideo(this.props.allProps.allProps.match.params.id).then(() => {
                             this.setState({
-                                [field]: this.props.allProps.comment.num_likes,
+                                [field]: this.props.reply.num_likes,
                                 liked_already: false
                             })
                         })
                     })
                 } else if(this.state.disliked_already) {
-                    const real = this.props.allProps.allProps.like.entities.users.commentDislikes[this.props.comment.id] ? this.props.allProps.allProps.like.entities.users.commentDislikes[this.props.comment.id] : this.props.allProps.allProps.like.entities.users.commentDislikes;
+                    const real = this.props.allProps.allProps.like.entities.users.commentDislikes[this.props.reply.id] ? this.props.allProps.allProps.like.entities.users.commentDislikes[this.props.reply.id] : this.props.allProps.allProps.like.entities.users.commentDislikes;
                     this.props.allProps.allProps.removeCommentLike(real).then(() => {
                     }, () => {
                             this.setState({
@@ -86,9 +86,9 @@ class CommentLikes extends React.Component {
                             this.props.allProps.allProps.fetchUser(this.props.allProps.allProps.currentUser).then(() => {
                                 this.props.allProps.allProps.fetchVideo(this.props.allProps.allProps.match.params.id).then(() => {
                                     this.setState({
-                                        dislike: this.props.allProps.comment.num_dislikes,
+                                        dislike: this.props.reply.num_dislikes,
                                         disliked_already: false,
-                                        [field]: this.props.allProps.comment.num_likes,
+                                        [field]: this.props.reply.num_likes,
                                         liked_already: true
                                     })
                                 })
@@ -106,7 +106,7 @@ class CommentLikes extends React.Component {
                         this.props.allProps.allProps.fetchUser(this.props.allProps.allProps.currentUser).then(() => {
                             this.props.allProps.allProps.fetchVideo(this.props.allProps.allProps.match.params.id).then(() => {
                                 this.setState({
-                                    [field]: this.props.allProps.comment.num_likes,
+                                    [field]: this.props.reply.num_likes,
                                     liked_already: true
                                 })
                             })
@@ -125,10 +125,10 @@ class CommentLikes extends React.Component {
             // debugger
             if(this.props.allProps.allProps.currentUser) {
                 // debugger
-                let like = { "kind_of": `${ field }`, "likeable_id": `${ this.props.comment.id }`, "likeable_type": "Comment", "liker_id": `${ this.props.allProps.allProps.currentUser }` }
+                let like = { "kind_of": `${ field }`, "likeable_id": `${ this.props.reply.id }`, "likeable_type": "Comment", "liker_id": `${ this.props.allProps.allProps.currentUser }` }
                 if(this.state.disliked_already) {
                     // debugger
-                    const real = this.props.allProps.allProps.like.entities.users.commentDislikes[this.props.comment.id] ? this.props.allProps.allProps.like.entities.users.commentDislikes[this.props.comment.id] : this.props.allProps.allProps.like.entities.users.commentDislikes;
+                    const real = this.props.allProps.allProps.like.entities.users.commentDislikes[this.props.reply.id] ? this.props.allProps.allProps.like.entities.users.commentDislikes[this.props.reply.id] : this.props.allProps.allProps.like.entities.users.commentDislikes;
                     this.props.allProps.allProps.removeCommentLike(real).then(() => {
                     }, () => {
                             this.setState({
@@ -138,14 +138,14 @@ class CommentLikes extends React.Component {
                         this.props.allProps.allProps.fetchUser(this.props.allProps.allProps.currentUser).then(() => {
                             this.props.allProps.allProps.fetchVideo(this.props.allProps.allProps.match.params.id).then(() => {
                                 this.setState({
-                                    [field]: this.props.allProps.comment.num_dislikes,
+                                    [field]: this.props.reply.num_dislikes,
                                     disliked_already: false
                                 })
                             })
                         })
                     })
                 } else if(this.state.liked_already) {
-                    const real = this.props.allProps.allProps.like.entities.users.commentLikes[this.props.comment.id] ? this.props.allProps.allProps.like.entities.users.commentLikes[this.props.comment.id] : this.props.allProps.allProps.like.entities.users.commentLikes;
+                    const real = this.props.allProps.allProps.like.entities.users.commentLikes[this.props.reply.id] ? this.props.allProps.allProps.like.entities.users.commentLikes[this.props.reply.id] : this.props.allProps.allProps.like.entities.users.commentLikes;
                     this.props.allProps.allProps.removeCommentLike(real).then(() => {
                     }, () => {
                             this.setState({
@@ -161,9 +161,9 @@ class CommentLikes extends React.Component {
                             this.props.allProps.allProps.fetchUser(this.props.allProps.allProps.currentUser).then(() => {
                                 this.props.allProps.allProps.fetchVideo(this.props.allProps.allProps.match.params.id).then(() => {
                                     this.setState({
-                                        like: this.props.allProps.comment.num_likes,
+                                        like: this.props.reply.num_likes,
                                         liked_already: false,
-                                        [field]: this.props.allProps.comment.num_dislikes,
+                                        [field]: this.props.reply.num_dislikes,
                                         disliked_already: true
                                     })
                                 })
@@ -180,7 +180,7 @@ class CommentLikes extends React.Component {
                         this.props.allProps.allProps.fetchUser(this.props.allProps.allProps.currentUser).then(() => {
                             this.props.allProps.allProps.fetchVideo(this.props.allProps.allProps.match.params.id).then(() => {
                                 this.setState({
-                                    [field]: this.props.allProps.comment.num_dislikes,
+                                    [field]: this.props.reply.num_dislikes,
                                     disliked_already: true
                                 })
                             })
@@ -213,4 +213,4 @@ class CommentLikes extends React.Component {
 
 }
 
-export default CommentLikes;
+export default ReplyLikes;

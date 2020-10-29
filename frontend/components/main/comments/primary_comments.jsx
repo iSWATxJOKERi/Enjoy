@@ -3,6 +3,7 @@ import dateConverter from '../../../util/date_converter';
 import CommentLikes from '../likes/comment_likes';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../../../font_awesome';
+import Reply from './reply';
 
 class PrimaryComments extends React.Component {
     constructor(props) {
@@ -40,6 +41,7 @@ class PrimaryComments extends React.Component {
 
     handleSubmit() {
         let comment = { body: this.state.comment, commenter_id: this.props.allProps.currentUser, video_id: this.props.allProps.match.params.id, parent_comment_id: this.props.comment.id };
+        // debugger
         this.props.allProps.createComment(comment)
     }
 
@@ -66,6 +68,10 @@ class PrimaryComments extends React.Component {
 
     render() {
         // debugger
+        let replies;
+        replies = this.props.comment.replies.map(reply => {
+            return <Reply key={ reply } reply={ this.props.comments[reply] } allProps={ this.props } comment={ this.props.comment }/>
+        })
         const options = <FontAwesomeIcon id="edit-comment" icon="ellipsis-v" onClick={ this.toggleEdit }/>;
         let repl = this.state.showreplies ? 
             <span className="replies-btn" onClick={ this.toggleReplies }>&#9650;{ ` Hide ${ this.props.comment.replies.length } replies` }</span> : 
@@ -103,6 +109,9 @@ class PrimaryComments extends React.Component {
                     </div>
                 </section>
                 { repl }
+                <div className={ this.state.showreplies ? "showingreplies" : "hide"}>
+                    { replies }
+                </div>
             </section>
         )
     }
