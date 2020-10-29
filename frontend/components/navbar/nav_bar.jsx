@@ -37,9 +37,12 @@ class NavBar extends React.Component {
     render() {
         const bar = <FontAwesomeIcon id="side-bar-pop" icon="bars" />
         const user = <FontAwesomeIcon icon="user-circle" />
-        const clickableUser = this.props.user.avatar ? 
-        <img id="user-pic2" src={ `${ this.props.user.avatar }` } onClick={ this.toggleClass } /> : 
-        <span id="user" onClick={ this.toggleClass }>{ this.props.currentUser ? this.props.user.username[0] : "" }</span>
+        let clickableUser;
+        if(this.props.currentUser) {
+            clickableUser = this.props.user.avatar ? 
+            <img id="user-pic2" src={ `${ this.props.user.avatar }` } onClick={ this.toggleClass } /> : 
+            <span id="user" onClick={ this.toggleClass }>{ this.props.currentUser ? this.props.user.username[0] : "" }</span>
+        }
         const upload = <FontAwesomeIcon onClick={ this.toggleUpload } icon="video" />
         const menu = <FontAwesomeIcon icon="th" />
         const settings = <FontAwesomeIcon icon="ellipsis-v" />
