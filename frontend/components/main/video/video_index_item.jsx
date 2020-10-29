@@ -4,7 +4,9 @@ import '../../../font_awesome';
 import dateConverter from '../../../util/date_converter';
 
 export default (props) => {
-    const user = <span id="user3">{ props.video.uploader.username[0] }</span>
+    const user = props.video.avatarUrl ? 
+    <img id="user-pic" src={ `${ props.video.avatarUrl }` } onClick={ () => props.allProps.history.push(`/users/${ props.video.uploader.id }`) } /> : 
+    <span id="user3">{ props.video.uploader.username[0] }</span>
     return(
         <div className="video-clip">
             <img id={ props.video.id } src={ `${ props.video.photoUrl }` } onClick={ () => props.allProps.history.push(`/videos/${ props.video.id }`) } />

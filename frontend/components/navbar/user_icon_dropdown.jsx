@@ -9,7 +9,9 @@ export default class UserIconDropdown extends React.Component {
     }
 
     render() {
-        const user = <span id="user2">{ this.props.allProps.user.username[0] }</span>
+        const user = this.props.allProps.user.avatar ? 
+        <img id="user-pic3" src={ `${ this.props.allProps.user.avatar }` } onClick={ () => this.props.allProps.history.push(`/users/${ this.props.allProps.currentUser }`) } /> : 
+        <span id="user2">{ this.props.allProps.user.username[0] }</span>
         return (
             <section className={ this.props.state.online ? "drop profile-dropdown" : "hide"}>
                 <div className="top">

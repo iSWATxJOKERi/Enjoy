@@ -100,6 +100,34 @@
         background-color: darkgreen;
         color: white;
     }
+    #user-pic {
+        font-size: 16px;
+        height: 40%;
+        width: 100%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 70px;
+    }
+}
+
+
+#user-pic2 {
+    font-size: 16px;
+    height: 90%;
+    width: 15%;
+    border-radius: 70px;
+}
+
+#user-pic3 {
+    font-size: 16px;
+    height: 90%;
+    width: 25%;
+    border-radius: 70px;
+}
+
+#user-pic2:hover, #user-pic3:hover {
+    cursor: pointer;
 }
 
 .recommended {

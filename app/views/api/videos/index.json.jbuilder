@@ -5,4 +5,9 @@ json.array! @videos do |video|
     json.num_likes video.likes.where("kind_of = 'like'").length
     json.num_dislikes video.likes.where("kind_of = 'dislike'").length
     json.comments video.comments.ids
+    if video.uploader.avatar.attached?
+        json.avatarUrl url_for(video.uploader.avatar)
+    else
+        json.avatarUrl false
+    end
 end

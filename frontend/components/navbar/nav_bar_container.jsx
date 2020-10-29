@@ -2,6 +2,7 @@ import React from 'react';
 import NavBar from './nav_bar';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
+import { fetchUser } from '../../actions/user_actions';
 
 const mapStateToProps = state => {
     return {
@@ -12,7 +13,8 @@ const mapStateToProps = state => {
 
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
-        logout: () => dispatch(logout())
+        logout: () => dispatch(logout()),
+        fetchUser: id => dispatch(fetchUser(id))
     }
 }
 
