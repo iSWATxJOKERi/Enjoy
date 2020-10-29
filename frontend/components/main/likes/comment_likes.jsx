@@ -77,7 +77,7 @@ class CommentLikes extends React.Component {
                                 errors: this.props.allProps.allProps.errors
                             })
                     }).then(() => {
-                        this.props.allProps.allProps.createCommentLike(like).then(() => {
+                        this.props.allProps.allProps.createCommentLike(like, this.props.allProps.allProps.match.params.id).then(() => {
                         }, () => {
                             this.setState({
                                 errors: this.props.allProps.allProps.errors
@@ -96,7 +96,7 @@ class CommentLikes extends React.Component {
                         })
                     })
                 } else {
-                    this.props.allProps.allProps.createCommentLike(like).then(() => {
+                    this.props.allProps.allProps.createCommentLike(like, this.props.allProps.allProps.match.params.id).then(() => {
                         // debugger
                     }, () => {
                         this.setState({
@@ -152,7 +152,7 @@ class CommentLikes extends React.Component {
                                 errors: this.props.allProps.allProps.errors
                             })
                     }).then(() => {
-                        this.props.allProps.allProps.createCommentLike(like).then(() => {
+                        this.props.allProps.allProps.createCommentLike(like, this.props.allProps.allProps.match.params.id).then(() => {
                         }, () => {
                             this.setState({
                                 errors: this.props.allProps.allProps.errors
@@ -171,7 +171,7 @@ class CommentLikes extends React.Component {
                         })
                     })
                 } else {
-                    this.props.allProps.allProps.createCommentLike(like).then(() => {
+                    this.props.allProps.allProps.createCommentLike(like, this.props.allProps.allProps.match.params.id).then(() => {
                     }, () => {
                         this.setState({
                             errors: this.props.allProps.allProps.errors
