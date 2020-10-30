@@ -27,9 +27,9 @@ class VideoModal extends React.Component {
             modal.style.display = "block";
         }
 
-        x.onclick = function() {
-            modal.style.display = "none";
-        }
+        // x.onclick = function() {
+        //     modal.style.display = "none";
+        // }
 
         modal.onclick = function(e) {
             if(e.target == modal) {

@@ -67,7 +67,7 @@ html {
     background-color: lightgray;
 }
 
-.item:hover {
+.item:hover, #clip-up, #thumbnail-up {
     cursor: pointer;
 }
 
@@ -105,17 +105,17 @@ html {
 }
 
 #form-description {
-    border: 1px solid lightgray;
-    height: 70%;
-    width: 60%;
+    border: 1px solid black;
+    height: 35%;
+    width: 95%;
     border-radius: 7px;
     padding-left: 7px;
 }
 
 #form-title {
-    border: 1px solid lightgray;
+    border: 1px solid black;
     height: 10%;
-    width: 60%;
+    width: 95%;
     margin: 10px 0;
     border-radius: 7px;
     padding-left: 7px;
@@ -132,6 +132,55 @@ html {
         font-weight: 600;
         margin-left: 20px;
     }
+}
+
+
+.completion {
+    height: 10%;
+}
+
+.top-of-form {
+    display: flex;
+    height: 5%;
+    width: 100%;
+    align-items: center;
+    border-bottom: 1px solid lightgray;
+    h1 {
+        font-size: 20px;
+        font-weight: 600;
+        margin-left: 20px;
+    }
+}
+
+.bottom-of-form {
+    height: 90%;
+    width: 100%;
+}
+
+.footer {
+    display: flex;
+    height: 5%;
+    width: 100%;
+    align-items: center;
+    border-top: 1px solid lightgray;
+    flex-direction: row-reverse;
+}
+
+.steps {
+    display: flex;
+    justify-content: space-around;
+}
+
+.dots {
+    color: red;
+    display: flex;
+    justify-content: space-around;
+}
+
+.everythingelse {
+    display: flex;
+    flex-direction: row;
+    height: 90%;
 }
 
 .second-part {
@@ -169,14 +218,22 @@ textarea {
     display: flex;
     box-sizing: border-box;
     flex-direction: column;
-    height: 100%;
+    height: 35%;
     width: 50%;
     align-content: flex-end;
-    img {
-        display: block;
-        width: 100%;
-        height: auto;
-        padding: 2px;
+    margin-top: 5px;
+    background-color: lightgray;
+    border-radius: 7px;
+    // img {
+    //     display: block;
+    //     width: 100%;
+    //     height: auto;
+    //     padding: 2px;
+    // }
+    #thumbnail-up {
+        width: 20%;
+        height: 20%;
+        padding-left: 10px;
     }
 }
 
@@ -193,12 +250,19 @@ textarea {
     flex-direction: column;
     // justify-content: center;
     // align-items: center;
-    height: 100%;
-    width: 50%;
+    height: 48%;
+    width: 40%;
+    margin-top: 40px;
+    background-color: lightgray;
+    border-radius: 7px;
     video {
         height: auto;
         width: 100%;
-        padding: 2px;
+    }
+    #clip-up {
+        width: 20%;
+        height: 20%;
+        padding-left: 10px;
     }
 }
 
@@ -207,8 +271,7 @@ textarea {
     border-radius: 7px;
     background: #1a73e8;
     color: white;
-    padding: 10px 20px;
-    height: 5%;
+    padding: 7px 20px;
     align-self: end;
 }
 
@@ -217,13 +280,26 @@ textarea {
 //     width: 50%;
 // }
 
-.image-preview {
-    height: 50%;
-    width: 50%;
+.thumbnail-preview {
+    height: 155.883px;
 }
 
 .inputs {
     height: 100%;
+    width: 60%;
+    h1 {
+        font-size: 26px;
+    }
+}
+
+.fluke {
+    height: 209.517px;
+    border-bottom: 1px solid black;
+}
+
+.fluke2 {
+    height: 155.883px;
+    border-bottom: 1px solid black;
 }
 
 .modal-content2 {
@@ -250,7 +326,7 @@ textarea {
     align-items: center;
     h2, button {
         font-family: 'Roboto';
-        font-size: 12px;
+        font-size: 14px;
     }
 }
 
@@ -290,4 +366,8 @@ textarea {
     color: black;
     text-decoration: none;
     cursor: pointer;
+}
+
+#hide {
+    display: none;
 }
