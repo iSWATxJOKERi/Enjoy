@@ -114,7 +114,7 @@ class UserShow extends React.Component {
                                         <button>CUSTOMIZE BANNER</button>
                                     </div>
                                     <div className="right-header">
-                                        <button onClick={ () => this.props.allProps.history.push(`/users/${ this.props.user.id }/videos/edit`) }>MANAGE VIDEOS</button>
+                                        <button onClick={ () => this.props.history.push(`/users/${ this.props.user.id }/videos/edit`) }>MANAGE VIDEOS</button>
                                     </div>
                                 </div>
                             </div>

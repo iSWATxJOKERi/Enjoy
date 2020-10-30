@@ -46,10 +46,37 @@
 }
 
 #studio-words {
+    position: relative;
     margin-left: 10px;
 }
 
 #studio-vid-image {
     width: 10%;
     height: 70%;
+}
+
+#std-edit-btn {
+    display: none;
+    position: absolute;
+    right: 700px;
+    height: 5%;
+    width: 5%;
+}
+
+#std-del-btn {
+    display: none;
+    position: absolute;
+    right: 600px;
+    height: 5%;
+    width: 5%;
+}
+
+#std-del-btn:hover, #std-edit-btn:hover {
+    cursor: pointer;
+}
+
+.studio-item:hover {
+    #std-del-btn, #std-edit-btn {
+        display: block;
+    }
 }
