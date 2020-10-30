@@ -172,9 +172,16 @@ html {
 }
 
 .dots {
-    color: red;
     display: flex;
     justify-content: space-around;
+}
+
+#dot {
+    color: red;
+}
+
+#dot2 {
+    color: green;
 }
 
 .everythingelse {
@@ -315,6 +322,7 @@ textarea {
     justify-content: center;
     align-items: center;
     font-family: 'Roboto';
+    position: relative;
 }
 
 .middle-icon {
@@ -344,8 +352,8 @@ textarea {
     position: absolute;
     font-size: 28px;
     font-weight: bold;
-    top: 80px;
-    right: 483px;
+    top: 1px;
+    right: 10px;
 }
 
 #center-modal {

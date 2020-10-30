@@ -61,11 +61,11 @@ export default class UploadForm extends React.Component {
         const video = new FormData();
         this.state.title.length > 0 ? video.append('video[title]', this.state.title) : video.append('video[title]', "");
         this.state.description.length > 0 ? video.append('video[description]', this.state.description) : video.append('video[description]', "");
-        this.state.thumbnail ? video.append('video[thumbnail]', this.state.photoFile) : null;
-        this.state.clip ? video.append('video[clip]', this.state.videoFile) : null;
+        this.state.photoFile ? video.append('video[thumbnail]', this.state.photoFile) : null;
+        this.state.videoFile ? video.append('video[clip]', this.state.videoFile) : null;
         // debugger
         this.props.processForm(video).then(() => {
-            this.props.history.push("/")
+            window.location.href = "/";
         }, errors => {
             // debugger
             this.setState({
@@ -76,6 +76,7 @@ export default class UploadForm extends React.Component {
 
     render() {
         const exclamation = <FontAwesomeIcon id="dot" icon="exclamation-circle" />;
+        const check = <FontAwesomeIcon id="dot2" icon="check-circle" />;
         const images = <FontAwesomeIcon id="thumbnail-up" icon="images" onClick={ () => document.getElementById("photoFile").click() }/>
         const film = <FontAwesomeIcon id="clip-up" icon="film" onClick={ () => document.getElementById("videoFile").click() }/>
         // console.log(this.state)
@@ -90,14 +91,14 @@ export default class UploadForm extends React.Component {
                 <div className="bottom-of-form">
                     <div className="completion">
                         <div className="steps">
-                            <span>Details</span>
+                            <span className="psu">Details</span>
                             <span>Thumbnail</span>
                             <span>Your Clip</span>
                         </div>
                         <div className="dots">
-                            { exclamation }
-                            { exclamation }
-                            { exclamation }
+                            { this.state.title.length > 0 && this.state.description.length > 0 ? check : exclamation }
+                            { this.state.photoFile ? check : exclamation }
+                            { this.state.videoFile ? check : exclamation }
                         </div>
                     </div>
                     <div className="everythingelse">
