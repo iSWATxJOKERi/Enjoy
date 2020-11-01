@@ -1,5 +1,6 @@
 import { RECEIVE_COMMENT_LIKE, RECEIVE_COMMENT_LIKES, RECEIVE_LIKE, REMOVE_COMMENT_LIKE, REMOVE_LIKE } from '../actions/like_actions';
 import { RECEIVE_CURRENT_USER } from '../actions/session_actions';
+import { RECEIVE_SUBSCRIPTION, REMOVE_SUBSCRIPTION } from '../actions/subscription_actions';
 import { RECEIVE_USERS, RECEIVE_USER } from '../actions/user_actions';
 
 const usersReducer = (state = {}, action) => {
@@ -40,6 +41,14 @@ const usersReducer = (state = {}, action) => {
             let nsc = Object.assign({}, state);
             delete nsc['commentLikes'];
             return nsc;
+        case RECEIVE_SUBSCRIPTION:
+            // debugger
+            return Object.assign({}, state, { subscription: action.subscription });
+        case REMOVE_SUBSCRIPTION:
+            let sub = Object.assign({}, state);
+            delete sub['subscription'];
+            sub['subscription'] = []
+            return sub;
         default:
             return state;
     }

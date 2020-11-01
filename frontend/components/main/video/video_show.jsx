@@ -3,6 +3,7 @@ import dateConverter from '../../../util/date_converter.js';
 import UpNext from './up_next';
 import Likes from '../likes/likes';
 import Comments from '../comments/comments';
+import Subscription from '../subscriptions/subscriptions';
 
 class VideoShow extends React.Component {
     constructor(props) {
@@ -14,8 +15,10 @@ class VideoShow extends React.Component {
         this.props.fetchUser(this.props.currentUser).then(() => {
             this.props.fetchVideos().then(() => {
                 this.props.fetchVideo(this.props.match.params.id).then(() => {
-                    this.props.fetchLike(this.props.match.params.id).then(() => {
-                        this.props.fetchComments(this.props.match.params.id)
+                    this.props.fetchSubscription(this.props.currentUser, this.props.video.uploader.id).then(() => {
+                        this.props.fetchLike(this.props.match.params.id).then(() => {
+                            this.props.fetchComments(this.props.match.params.id)
+                        })
                     })
                 })
             })
@@ -25,7 +28,9 @@ class VideoShow extends React.Component {
     componentDidUpdate(prevProps) {
         if(this.props.video !== prevProps.video) {
             this.props.fetchLike(this.props.match.params.id).then(() => {
-                this.props.fetchComments(this.props.match.params.id)
+                this.props.fetchComments(this.props.match.params.id).then(() => {
+                    this.props.fetchSubscription(this.props.currentUser, this.props.video.uploader.id)
+                })
             })
         }
     }
@@ -66,12 +71,13 @@ class VideoShow extends React.Component {
                                 <div className="secondary-video-info">
                                     <div className="left-content">
                                         <div className="left-info">
-                                        { this.props.video.avatarUrl ? 
-                                            <img id="user-pic4" src={ `${ this.props.video.avatarUrl }` } onClick={ () => this.props.history.push(`/users/${ this.props.video.uploader.id }`) } /> : 
-                                            <span id="user4">{ this.props.video.uploader.username[0] }</span> }
-                                            <div className="middle-content">
-                                                <span>{ this.props.video.uploader.username }</span>
-                                            </div>
+                                            { this.props.video.avatarUrl ? 
+                                                <img id="user-pic4" src={ `${ this.props.video.avatarUrl }` } onClick={ () => this.props.history.push(`/users/${ this.props.video.uploader.id }`) } /> : 
+                                                <span id="user4">{ this.props.video.uploader.username[0] }</span> }
+                                                <div className="middle-content">
+                                                    <span>{ this.props.video.uploader.username }</span>
+                                                </div>
+                                                <Subscription channel={ this.props.video.uploader.id } user={ this.props.currentUser } allProps={ this.props }/>
                                         </div>
                                         <div className="video-description">Description</div>
                                     </div>

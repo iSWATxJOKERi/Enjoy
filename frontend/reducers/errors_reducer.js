@@ -4,13 +4,15 @@ import likesErrorsReducer from './likes_errors_reducer';
 import sessionErrorsReducer from './session_errors_reducer';
 import userErrorsReducer from './user_errors_reducer';
 import videoErrorsReducer from './video_errors_reducer';
+import subscriptionErrorsReducer from './subscription_errors_reducer';
 
 const errorsReducer = combineReducers({
     session: sessionErrorsReducer,
     videos: videoErrorsReducer,
     users: userErrorsReducer,
     likes: likesErrorsReducer,
-    comments: commentsErrorsReducer
+    comments: commentsErrorsReducer,
+    subscriptions: subscriptionErrorsReducer
 })
 
 export default errorsReducer;

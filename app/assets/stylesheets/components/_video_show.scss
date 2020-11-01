@@ -263,7 +263,7 @@ video {
     width: 50%;
 }
 
-.fa-thumbs-up:hover, .fa-thumbs-down:hover, #sort-btn, .sort, #user-pic4 {
+.fa-thumbs-up:hover, .fa-thumbs-down:hover, #sort-btn, .sort, #user-pic4, #subscribe:hover, #unsubscribe:hover {
     cursor: pointer;
 }
 
@@ -275,4 +275,13 @@ video {
     height: 70%;
     width: 5%;
     border-radius: 70px;
+}
+
+#subscribe, #unsubscribe {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 10px;
+    background-color: red;
+    color: white;
 }

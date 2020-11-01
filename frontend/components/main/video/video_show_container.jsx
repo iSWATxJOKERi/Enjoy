@@ -5,6 +5,7 @@ import { fetchVideo, fetchVideos } from '../../../actions/video_actions';
 import VideoShow from './video_show';
 import { createCommentLike, createLike, deleteCommentLike, deleteLike, fetchCommentLike, fetchLike } from '../../../actions/like_actions';
 import { createComment, deleteComment, fetchComments, updateComment } from '../../../actions/comment_actions';
+import { createSubscription, deleteSubscription, fetchSubscription } from '../../../actions/subscription_actions';
 
 
 const mapStateToProps = (state, ownProps) => {
@@ -36,6 +37,9 @@ const mapDispatchToProps = dispatch => {
         fetchCommentLikes: (commentId, videoId) => dispatch(fetchCommentLike(commentId, videoId)),
         createCommentLike: (commentId, videoId) => dispatch(createCommentLike(commentId, videoId)),
         removeCommentLike: (commentId, videoId) => dispatch(deleteCommentLike(commentId, videoId)),
+        fetchSubscription: (id, sub_id) => dispatch(fetchSubscription(id, sub_id)),
+        subscribe: sub => dispatch(createSubscription(sub)),
+        unsubscribe: sub => dispatch(deleteSubscription(sub))
     }
 }
 
