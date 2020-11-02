@@ -12,24 +12,36 @@ class VideoShow extends React.Component {
 
     componentDidMount() {
         // debugger
-        this.props.fetchUser(this.props.currentUser).then(() => {
-            this.props.fetchVideos().then(() => {
-                this.props.fetchVideo(this.props.match.params.id).then(() => {
-                    this.props.fetchSubscription(this.props.currentUser, this.props.video.uploader.id).then(() => {
-                        this.props.fetchLike(this.props.match.params.id).then(() => {
-                            this.props.fetchComments(this.props.match.params.id)
+        if(this.props.currentUser) {
+            this.props.fetchUser(this.props.currentUser).then(() => {
+                this.props.fetchVideos().then(() => {
+                    this.props.fetchVideo(this.props.match.params.id).then(() => {
+                        this.props.fetchSubscription(this.props.currentUser, this.props.video.uploader.id).then(() => {
+                            this.props.fetchLike(this.props.match.params.id).then(() => {
+                                this.props.fetchComments(this.props.match.params.id)
+                            })
                         })
                     })
                 })
             })
-        })
+        } else {
+            this.props.fetchVideos().then(() => {
+                this.props.fetchVideo(this.props.match.params.id).then(() => {
+                    this.props.fetchLike(this.props.match.params.id).then(() => {
+                        this.props.fetchComments(this.props.match.params.id)
+                    })
+                })
+            })
+        }
     }
 
     componentDidUpdate(prevProps) {
         if(this.props.video !== prevProps.video) {
             this.props.fetchLike(this.props.match.params.id).then(() => {
                 this.props.fetchComments(this.props.match.params.id).then(() => {
-                    this.props.fetchSubscription(this.props.currentUser, this.props.video.uploader.id)
+                    if(this.props.currentUser) {
+                        this.props.fetchSubscription(this.props.currentUser, this.props.video.uploader.id)
+                    }
                 })
             })
         }
@@ -77,7 +89,9 @@ class VideoShow extends React.Component {
                                                 <div className="middle-content">
                                                     <span>{ this.props.video.uploader.username }</span>
                                                 </div>
-                                                <Subscription channel={ this.props.video.uploader.id } user={ this.props.currentUser } allProps={ this.props }/>
+                                                { this.props.currentUser ? 
+                                                <Subscription channel={ this.props.video.uploader.id } user={ this.props.currentUser } allProps={ this.props }/> : 
+                                                <span id="subscribe" onClick={ () => window.location.href = "#/login" }>Login to Subscribe</span>  }
                                         </div>
                                         <div className="video-description">Description</div>
                                     </div>
