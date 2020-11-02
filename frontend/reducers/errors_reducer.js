@@ -5,6 +5,7 @@ import sessionErrorsReducer from './session_errors_reducer';
 import userErrorsReducer from './user_errors_reducer';
 import videoErrorsReducer from './video_errors_reducer';
 import subscriptionErrorsReducer from './subscription_errors_reducer';
+import searchErrorsReducer from './search_errors_reducer';
 
 const errorsReducer = combineReducers({
     session: sessionErrorsReducer,
@@ -12,7 +13,8 @@ const errorsReducer = combineReducers({
     users: userErrorsReducer,
     likes: likesErrorsReducer,
     comments: commentsErrorsReducer,
-    subscriptions: subscriptionErrorsReducer
+    subscriptions: subscriptionErrorsReducer,
+    search: searchErrorsReducer
 })
 
 export default errorsReducer;

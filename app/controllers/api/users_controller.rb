@@ -1,8 +1,13 @@
 class Api::UsersController < ApplicationController
     before_action :ensure_logged_in, only: [:update]
     def index
-        @users = User.all
-        render :index
+        if params[:query]
+            @userSearch = User.where("username ILIKE (?) OR email ILIKE (?)", "%#{params[:query]}%", "%#{params[:query]}%").distinct
+            render :index
+        else
+            @users = User.all
+            render :index
+        end
     end
 
     def show

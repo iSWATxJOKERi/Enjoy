@@ -1,9 +1,13 @@
 class Api::VideosController < ApplicationController
     before_action :ensure_logged_in, only: [:create, :destroy, :update]
     def index
-        @videos = Video.all.includes(:uploader).all
-        # debugger
-        render :index
+        if params[:query]
+            @videoSearch = Video.where("title ILIKE (?) OR description ILIKE (?)","%#{params[:query]}%", "%#{params[:query]}%").distinct
+            render :index
+        else
+            @videos = Video.all.includes(:uploader).all
+            render :index
+        end
     end
 
     def show

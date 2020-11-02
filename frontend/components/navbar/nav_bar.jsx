@@ -3,6 +3,7 @@ import React from 'react';
 import UserIconDropdown from './user_icon_dropdown';
 import VideoUploadDropdown from '../main/video/upload_dropdown';
 import '../../font_awesome';
+import { browserHistory } from 'react-router-dom';
 
 
 class NavBar extends React.Component {
@@ -10,10 +11,12 @@ class NavBar extends React.Component {
         super(props);
         this.state = {
             online: false,
-            up: false
+            up: false,
+            search: ""
         }
         this.toggleClass = this.toggleClass.bind(this);
         this.toggleUpload = this.toggleUpload.bind(this);
+        this.handleChange = this.handleChange.bind(this);
     }
 
     componentDidMount() {
@@ -34,6 +37,22 @@ class NavBar extends React.Component {
         })
     }
 
+    handleChange() {
+        return (e) => {
+            this.setState({
+                search: e.currentTarget.value
+            })
+        }
+    }
+
+    handleSearch(query) {
+        this.props.getSearchVideos(query).then(() => {
+            this.props.getSearchUser(query).then(() => {
+                this.props.history.replace("/search")
+            })
+        })
+    }
+
     render() {
         const bar = <FontAwesomeIcon id="side-bar-pop" icon="bars" />
         const user = <FontAwesomeIcon icon="user-circle" />
@@ -46,7 +65,7 @@ class NavBar extends React.Component {
         const upload = <FontAwesomeIcon onClick={ this.toggleUpload } icon="video" />
         const menu = <FontAwesomeIcon icon="th" />
         const settings = <FontAwesomeIcon icon="ellipsis-v" />
-        const search = <FontAwesomeIcon icon="search" />
+        const search = <FontAwesomeIcon icon="search" onClick={ () => this.handleSearch(this.state.search) }/>
         const bell = <FontAwesomeIcon icon="bell" />
         const dropdown = <UserIconDropdown allProps={ this.props } state={ this.state } toggle={ this.toggleClass }/>
         const vdropdown = <VideoUploadDropdown allProps={ this.props } state={ this.state } toggle={ this.toggleUpload } />
@@ -63,7 +82,7 @@ class NavBar extends React.Component {
                 </div>
                 <div className="middle-nav">
                     <div className="search-container">
-                        <input className="search-bar" placeholder="Search" type="text"/>
+                        <input className="search-bar" placeholder="Search" type="text" onChange={ this.handleChange() }/>
                         <div className="search-btn">
                             { search }
                         </div>
