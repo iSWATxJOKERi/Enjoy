@@ -11,7 +11,6 @@ class PrimaryComments extends React.Component {
         this.state = {
             edit: false,
             reply: false,
-            options: false,
             comment: "",
             showreplies: false,
             replies: this.props.comment.replies,
@@ -52,7 +51,14 @@ class PrimaryComments extends React.Component {
         let comment = { body: this.state.comment, commenter_id: this.props.allProps.currentUser, video_id: this.props.allProps.match.params.id, parent_comment_id: this.props.comment.id };
         // debugger
         this.props.allProps.createComment(comment).then(() => {
-            this.props.allProps.fetchUser(this.props.allProps.currentUser)
+            // this.props.allProps.fetchUser(this.props.allProps.currentUser)
+            this.setState({
+                comment: "",
+                edit: false,
+                reply: false,
+                showreplies: true,
+            })
+            document.getElementById(`comment-areas-${ this.props.comment.id }`).value = "";
         })
     }
 
@@ -65,6 +71,15 @@ class PrimaryComments extends React.Component {
 
     toggleReply() {
         let ns = this.state.reply;
+        if(this.state.reply === true) {
+            this.setState({
+                comment: "",
+                edit: false,
+                reply: false,
+                showreplies: true,
+            })
+            document.getElementById(`comment-areas-${ this.props.comment.id }`).value = "";
+        }
         this.setState({
             reply: !ns
         })
@@ -135,7 +150,7 @@ class PrimaryComments extends React.Component {
                     </div>
                 </section>
                 <section className={ this.state.reply ? "create-comment2" : "hide" }>
-                    <textarea id="comment-area2" rows="1" onChange={ this.handleInput() } placeholder="Add a public reply..."/>
+                    <textarea id={ `comment-areas-${ this.props.comment.id }`} rows="1" onChange={ this.handleInput() } placeholder="Add a public reply..."/>
                     <div className={ "cmt2" }>
                         <span onClick={ this.handleSubmit } className="make-comment2">REPLY</span>
                         <span onClick={ this.state.reply ? this.toggleReply : null }className="cancel-comment2">CANCEL</span>
