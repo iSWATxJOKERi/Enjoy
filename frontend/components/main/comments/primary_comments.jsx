@@ -4,6 +4,7 @@ import CommentLikes from '../likes/comment_likes';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../../../font_awesome';
 import Reply from './reply';
+import { myFlatten } from '../../../util/utils';
 
 class PrimaryComments extends React.Component {
     constructor(props) {
@@ -124,8 +125,8 @@ class PrimaryComments extends React.Component {
         replies = this.getAllReplies(this.state.replies);
         // debugger
         // console.log(replies)
-        let flattened = [].concat.apply([], replies);
-        // console.log(flattened)
+        let flattened = myFlatten(replies);
+        console.log(flattened)
         final = flattened.map(replyy => {
             // debugger
             if(replyy.parent_comment_id !== this.props.comment.id) {
