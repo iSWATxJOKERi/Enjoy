@@ -41,6 +41,12 @@ class Comments extends React.Component {
     toggleOptions() {
         // debugger
         let ns = this.state.options;
+        if(this.state.options === true) {
+            this.setState({
+                comment: "",
+            })
+            document.getElementById("comment-area").value = "";
+        }
         this.setState({
             options: !ns
         })
@@ -58,7 +64,13 @@ class Comments extends React.Component {
         let comment = { body: this.state.comment, commenter_id: this.props.allProps.currentUser, video_id: this.props.allProps.match.params.id };
         this.props.allProps.createComment(comment).then(() => {
             this.props.allProps.fetchUser(this.props.allProps.currentUser).then(() => {
-                this.props.allProps.fetchVideo(this.props.allProps.match.params.id)
+                this.props.allProps.fetchVideo(this.props.allProps.match.params.id).then(() => {
+                    this.setState({
+                        comment: "",
+                        options: false
+                    })
+                    document.getElementById("comment-area").value = "";
+                })
             })
         })
     }
