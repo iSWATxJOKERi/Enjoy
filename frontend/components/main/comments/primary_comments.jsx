@@ -14,7 +14,7 @@ class PrimaryComments extends React.Component {
             comment: "",
             showreplies: false,
             replies: this.props.comment.replies,
-            len: this.props.comment.replies.length
+            len: this.props.comment.lengthofreplies
         }
         this.toggleEdit = this.toggleEdit.bind(this);
         this.toggleReply = this.toggleReply.bind(this);
@@ -34,7 +34,7 @@ class PrimaryComments extends React.Component {
             // debugger
             this.setState({
                 replies: this.props.comment.replies,
-                len: this.props.comment.replies.length
+                len: this.props.comment.lengthofreplies
             })
         }
     }
@@ -48,7 +48,7 @@ class PrimaryComments extends React.Component {
     }
 
     handleSubmit() {
-        let comment = { body: this.state.comment, commenter_id: this.props.allProps.currentUser, video_id: this.props.allProps.match.params.id, parent_comment_id: this.props.comment.id };
+        let comment = { body: this.state.comment, commenter_id: this.props.allProps.currentUser, video_id: this.props.allProps.match.params.id, parent_comment_id: this.props.comment.id, source: this.props.comment.id };
         // debugger
         this.props.allProps.createComment(comment).then(() => {
             // this.props.allProps.fetchUser(this.props.allProps.currentUser)
@@ -95,18 +95,25 @@ class PrimaryComments extends React.Component {
     getAllReplies(replies) {
         let arr = [];
         // debugger
+        // console.log(replies)
         for(let i = 0; i < replies.length; i++) {
             // debugger
             if(this.props.comments[replies[i]]) {
                 // debugger
                 if(this.props.comments[replies[i]].replies.length > 0) {
                     // debugger
-                    this.getAllReplies(this.props.comments[replies[i]].replies)
-                } else {
+                    // console.log(arr)
                     arr.push(this.props.comments[replies[i]])
+                    arr.push(this.getAllReplies(this.props.comments[replies[i]].replies))
+                    // console.log(arr)
+                } else {
+                    // debugger
+                    arr.push(this.props.comments[replies[i]])
+                    // console.log("pushed")
                 }
             }
         }
+        // console.log(arr)
         return arr;
     }
 
@@ -116,10 +123,18 @@ class PrimaryComments extends React.Component {
         let final;
         replies = this.getAllReplies(this.state.replies);
         // debugger
-        final = replies.map(replyy => {
-            return <Reply key={ replyy.id } reply={ replyy } allProps={ this.props } comment={ this.props.comment }/>
+        // console.log(replies)
+        let flattened = [].concat.apply([], replies);
+        // console.log(flattened)
+        final = flattened.map(replyy => {
+            // debugger
+            if(replyy.parent_comment_id !== this.props.comment.id) {
+                return <Reply key={ replyy.id } tagged={ true } reply={ replyy } allProps={ this.props } comment={ this.props.comment }/>
+            } else {
+                return <Reply key={ replyy.id } tagged={ false } reply={ replyy } allProps={ this.props } comment={ this.props.comment }/>
+            }
         })
-        console.log(final)
+        // console.log(final)
         const options = <FontAwesomeIcon id="edit-comment" icon="ellipsis-v" onClick={ this.toggleEdit }/>;
         let repl = this.state.showreplies ? 
             <span className="replies-btn" onClick={ this.toggleReplies }>&#9650;{ ` Hide ${ this.state.len } replies` }</span> : 

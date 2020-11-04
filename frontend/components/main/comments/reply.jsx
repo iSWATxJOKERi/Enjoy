@@ -28,7 +28,7 @@ class Reply extends React.Component {
 
     handleSubmit() {
         // debugger
-        let comment = { body: this.state.comment, commenter_id: this.props.allProps.allProps.currentUser, video_id: this.props.allProps.allProps.match.params.id, parent_comment_id: this.props.comment.id };
+        let comment = { body: this.state.comment, commenter_id: this.props.allProps.allProps.currentUser, video_id: this.props.allProps.allProps.match.params.id, parent_comment_id: this.props.reply.id, source: this.props.comment.id };
         // debugger
         this.props.allProps.allProps.createComment(comment).then(() => {
             // this.props.allProps.fetchUser(this.props.allProps.currentUser)
@@ -79,7 +79,12 @@ class Reply extends React.Component {
                             <span className="commented2">{ dateConverter(this.props.reply.created_at) }</span>
                         </div>
                         <div className="the-comment2">
-                            <span>{ this.props.reply.body }</span>
+                            { this.props.tagged ? 
+                            <div id="repliee-box">
+                                <span id="repliee">@{ this.props.reply.repliee }</span>
+                                <span id="repliee-body">{ this.props.reply.body }</span>
+                            </div> :
+                            <span>{ this.props.reply.body }</span> }
                         </div>
                         <div className="likes-reply2">
                             <ReplyLikes allProps={ this.props.allProps } reply={ this.props.reply }/>

@@ -227,6 +227,16 @@
     }
 }
 
+#repliee {
+    color: blue;
+    box-sizing: border-box;
+    padding-right: 10px;
+}
+
+#repliee-body {
+    word-wrap: break-word;
+}
+
 #edit-comment {
     display: none;
     position: absolute;
