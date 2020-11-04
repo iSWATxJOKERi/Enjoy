@@ -28,9 +28,14 @@ class Reply extends React.Component {
     }
 
     handleSubmit() {
-        let comment = { body: this.state.comment, commenter_id: this.props.allProps.currentUser, video_id: this.props.allProps.match.params.id, parent_comment_id: this.props.comment.id };
         // debugger
-        this.props.allProps.createComment(comment)
+        let comment = { body: this.state.comment, commenter_id: this.props.allProps.allProps.currentUser, video_id: this.props.allProps.allProps.match.params.id, parent_comment_id: this.props.comment.id };
+        // debugger
+        this.props.allProps.allProps.createComment(comment).then(() => {
+            this.props.allProps.allProps.fetchUser(this.props.allProps.allProps.currentUser).then(() => {
+                this.props.allProps.allProps.fetchVideo(this.props.allProps.allProps.match.params.id)
+            })
+        })
     }
 
     toggleEdit() {
@@ -54,7 +59,7 @@ class Reply extends React.Component {
             <>
                 <section className="comment-box2">
                     { this.props.reply.avatarUrl ? 
-                    <div id="user-pic6"><img src={ `${ this.props.reply.avatarUrl }` } onClick={ () => this.props.history.push(`/users/${ this.props.reply.commenter.id }`) } /></div> : 
+                    <div id="user-pic6"><img src={ `${ this.props.reply.avatarUrl }` } onClick={ () => this.props.allProps.allProps.history.push(`/users/${ this.props.reply.commenter.id }`) } /></div> : 
                     <div className="commenter-avatar">A</div> }
                     <div className="actual-comment2">
                         <div className="commenter-date2">

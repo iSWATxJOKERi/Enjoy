@@ -11,7 +11,7 @@ class Comments extends React.Component {
             comments: Object.values(this.props.comments).length,
             options: false,
             comment: "",
-            primary_comments: []
+            primary_comments: this.props.comments
         }
         this.toggleOptions = this.toggleOptions.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
@@ -19,16 +19,20 @@ class Comments extends React.Component {
     }
 
     // componentDidMount() {
-    //     this.props.allProps.fetchComments(this.props.allProps.match.params.id);
+    //     this.setState({
+    //         comments: Object.values(this.props.comments).length,
+    //         primary_comments: this.props.comments
+    //     })
     // }
 
     componentDidUpdate(prevProps) {
-        if(this.props.comments !== prevProps.comments) {
+        // debugger
+        if(Object.values(this.props.comments).length !== Object.values(prevProps.comments).length) {
             // debugger
-            this.props.allProps.fetchCommentLikes(this.props.allProps.currentUser, this.props.allProps.match.params.id).then(() => {
+            this.props.allProps.fetchComments(this.props.allProps.match.params.id).then(() => {
                 this.setState({
-                    comments: Object.values(this.props.comments).length
-
+                    comments: Object.values(this.props.comments).length,
+                    primary_comments: this.props.comments
                 })
             })
         }
@@ -52,24 +56,30 @@ class Comments extends React.Component {
 
     handleSubmit() {
         let comment = { body: this.state.comment, commenter_id: this.props.allProps.currentUser, video_id: this.props.allProps.match.params.id };
-        this.props.allProps.createComment(comment)
+        this.props.allProps.createComment(comment).then(() => {
+            this.props.allProps.fetchUser(this.props.allProps.currentUser).then(() => {
+                this.props.allProps.fetchVideo(this.props.allProps.match.params.id)
+            })
+        })
     }
 
     render() {
         let sort = <FontAwesomeIcon id="sort-btn" icon="sort-amount-up" />;
         let primary_comments = [];
-        if(Object.values(this.props.comments).length > 0) {
+        // debugger
+        if(Object.values(this.state.primary_comments).length > 0) {
             // debugger
             for(let i = 0; i < this.props.video.comments.length; i++) {
                 // debugger
-                if((this.props.comments && this.props.video.comments[i]) && this.props.comments[this.props.video.comments[i]]) {
+                if((this.state.primary_comments && this.props.video.comments[i]) && this.state.primary_comments[this.props.video.comments[i]]) {
                     // debugger
-                    if(!this.props.comments[this.props.video.comments[i]].parent_comment_id) {
+                    if(!this.state.primary_comments[this.props.video.comments[i]].parent_comment_id) {
                         // debugger
-                        primary_comments.push(<PrimaryComments key={ i } comments={ this.props.comments } allProps={ this.props.allProps } comment={ this.props.comments[this.props.video.comments[i]] } />)
+                        primary_comments.push(<PrimaryComments key={ i } comments={ this.state.primary_comments } allProps={ this.props.allProps } comment={ this.state.primary_comments[this.props.video.comments[i]] } />)
                     }
                 }
             }
+            // console.log(primary_comments)
         }
         return (
             <section className="right-content">

@@ -13,24 +13,33 @@ class PrimaryComments extends React.Component {
             reply: false,
             options: false,
             comment: "",
-            showreplies: false
+            showreplies: false,
+            replies: this.props.comment.replies,
+            len: this.props.comment.replies.length
         }
         this.toggleEdit = this.toggleEdit.bind(this);
         this.toggleReply = this.toggleReply.bind(this);
         this.toggleReplies = this.toggleReplies.bind(this);
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleInput = this.handleInput.bind(this);
+        this.getAllReplies = this.getAllReplies.bind(this);
     }
 
     // componentDidMount() {
     //     this.props.allProps.fetchCommentLikes(this.props.comment.id, this.props.allProps.video.id)
     // }
 
-    // componentDidUpdate(prevProps) {
-    //     if(prevProps.comment !== this.props.comment) {
-    //         this.props.allProps.fetchCommentLikes(this.props.comment.id, this.props.allProps.video.id)
-    //     }
-    // }
+    componentDidUpdate(prevProps) {
+        // debugger
+        if(Object.values(this.props.comments).length !== Object.values(prevProps.comments).length) {
+            // debugger
+            this.setState({
+                replies: this.props.comment.replies,
+                len: this.props.comment.replies.length
+            })
+        }
+    }
+
     handleInput() {
         return (e) => {
             this.setState({
@@ -42,7 +51,9 @@ class PrimaryComments extends React.Component {
     handleSubmit() {
         let comment = { body: this.state.comment, commenter_id: this.props.allProps.currentUser, video_id: this.props.allProps.match.params.id, parent_comment_id: this.props.comment.id };
         // debugger
-        this.props.allProps.createComment(comment)
+        this.props.allProps.createComment(comment).then(() => {
+            this.props.allProps.fetchUser(this.props.allProps.currentUser)
+        })
     }
 
     toggleEdit() {
@@ -66,16 +77,38 @@ class PrimaryComments extends React.Component {
         })
     }
 
+    getAllReplies(replies) {
+        let arr = [];
+        // debugger
+        for(let i = 0; i < replies.length; i++) {
+            // debugger
+            if(this.props.comments[replies[i]]) {
+                // debugger
+                if(this.props.comments[replies[i]].replies.length > 0) {
+                    // debugger
+                    this.getAllReplies(this.props.comments[replies[i]].replies)
+                } else {
+                    arr.push(this.props.comments[replies[i]])
+                }
+            }
+        }
+        return arr;
+    }
+
     render() {
         // debugger
         let replies;
-        replies = this.props.comment.replies.map(reply => {
-            return <Reply key={ reply } reply={ this.props.comments[reply] } allProps={ this.props } comment={ this.props.comment }/>
+        let final;
+        replies = this.getAllReplies(this.state.replies);
+        // debugger
+        final = replies.map(replyy => {
+            return <Reply key={ replyy.id } reply={ replyy } allProps={ this.props } comment={ this.props.comment }/>
         })
+        console.log(final)
         const options = <FontAwesomeIcon id="edit-comment" icon="ellipsis-v" onClick={ this.toggleEdit }/>;
         let repl = this.state.showreplies ? 
-            <span className="replies-btn" onClick={ this.toggleReplies }>&#9650;{ ` Hide ${ this.props.comment.replies.length } replies` }</span> : 
-            <span className="replies-btn" onClick={ this.toggleReplies }>&#9660;{ ` View ${ this.props.comment.replies.length } replies` }</span>
+            <span className="replies-btn" onClick={ this.toggleReplies }>&#9650;{ ` Hide ${ this.state.len } replies` }</span> : 
+            <span className="replies-btn" onClick={ this.toggleReplies }>&#9660;{ ` View ${ this.state.len } replies` }</span>
         return (
             <section>
                 <section className="comment-box">
@@ -110,7 +143,7 @@ class PrimaryComments extends React.Component {
                 </section>
                 { repl }
                 <div className={ this.state.showreplies ? "showingreplies" : "hide"}>
-                    { replies }
+                    { final }
                 </div>
             </section>
         )
