@@ -49,6 +49,14 @@ export const fetchComments = videoId => dispatch => {
     })
 }
 
+export const fetchComment = comment => dispatch => {
+    return CommentApiUtil.fetchComment(comment).then(comment => {
+        dispatch(receiveComment(comment))
+    }, errors => {
+        receiveCommentsErrors(errors)
+    })
+}
+
 export const updateComment = comment => dispatch => {
     return CommentApiUtil.updateComment(comment).then(comment => {
         dispatch(receiveComment(comment))

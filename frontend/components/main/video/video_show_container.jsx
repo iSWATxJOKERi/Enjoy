@@ -4,7 +4,7 @@ import { fetchUser } from '../../../actions/user_actions';
 import { fetchVideo, fetchVideos } from '../../../actions/video_actions';
 import VideoShow from './video_show';
 import { createCommentLike, createLike, deleteCommentLike, deleteLike, fetchCommentLike, fetchLike } from '../../../actions/like_actions';
-import { createComment, deleteComment, fetchComments, updateComment } from '../../../actions/comment_actions';
+import { createComment, deleteComment, fetchComment, fetchComments, updateComment } from '../../../actions/comment_actions';
 import { createSubscription, deleteSubscription, fetchSubscription } from '../../../actions/subscription_actions';
 
 
@@ -31,12 +31,13 @@ const mapDispatchToProps = dispatch => {
         removeLike: like => dispatch(deleteLike(like)),
         fetchLike: id => dispatch(fetchLike(id)),
         fetchComments: videoId => dispatch(fetchComments(videoId)),
+        fetchComment: comment => dispatch(fetchComment(comment)),
         createComment: comment => dispatch(createComment(comment)),
         removeComment: comment => dispatch(deleteComment(comment)),
         updateComment: comment => dispatch(updateComment(comment)),
         fetchCommentLikes: (commentId, videoId) => dispatch(fetchCommentLike(commentId, videoId)),
         createCommentLike: (commentId, videoId) => dispatch(createCommentLike(commentId, videoId)),
-        removeCommentLike: (commentId, videoId) => dispatch(deleteCommentLike(commentId, videoId)),
+        removeCommentLike: (like, videoId) => dispatch(deleteCommentLike(like, videoId)),
         fetchSubscription: (id, sub_id) => dispatch(fetchSubscription(id, sub_id)),
         subscribe: sub => dispatch(createSubscription(sub)),
         unsubscribe: sub => dispatch(deleteSubscription(sub))

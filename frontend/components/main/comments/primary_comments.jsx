@@ -25,9 +25,9 @@ class PrimaryComments extends React.Component {
         this.getAllReplies = this.getAllReplies.bind(this);
     }
 
-    // componentDidMount() {
-    //     this.props.allProps.fetchCommentLikes(this.props.comment.id, this.props.allProps.video.id)
-    // }
+    componentDidMount() {
+        this.props.allProps.fetchCommentLikes(this.props.comment.id, this.props.allProps.video.id)
+    }
 
     componentDidUpdate(prevProps) {
         // debugger
@@ -126,7 +126,7 @@ class PrimaryComments extends React.Component {
         // debugger
         // console.log(replies)
         let flattened = myFlatten(replies);
-        console.log(flattened)
+        // console.log(flattened)
         final = flattened.map(replyy => {
             // debugger
             if(replyy.parent_comment_id !== this.props.comment.id) {
@@ -155,7 +155,7 @@ class PrimaryComments extends React.Component {
                             <span>{ this.props.comment.body }</span>
                         </div>
                         <div className="likes-reply">
-                            <CommentLikes allProps={ this.props } comment={ this.props.comment }/>
+                            <CommentLikes psu={ this.props.psuedo[this.props.comment.id] } allProps={ this.props } comment={ this.props.comment }/>
                             <span onClick={ this.toggleReply }>REPLY</span>
                         </div>
                     </div>

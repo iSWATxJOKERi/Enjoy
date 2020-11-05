@@ -87,7 +87,8 @@ class Comments extends React.Component {
                     // debugger
                     if(!this.state.primary_comments[this.props.video.comments[i]].parent_comment_id) {
                         // debugger
-                        primary_comments.push(<PrimaryComments key={ i } comments={ this.state.primary_comments } allProps={ this.props.allProps } comment={ this.state.primary_comments[this.props.video.comments[i]] } />)
+                        primary_comments.push(<PrimaryComments key={ i } psuedo={ this.props.comments } comments={ this.state.primary_comments } allProps={ this.props.allProps } comment={ this.state.primary_comments[this.props.video.comments[i]] } />)
+                        console.log(this.props.comments)
                     }
                 }
             }

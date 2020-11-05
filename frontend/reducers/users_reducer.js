@@ -30,16 +30,25 @@ const usersReducer = (state = {}, action) => {
         case RECEIVE_COMMENT_LIKES:
             let com = Object.assign({}, state, { 'commentLikes' : {}, 'commentDislikes' : {} });
             // debugger
-            action.like.liked_comments_video.map((like, idx) => {
-                com['commentLikes'][action.like.liked_comments_video[idx].likeable_id] = like
+            action.like.commentlikes.map((like, idx) => {
+                if(like.kind_of === "like") {
+                    com['commentLikes'][action.like.commentlikes[idx].likeable_id] = like
+                }
             })
-            action.like.disliked_comments_video.map((dislike, i) => {
-                com['commentDislikes'][action.like.disliked_comments_video[i].likeable_id] = dislike
+            action.like.commentlikes.map((dislike, i) => {
+                if(dislike.kind_of === "dislike") {
+                    com['commentDislikes'][action.like.commentlikes[i].likeable_id] = dislike
+                }
             })
             return com
         case REMOVE_COMMENT_LIKE:
+            // debugger
             let nsc = Object.assign({}, state);
-            delete nsc['commentLikes'];
+            if(action.like.kind_of === 'like') {
+                delete nsc['commentLikes'][action.like.likeable_id];
+            } else {
+                delete nsc['commentDislikes'][action.like.likeable_id];
+            }
             return nsc;
         case RECEIVE_SUBSCRIPTION:
             // debugger

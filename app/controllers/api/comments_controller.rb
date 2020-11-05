@@ -17,8 +17,16 @@ class Api::CommentsController < ApplicationController
         end
     end
 
+    def show 
+        @comment = Comment.find_by(commenter_id: params[:comment][:commenter][:id], video_id: params[:comment][:video_id], id: params[:comment][:id])
+        # debugger
+        if @comment
+            render :show
+        end
+    end
+
     def update
-        @comment = Comment.find_by(commenter_id: params[:comment][:commenter_id], video_id: params[:comment][:video_id], id: params[:comment][:id])
+        @comment = Comment.find_by(commenter_id: params[:comment][:commenter][:id], video_id: params[:comment][:video_id], id: params[:comment][:id])
         if @comment.update(comment_params)
             render json: @comment
         else

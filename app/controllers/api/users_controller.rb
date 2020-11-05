@@ -12,6 +12,7 @@ class Api::UsersController < ApplicationController
 
     def show
         @user = User.find_by(id: params[:id])
+        # debugger
         if @user 
             arr = @user.likes.select("likeable_id").where("kind_of = 'like' AND likeable_type = 'Video'")
             @liked_videos = arr.map{ |ele| ele["likeable_id"] }

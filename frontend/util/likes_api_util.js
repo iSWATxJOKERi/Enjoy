@@ -55,7 +55,7 @@ export const fetchCommentLike = (id, video_id) => {
     return (
         $.ajax({
             method: 'GET',
-            url: `/api/users/${ id }/?video_id=${ video_id }`
+            url:  `/api/videos/${ video_id }/comments/${ id }/likes`
         })
     )
 }
