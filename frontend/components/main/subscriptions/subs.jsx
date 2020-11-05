@@ -1,6 +1,6 @@
 import React from 'react';
 
-class Subscription extends React.Component {
+class UserSub extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
@@ -14,8 +14,11 @@ class Subscription extends React.Component {
     componentDidMount() {
         // debugger
         if(this.props.allProps.like.entities.users[this.props.user].subbed_to) {
+            // debugger
+            // console.log(this.props.allProps.like.entities.users[this.props.user])
             if(this.props.allProps.like.entities.users[this.props.user].subbed_to.includes(this.props.channel)) {
                 // debugger
+                // console.log(this.state.subscribed_already)
                 this.setState({
                     subscribed_already: true
                 })
@@ -28,7 +31,9 @@ class Subscription extends React.Component {
 
     componentDidUpdate(prevProps) {
         if(prevProps.allProps.like.entities.users.subscription) {
+            // debugger
             if(prevProps.allProps.like.entities.users.subscription !== this.props.allProps.like.entities.users.subscription) {
+                // console.log(this.state.subscribed_already)
                 this.setState({
                     subscribed_already: this.props.allProps.like.entities.users.subscription[0] ? true : false
                 })
@@ -68,8 +73,8 @@ class Subscription extends React.Component {
         if(this.state.render) {
             // debugger
             btn = this.state.subscribed_already ? 
-            <span onClick={ this.unsubscribe() } id="unsubscribe">UNSUBSCRIBE</span> : 
-            <span onClick={ this.subscribe() } id="subscribe">SUBSCRIBE</span>
+            <span onClick={ this.unsubscribe() } id="unsubscribe2">UNSUBSCRIBE</span> : 
+            <span onClick={ this.subscribe() } id="subscribe2">SUBSCRIBE</span>
         }
         return (
             <>
@@ -79,4 +84,4 @@ class Subscription extends React.Component {
     }
 }
 
-export default Subscription;
+export default UserSub;

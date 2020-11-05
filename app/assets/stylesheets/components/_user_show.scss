@@ -142,6 +142,7 @@
 }
 
 .parts-of-header {
+    position: relative;
     display: flex;
     flex-direction: row;
     padding-left: 142px;
@@ -163,6 +164,7 @@
 .upload-title {
     padding-top: 10px;
     padding-left: 115px;
+    font-weight: bold;
 }
 
 .uploads-section {
@@ -204,8 +206,19 @@
     display: none;
 }
 
-#show-all-vids:hover, #user-video-images {
+#show-all-vids:hover, #user-video-images:hover, #subscribe2:hover, #unsubscribe2:hover {
     cursor: pointer;
+}
+
+#subscribe2, #unsubscribe2 {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 8px;
+    background-color: red;
+    color: white;
+    position: absolute;
+    right: 165px;
 }
 
 

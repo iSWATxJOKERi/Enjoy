@@ -11,7 +11,7 @@ class Api::SubscriptionsController < ApplicationController
         @subscription = Subscription.new(subs_params)
         # debugger
         if @subscription.save
-            render json: @subscription
+            render json: [@subscription]
         else
             render json: @subscription.errors.full_messages, status: 422
         end
@@ -21,7 +21,7 @@ class Api::SubscriptionsController < ApplicationController
         @subscription = Subscription.find_by(id: params[:subscription][:id], subscriber_id: params[:subscription][:subscriber_id], channel_id: params[:subscription][:channel_id])
         if @subscription && (@subscription.subscriber_id == current_user.id)
             @subscription.destroy
-            render json: @subscription
+            render json: [@subscription]
         else
             render json: @subscription.errors.full_messages, status: 422
         end

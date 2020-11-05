@@ -70,6 +70,7 @@ const usersReducer = (state = {}, action) => {
             // debugger
             return Object.assign({}, state, { subscription: action.subscription });
         case REMOVE_SUBSCRIPTION:
+            // debugger
             let sub = Object.assign({}, state);
             delete sub['subscription'];
             sub['subscription'] = []

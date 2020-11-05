@@ -38,7 +38,7 @@ class Api::CommentsController < ApplicationController
     end
 
     def destroy
-        debugger
+        # debugger
         @comment = Comment.find_by(commenter_id: params[:comment][:commenter_id], video_id: params[:comment][:video_id], id: params[:comment][:id])
         # debugger
         if @comment && (@comment.commenter_id == current_user.id)

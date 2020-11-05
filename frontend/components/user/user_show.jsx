@@ -5,6 +5,8 @@ import UserUploadedVids from './user_uploaded_vids_item';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import Videos from './videos';
 import '../../font_awesome';
+import SubsList from './subs';
+import UserSub from '../main/subscriptions/subs';
 
 class UserShow extends React.Component {
     constructor(props) {
@@ -21,7 +23,9 @@ class UserShow extends React.Component {
         // debugger
         this.props.fetchUser(this.props.match.params.id).then(() => {
             this.props.fetchVideos().then(() => {
-                this.toggleSide();
+                this.props.fetchSubscription(this.props.currentUser, this.props.user.id).then(() => {
+                    this.toggleSide();
+                })
             })
         })
     }
@@ -122,12 +126,16 @@ class UserShow extends React.Component {
                                 <li id="back-home">Home</li>
                                 <li id="show-all-vids">Videos</li>
                                 <li>About</li>
+                                { this.props.currentUser ? 
+                                    <UserSub id="user-sub" channel={ this.props.user.id } user={ this.props.currentUser } allProps={ this.props }/> : 
+                                    <span id="subscribe" onClick={ () => window.location.href = "#/login" }>Login to Subscribe</span>  }
                             </div>
                         </div>
                         <section className="user-content">
                             <div className="uploads-section">
                                 <span className="upload-title">Uploads</span>
                                 <div className="uploads">
+                                    <SubsList allProps={ this.props }/>
                                     { show }
                                 </div>
                             </div>
