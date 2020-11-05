@@ -34,7 +34,7 @@ class PrimaryComments extends React.Component {
 
     componentDidUpdate(prevProps) {
         // debugger
-        if(Object.values(this.props.psuedo).length !== Object.values(prevProps.psuedo).length) {
+        if(Object.values(this.props.comments).length !== Object.values(prevProps.comments).length) {
             // debugger
             this.setState({
                 replies: this.props.comment.replies,
@@ -55,15 +55,16 @@ class PrimaryComments extends React.Component {
         let comment = { body: this.state.comment, commenter_id: this.props.allProps.currentUser, video_id: this.props.allProps.match.params.id, parent_comment_id: this.props.comment.id, source: this.props.comment.id };
         // debugger
         this.props.allProps.createComment(comment).then(() => {
-            // this.props.allProps.fetchUser(this.props.allProps.currentUser)
-            this.setState({
-                comment: "",
-                edit: false,
-                reply: false,
-                showreplies: true,
-                update: false
+            this.props.allProps.fetchComments(this.props.allProps.match.params.id).then(() => {
+                this.setState({
+                    comment: "",
+                    edit: false,
+                    reply: false,
+                    showreplies: true,
+                    update: false
+                })
+                document.getElementById(`comment-areas-${ this.props.comment.id }`).value = "";
             })
-            document.getElementById(`comment-areas-${ this.props.comment.id }`).value = "";
         })
     }
 
