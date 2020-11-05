@@ -29,7 +29,7 @@ class Api::CommentsController < ApplicationController
         @comment = Comment.find_by(commenter_id: params[:comment][:commenter_id], video_id: params[:comment][:video_id], id: params[:comment][:id])
         # debugger
         if @comment.update(comment_params)
-            render json: @comment
+            render :show
         else
             render json: { 
                 body: @comment.errors.full_messages_for(:body)
