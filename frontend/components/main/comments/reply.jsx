@@ -21,6 +21,10 @@ class Reply extends React.Component {
         this.handleUpdate = this.handleUpdate.bind(this);
     }
 
+    componentDidMount() {
+        this.props.allProps.allProps.fetchCommentLikes(this.props.reply.id, this.props.allProps.allProps.video.id)
+    }
+
     handleInput() {
         return (e) => {
             this.setState({
@@ -125,7 +129,7 @@ class Reply extends React.Component {
                                     <span>{ this.props.reply.body }</span> }
                                 </div>
                                 <div className="likes-reply2">
-                                    <ReplyLikes allProps={ this.props.allProps } reply={ this.props.reply }/>
+                                    <ReplyLikes psu={ this.props.psuedo[this.props.reply.id] } allProps={ this.props.allProps } reply={ this.props.reply }/>
                                     <span onClick={ this.toggleReply }>REPLY</span>
                                 </div>
                                     </> }

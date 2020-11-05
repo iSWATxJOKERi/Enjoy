@@ -28,19 +28,35 @@ const usersReducer = (state = {}, action) => {
             // debugger
             return Object.assign({}, state, { commentLike: action.like[0] ? action.like[0] : action.like });
         case RECEIVE_COMMENT_LIKES:
-            let com = Object.assign({}, state, { 'commentLikes' : {}, 'commentDislikes' : {} });
-            // debugger
-            action.like.commentlikes.map((like, idx) => {
-                if(like.kind_of === "like") {
-                    com['commentLikes'][action.like.commentlikes[idx].likeable_id] = like
-                }
-            })
-            action.like.commentlikes.map((dislike, i) => {
-                if(dislike.kind_of === "dislike") {
-                    com['commentDislikes'][action.like.commentlikes[i].likeable_id] = dislike
-                }
-            })
-            return com
+            if(state['commentLikes'] || state['commentDislikes']) {
+                // debugger
+                let com = Object.assign({}, state);
+                action.like.commentlikes.map((like, idx) => {
+                    if(like.kind_of === "like") {
+                        com['commentLikes'][action.like.commentlikes[idx].likeable_id] = like
+                    }
+                })
+                action.like.commentlikes.map((dislike, i) => {
+                    if(dislike.kind_of === "dislike") {
+                        com['commentDislikes'][action.like.commentlikes[i].likeable_id] = dislike
+                    }
+                })
+                return com
+            } else {
+                let com = Object.assign({}, state, { 'commentLikes' : {}, 'commentDislikes' : {} });
+                // debugger
+                action.like.commentlikes.map((like, idx) => {
+                    if(like.kind_of === "like") {
+                        com['commentLikes'][action.like.commentlikes[idx].likeable_id] = like
+                    }
+                })
+                action.like.commentlikes.map((dislike, i) => {
+                    if(dislike.kind_of === "dislike") {
+                        com['commentDislikes'][action.like.commentlikes[i].likeable_id] = dislike
+                    }
+                })
+                return com
+            }
         case REMOVE_COMMENT_LIKE:
             // debugger
             let nsc = Object.assign({}, state);

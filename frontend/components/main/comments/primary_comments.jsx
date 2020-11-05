@@ -170,9 +170,9 @@ class PrimaryComments extends React.Component {
         final = flattened.map(replyy => {
             // debugger
             if(replyy.parent_comment_id !== this.props.comment.id) {
-                return <Reply key={ replyy.id } tagged={ true } reply={ replyy } allProps={ this.props } comment={ this.props.comment }/>
+                return <Reply psuedo={ this.props.psuedo } key={ replyy.id } tagged={ true } reply={ replyy } allProps={ this.props } comment={ this.props.comment }/>
             } else {
-                return <Reply key={ replyy.id } tagged={ false } reply={ replyy } allProps={ this.props } comment={ this.props.comment }/>
+                return <Reply psuedo={ this.props.psuedo } key={ replyy.id } tagged={ false } reply={ replyy } allProps={ this.props } comment={ this.props.comment }/>
             }
         })
         // console.log(final)
