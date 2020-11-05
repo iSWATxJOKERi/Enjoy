@@ -296,3 +296,14 @@
     color: blue;
 }
 
+.update-comment-box {
+    align-items: end;
+    display: flex;
+    flex-direction: column;
+    textarea {
+        resize: unset;
+        width: 100%;
+        border-bottom: 1px solid lightgray;
+    }
+}
+

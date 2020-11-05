@@ -29,6 +29,7 @@ export const createComment = comment => {
 }
 
 export const updateComment = comment => {
+    // debugger
     return (
         $.ajax({
             method: 'PATCH',
