@@ -81,7 +81,7 @@ class Comments extends React.Component {
         // debugger
         if(Object.values(this.state.primary_comments).length > 0) {
             // debugger
-            for(let i = 0; i < this.props.video.comments.length; i++) {
+            for(let i = 0; i < Object.values(this.props.comments).length; i++) {
                 // debugger
                 if((this.state.primary_comments && this.props.video.comments[i]) && this.state.primary_comments[this.props.video.comments[i]]) {
                     // debugger
@@ -92,7 +92,7 @@ class Comments extends React.Component {
                     }
                 }
             }
-            // console.log(primary_comments)
+            // console.log(Object.values(this.props.comments).length)
         }
         return (
             <section className="right-content">

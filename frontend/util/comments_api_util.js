@@ -44,7 +44,7 @@ export const deleteComment = comment => {
     return (
         $.ajax({
             method: 'DELETE',
-            url: `/api/videos/${ comment.video_id }/likes/${ comment.id }`,
+            url: `/api/videos/${ comment.video_id }/comments/${ comment.id }`,
             data: { comment } 
         })
     )

@@ -26,6 +26,7 @@ class PrimaryComments extends React.Component {
         this.getAllReplies = this.getAllReplies.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
         this.handleUpdate = this.handleUpdate.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     componentDidMount() {
@@ -149,6 +150,14 @@ class PrimaryComments extends React.Component {
         })
     }
 
+    handleDelete() {
+        let comment = { id: this.props.comment.id, body: this.props.comment.body, commenter_id: this.props.allProps.currentUser, video_id: this.props.allProps.match.params.id };
+
+        this.props.allProps.removeComment(comment).then(() => {
+            this.props.allProps.fetchComments(this.props.allProps.match.params.id)
+        })
+    }
+
     render() {
         // debugger
         let replies;
@@ -171,6 +180,7 @@ class PrimaryComments extends React.Component {
         let repl = this.state.showreplies ? 
             <span className="replies-btn" onClick={ this.toggleReplies }>&#9650;{ ` Hide ${ this.state.len } replies` }</span> : 
             <span className="replies-btn" onClick={ this.toggleReplies }>&#9660;{ ` View ${ this.state.len } replies` }</span>
+        // debugger
         return (
             <section>
                 <section className="comment-box">
@@ -203,7 +213,7 @@ class PrimaryComments extends React.Component {
                     { options }
                     <div className={ this.state.edit ? "update-comment" : "hide" }>
                         <span onClick={ this.handleEdit } className="edit-comment">EDIT</span>
-                        <span className="delete-comment">DELETE</span>
+                        <span onClick={ this.handleDelete } className="delete-comment">DELETE</span>
                     </div>
                 </section>
                 <section className={ this.state.reply ? "create-comment2" : "hide" }>
