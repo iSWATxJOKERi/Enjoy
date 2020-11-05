@@ -40,7 +40,7 @@ export const updateComment = comment => {
 }
 
 export const deleteComment = comment => {
-    // debugger
+    debugger
     return (
         $.ajax({
             method: 'DELETE',

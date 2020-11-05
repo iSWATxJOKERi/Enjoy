@@ -19,6 +19,7 @@ class Reply extends React.Component {
         this.handleInput = this.handleInput.bind(this);
         this.handleEdit = this.handleEdit.bind(this);
         this.handleUpdate = this.handleUpdate.bind(this);
+        this.handleDelete = this.handleDelete.bind(this);
     }
 
     componentDidMount() {
@@ -97,6 +98,13 @@ class Reply extends React.Component {
         })
     }
 
+    handleDelete() {
+        let comment = { id: this.props.reply.id, body: this.props.reply.body, commenter_id: this.props.allProps.allProps.currentUser, video_id: this.props.allProps.allProps.match.params.id };
+        this.props.allProps.allProps.removeComment(comment).then(() => {
+            this.props.allProps.allProps.fetchComments(this.props.allProps.allProps.match.params.id)
+        })
+    }
+
     render() {
         // debugger
         const options = <FontAwesomeIcon id="edit-comment" icon="ellipsis-v" onClick={ this.toggleEdit }/>;
@@ -137,7 +145,7 @@ class Reply extends React.Component {
                     { options }
                     <div className={ this.state.edit ? "update-comment2" : "hide" }>
                         <span onClick={ this.handleEdit } className="edit-comment">EDIT</span>
-                        <span className="delete-comment">DELETE</span>
+                        <span onClick={ this.handleDelete } className="delete-comment">DELETE</span>
                     </div>
                 </section>
                 <section className={ this.state.reply ? "create-comment3" : "hide" }>
