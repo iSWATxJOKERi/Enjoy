@@ -11,8 +11,9 @@ if @users
         else
             json.banner false
         end
-        json.subbers user.subscribers.ids
-        json.subbed_to user.subscriptions.ids
+        json.subbers user.subscribers.select("subscriber_id").map{ |ele| ele["subscriber_id"] }
+        json.subbed_to user.subscriptions.select("channel_id").map{ |ele| ele["channel_id"] }
+        json.subscriptions user.subscriptions.select("channel_id").map{ |ele| ele["channel_id"] }.map{ |s| User.find_by("id = (?)", s) }
     end
 else
     json.array! @userSearch do |user|
@@ -27,7 +28,8 @@ else
         else
             json.banner false
         end
-        json.subbers user.subscribers.ids
-        json.subbed_to user.subscriptions.ids
+        json.subbers user.subscribers.select("subscriber_id").map{ |ele| ele["subscriber_id"] }
+        json.subbed_to user.subscriptions.select("channel_id").map{ |ele| ele["channel_id"] }
+        json.subscriptions user.subscriptions.select("channel_id").map{ |ele| ele["channel_id"] }.map{ |s| User.find_by("id = (?)", s) }
     end
 end

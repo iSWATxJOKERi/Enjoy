@@ -21,10 +21,12 @@ class UserShow extends React.Component {
 
     componentDidMount() {
         // debugger
-        this.props.fetchUser(this.props.match.params.id).then(() => {
-            this.props.fetchVideos().then(() => {
-                this.props.fetchSubscription(this.props.currentUser, this.props.user.id).then(() => {
-                    this.toggleSide();
+        this.props.fetchUsers().then(() => {
+            this.props.fetchUser(this.props.match.params.id).then(() => {
+                this.props.fetchVideos().then(() => {
+                    this.props.fetchSubscription(this.props.currentUser, this.props.user.id).then(() => {
+                        this.toggleSide();
+                    })
                 })
             })
         })
@@ -80,6 +82,7 @@ class UserShow extends React.Component {
 
     render() {
         let vids = [];
+        let subs = [];
         let show;
         let edit_avatar = <FontAwesomeIcon id="edit-avatar" icon="camera" onClick={ () => document.getElementById("avatar-upload").click() }/>
         let edit_avatar2 = <FontAwesomeIcon id="edit-avatar" icon="camera" onClick={ () => document.getElementById("avatar-upload").click() }/>
@@ -92,6 +95,12 @@ class UserShow extends React.Component {
             }
             // debugger
             show = vids.slice(0,4)
+            if(Object.values(this.props.users).length > 1) {
+                for(let j = 0; j < this.props.user.subbed_to.length; j++) {
+                    // debugger
+                    subs.push(<SubsList key={ this.props.user.subbed_to[j] } channel={ this.props.users[this.props.user.subbed_to[j]] } allProps={ this.props }/>)
+                }
+            }
         }
         return (
             <section className="main-content">
@@ -133,9 +142,12 @@ class UserShow extends React.Component {
                         </div>
                         <section className="user-content">
                             <div className="uploads-section">
+                                <span className="upload-title">Subscriptions</span>
+                                <div className="uploads2">
+                                    { subs }
+                                </div>
                                 <span className="upload-title">Uploads</span>
                                 <div className="uploads">
-                                    <SubsList allProps={ this.props }/>
                                     { show }
                                 </div>
                             </div>

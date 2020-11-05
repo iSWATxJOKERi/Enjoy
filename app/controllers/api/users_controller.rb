@@ -28,6 +28,7 @@ class Api::UsersController < ApplicationController
             @disliked_comments_video = @disliked_comments.map{ |comment2| Like.all.where("likeable_id = (?) AND likeable_type = 'Comment' AND kind_of = 'dislike'", comment2)[0]}
             @subbed_to = @user.subscriptions.select("channel_id").map{ |ele| ele["channel_id"] }
             @subbers = @user.subscribers.select("subscriber_id").map{ |ele| ele["subscriber_id"] }
+            @subscriptions = @subbed_to.map{ |s| User.find_by("id = (?)", s) }
             render :show
         else
             render json: { "session" => "No logged in user"}

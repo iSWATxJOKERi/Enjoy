@@ -7,6 +7,7 @@ json.liked_comments_video @liked_comments_video
 json.disliked_comments_video @disliked_comments_video
 json.subbers @subbers
 json.subbed_to @subbed_to
+json.subscriptions @subscriptions
 if @user.avatar.attached?
     json.avatar url_for(@user.avatar)
 else
