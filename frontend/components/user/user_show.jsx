@@ -137,7 +137,7 @@ class UserShow extends React.Component {
                                 <li>About</li>
                                 { this.props.currentUser ? 
                                     <UserSub id="user-sub" channel={ this.props.user.id } user={ this.props.currentUser } allProps={ this.props }/> : 
-                                    <span id="subscribe" onClick={ () => window.location.href = "#/login" }>Login to Subscribe</span>  }
+                                    <span id="subscribe2" onClick={ () => window.location.href = "#/login" }>Login to Subscribe</span>  }
                             </div>
                         </div>
                         <section className="user-content">
