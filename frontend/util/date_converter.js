@@ -1,4 +1,5 @@
 const dateConverter = (uglyDate) => {
+    // debugger
     let fakeHalf = uglyDate.split("T");
     let realHalf = fakeHalf[0].split("-");
 

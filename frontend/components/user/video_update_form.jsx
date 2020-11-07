@@ -61,8 +61,8 @@ class VideoUpdateForm extends React.Component {
         e.preventDefault();
         const video = new FormData();
         const id = this.props.match.params.id;
-        this.state.title.length > 0 ? video.append('video[title]', this.state.title) : video.append('video[title]', "");
-        this.state.description.length > 0 ? video.append('video[description]', this.state.description) : video.append('video[description]', "");
+        this.state.title.length > 0 ? video.append('video[title]', this.state.title) : null;
+        this.state.description.length > 0 ? video.append('video[description]', this.state.description) : null;
         this.state.photoFile ? video.append('video[thumbnail]', this.state.photoFile) : null;
         // debugger
         const arr = [video, id]

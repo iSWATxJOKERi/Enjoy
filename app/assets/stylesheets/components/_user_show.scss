@@ -24,6 +24,36 @@
     width: 100%;
 }
 
+.bord {
+    border-bottom: 3px solid black;
+}
+
+.about-section {
+    display: flex;
+    flex-direction: column;
+    align-items: end;
+    padding-top: 35px;
+    #s1 {
+        width: 20%;
+        padding: 10px 0;
+        border-top: 1px solid lightgray;
+        font-size: 14px;
+    }
+    #s2 {
+        width: 20%;
+        padding: 10px 0;
+        border-top: 1px solid lightgray;
+        font-size: 14px;
+        border-bottom: 1px solid lightgray;
+    }
+    #s3 {
+        width: 20%;
+        padding: 10px 0;
+        border-bottom: 1px solid lightgray;
+        font-size: 14px;
+    }
+}
+
 .uploaded-box-date {
     height: 15%;
     color: rgb(94, 94, 94);
@@ -231,10 +261,6 @@
 #user-video-images {
     width: 100%;
     height: 70%;
-}
-
-.all-user-vids {
-    display: none;
 }
 
 #show-all-vids:hover, #user-video-images:hover, #subscribe2:hover, #unsubscribe2:hover, #subscribe3:hover, #unsubscribe3:hover {

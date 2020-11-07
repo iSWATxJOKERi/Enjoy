@@ -7,16 +7,21 @@ import Videos from './videos';
 import '../../font_awesome';
 import SubsList from './subs';
 import UserSub from '../main/subscriptions/subs';
+import dateConverter from '../../util/date_converter';
 
 class UserShow extends React.Component {
     constructor(props) {
         super(props);
         this.state = {
             avatar: null,
-            avatarUrl: null
+            avatarUrl: null,
+            videos: false,
+            about: false,
+            home: true
         }
         this.toggleSide = this.toggleSide.bind(this);
         this.uploadAvatar = this.uploadAvatar.bind(this);
+        this.toggleTabs = this.toggleTabs.bind(this);
     }
 
     componentDidMount() {
@@ -82,6 +87,28 @@ class UserShow extends React.Component {
         }
     }
 
+    toggleTabs(field) {
+        if(field === 'home') {
+            this.setState({
+                [field]: true,
+                videos: false,
+                about: false
+            })
+        } else if (field === 'about') {
+            this.setState({
+                [field]: true,
+                videos: false,
+                home: false
+            })
+        } else {
+            this.setState({
+                [field]: true,
+                home: false,
+                about: false
+            })
+        }
+    }
+
     render() {
         let use;
         let vids = [];
@@ -142,14 +169,14 @@ class UserShow extends React.Component {
                                 </div>
                             </div>
                             <div className="parts-of-header">
-                                <li id="back-home">Home</li>
-                                <li id="show-all-vids">Videos</li>
-                                <li>About</li>
+                                <li onClick={ () => this.toggleTabs('home') } id="back-home" className={ this.state.home ? "bord" : " "}>Home</li>
+                                <li onClick={ () => this.toggleTabs('videos') } id="show-all-vids" className={ this.state.videos ? "bord" : " "}>Videos</li>
+                                <li onClick={ () => this.toggleTabs('about') } id="show-stats" className={ this.state.about ? "bord" : " "}>About</li>
                                 { use }
                             </div>
                         </div>
                         <section className="user-content">
-                            <div className="uploads-section">
+                            <div className={ this.state.home ? "uploads-section" : "hide" }>
                                 <span className="upload-title">Subscriptions</span>
                                 <div className="uploads2">
                                     { subs.length > 0 ? subs : "Subscribe to users to see them appear here!" }
@@ -159,7 +186,14 @@ class UserShow extends React.Component {
                                     { show }
                                 </div>
                             </div>
-                            <Videos allProps={ this.props } />
+                            <section className={ this.state.videos ? "all-user-vids" : "hide"}>
+                                <Videos allProps={ this.props } />
+                            </section>
+                            <section className={ this.state.about ? "about-section" : "hide"}>
+                                <span id="s1">Stats</span>
+                                <span id="s2">{ `Joined ${ dateConverter(this.props.user.created_at)}` }</span>
+                                <span id="s3">400 views</span>
+                            </section>
                         </section> </> : null }
                 </section> 
             </section>

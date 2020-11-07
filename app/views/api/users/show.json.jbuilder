@@ -1,4 +1,4 @@
-json.extract! @user, :id, :username, :email
+json.extract! @user, :id, :username, :email, :created_at
 json.liked_videos @liked_videos
 json.disliked_videos @disliked_videos
 json.liked_comments @liked_comments
@@ -8,7 +8,7 @@ json.disliked_comments_video @disliked_comments_video
 json.subbers @subbers
 json.subbed_to @subbed_to
 json.subscriptions @subscriptions do |sub|
-    json.extract! sub, :id, :username, :email
+    json.extract! sub, :id, :username, :email, :created_at
     json.liked_videos @liked_videos
     json.disliked_videos @disliked_videos
     json.liked_comments @liked_comments

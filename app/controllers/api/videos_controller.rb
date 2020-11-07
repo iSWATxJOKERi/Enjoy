@@ -28,7 +28,7 @@ class Api::VideosController < ApplicationController
         @video.uploader_id = current_user.id
         # debugger
         if @video.save
-            render json: { "id" => @video.id, "title" => @video.title, "description" => @video.description, "uploader" => @video.uploader, "created_at" => @video.created_at, "updated_at" => @video.updated_at }
+            render :show
         else
             render json: { 
                 title: @video.errors.full_messages_for(:title),
@@ -43,7 +43,7 @@ class Api::VideosController < ApplicationController
         @video = Video.find_by(id: params[:id])
         # debugger
         if @video.update(video_params)
-            render json: @video
+            render :show
         else
             render json: { 
                 title: @video.errors.full_messages_for(:title),

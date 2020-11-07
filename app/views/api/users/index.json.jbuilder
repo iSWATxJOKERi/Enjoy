@@ -1,6 +1,6 @@
 if @users
     json.array! @users do |user|
-        json.extract! user, :id, :username, :email
+        json.extract! user, :id, :username, :email, :created_at
         if user.avatar.attached?
             json.avatar url_for(user.avatar)
         else
@@ -17,7 +17,7 @@ if @users
     end
 else
     json.array! @userSearch do |user|
-        json.extract! user, :id, :username, :email
+        json.extract! user, :id, :username, :email, :created_at
         if user.avatar.attached?
             json.avatar url_for(user.avatar)
         else
