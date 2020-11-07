@@ -29,17 +29,17 @@ class UserSub2 extends React.Component {
         }
     }
 
-    componentDidUpdate(prevProps) {
-        if(prevProps.allProps.like.entities.users.subscription) {
-            // debugger
-            if(prevProps.allProps.like.entities.users.subscription !== this.props.allProps.like.entities.users.subscription) {
-                // console.log(this.state.subscribed_already)
-                this.setState({
-                    subscribed_already: this.props.allProps.like.entities.users.subscription[0] ? true : false
-                })
-            }
-        }
-    }
+    // componentDidUpdate(prevProps) {
+    //     if(prevProps.allProps.like.entities.users.subscription) {
+    //         // debugger
+    //         if(prevProps.allProps.like.entities.users.subscription !== this.props.allProps.like.entities.users.subscription) {
+    //             // console.log(this.state.subscribed_already)
+    //             this.setState({
+    //                 subscribed_already: this.props.allProps.like.entities.users.subscription[0] ? true : false
+    //             })
+    //         }
+    //     }
+    // }
 
     subscribe() {
         return () => {
@@ -47,7 +47,7 @@ class UserSub2 extends React.Component {
             this.props.allProps.subscribe(sub).then(() => {
                 this.props.allProps.fetchUser(this.props.allProps.currentUser).then(() => {
                     this.setState({
-                        subscribed_already: this.props.allProps.like.entities.users.subscription[0] ? true : false
+                        subscribed_already: this.props.allProps.like.entities.users.subscription[this.props.channel] ? true : false
                     })
                 })
             })
@@ -57,11 +57,11 @@ class UserSub2 extends React.Component {
     unsubscribe() {
         return () => {
             // debugger
-            let sub = this.props.allProps.like.entities.users.subscription[0];
+            let sub = this.props.allProps.like.entities.users.subscription[this.props.channel];
             this.props.allProps.unsubscribe(sub).then(() => {
                 this.props.allProps.fetchUser(this.props.allProps.currentUser).then(() => {
                     this.setState({
-                        subscribed_already: this.props.allProps.like.entities.users.subscription[0] ? true : false
+                        subscribed_already: this.props.allProps.like.entities.users.subscription[this.props.channel] ? true : false
                     })
                 })
             })

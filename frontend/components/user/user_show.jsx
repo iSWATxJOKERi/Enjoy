@@ -25,7 +25,9 @@ class UserShow extends React.Component {
             this.props.fetchUser(this.props.match.params.id).then(() => {
                 this.props.fetchVideos().then(() => {
                     this.props.fetchSubscription(this.props.currentUser, this.props.user.id).then(() => {
-                        this.toggleSide();
+                        this.props.fetchSubscriptions(this.props.currentUser).then(() => {
+                            this.toggleSide();
+                        })
                     })
                 })
             })
@@ -150,7 +152,7 @@ class UserShow extends React.Component {
                             <div className="uploads-section">
                                 <span className="upload-title">Subscriptions</span>
                                 <div className="uploads2">
-                                    { subs }
+                                    { subs.length > 0 ? subs : "Subscribe to users to see them appear here!" }
                                 </div>
                                 <span className="upload-title">Uploads</span>
                                 <div className="uploads">

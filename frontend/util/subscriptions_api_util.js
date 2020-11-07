@@ -8,6 +8,16 @@ export const fetchSubscription = (id, channel_id) => {
     )
 }
 
+export const fetchSubscriptions = (id) => {
+    // debugger
+    return (
+        $.ajax({
+            method: 'GET',
+            url: `/api/users/${ id }/subscriptions`
+        })
+    )
+}
+
 export const createSubscription = subscription => {
     // debugger
     return (

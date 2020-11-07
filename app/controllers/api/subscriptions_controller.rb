@@ -3,8 +3,16 @@ class Api::SubscriptionsController < ApplicationController
 
     def index
         # debugger
-        @subscriptions = Subscription.all.where("channel_id = (?) AND subscriber_id = (?)", params[:channel_id], params[:user_id])
-        render :index
+        if params[:channel_id] && params[:user_id]
+            # debugger
+            @subscriptions = Subscription.where("channel_id = (?) AND subscriber_id = (?)", params[:channel_id], params[:user_id])
+            render :index
+        else
+        # debugger
+            @subs = Subscription.where("subscriber_id = (?)", params[:user_id])
+            # debugger
+            render :index
+        end
     end
 
     def create

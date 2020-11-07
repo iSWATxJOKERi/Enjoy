@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import { createSubscription, deleteSubscription, fetchSubscription } from '../../actions/subscription_actions';
+import { createSubscription, deleteSubscription, fetchSubscription, fetchSubscriptions } from '../../actions/subscription_actions';
 import { fetchUser, fetchUsers, uploadAvatar } from '../../actions/user_actions';
 import { fetchVideos } from '../../actions/video_actions';
 import UserShow from './user_show';
@@ -21,6 +21,7 @@ const mapDispatchToProps = (dispatch, ownProps) => {
         fetchVideos: () => dispatch(fetchVideos()),
         processAvatar: (avatar, id) => dispatch(uploadAvatar(avatar, id)),
         fetchSubscription: (id, sub_id) => dispatch(fetchSubscription(id, sub_id)),
+        fetchSubscriptions: id => dispatch(fetchSubscriptions(id)),
         subscribe: sub => dispatch(createSubscription(sub)),
         unsubscribe: sub => dispatch(deleteSubscription(sub)),
         fetchUsers: () => dispatch(fetchUsers())

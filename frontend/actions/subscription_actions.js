@@ -12,10 +12,10 @@ const receiveSubscription = subscription => {
     }
 }
 
-const receiveSubscriptions = subscriptions => {
+const receiveSubscriptions = subs => {
     return {
         type: RECEIVE_SUBSCRIPTIONS,
-        subscriptions
+        subs
     }
 }
 
@@ -52,6 +52,14 @@ export const deleteSubscription = sub => dispatch => {
 export const fetchSubscription = (id, channel_id) => dispatch => {
     return SubscriptionApiUtil.fetchSubscription(id, channel_id).then(sub => {
         dispatch(receiveSubscription(sub))
+    }, errors => {
+        dispatch(receiveSubscriptionErrors(errors.responseJSON))
+    })
+}
+
+export const fetchSubscriptions = id => dispatch => {
+    return SubscriptionApiUtil.fetchSubscriptions(id).then(subs => {
+        dispatch(receiveSubscriptions(subs))
     }, errors => {
         dispatch(receiveSubscriptionErrors(errors.responseJSON))
     })
