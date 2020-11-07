@@ -48,3 +48,11 @@ export const uploadAvatar = (avatar, id) => dispatch => {
         dispatch(receiveUserErrors(errors.responseJSON))
     })
 }
+
+export const uploadBanner = (banner, id) => dispatch => {
+    return UserApiUtil.uploadBanner(banner, id).then(user => {
+        dispatch(receiveUser(user))
+    }, errors => {
+        dispatch(receiveUserErrors(errors.responseJSON))
+    })
+}

@@ -17,11 +17,14 @@ class UserShow extends React.Component {
             avatarUrl: null,
             videos: false,
             about: false,
-            home: true
+            home: true,
+            banner: null,
+            bannerUrl: null
         }
         this.toggleSide = this.toggleSide.bind(this);
         this.uploadAvatar = this.uploadAvatar.bind(this);
         this.toggleTabs = this.toggleTabs.bind(this);
+        this.uploadBanner = this.uploadBanner.bind(this);
     }
 
     componentDidMount() {
@@ -54,13 +57,43 @@ class UserShow extends React.Component {
         }
     }
 
+    uploadBanner(e) {
+        const file = e.target.files[0];
+        const fileReader = new FileReader();
+        fileReader.onloadend = () => {
+            this.setState({
+                banner: file,
+                bannerUrl: fileReader.result
+            })
+        }
+        if(file) {
+            fileReader.readAsDataURL(file);
+            this.handleBanner();
+        }
+    }
+
+    handleBanner() {
+        const user = new FormData();
+        const id = this.props.match.params.id;
+        // debugger
+        this.state.banner.name ? user.append('user[banner]', this.state.banner) : user.append('user[banner]', "");
+        // debugger
+        this.props.processBanner(user, id).then(() => {
+            window.location.href = `/#/users/${ id }`;
+        }, errors => {
+            this.setState({
+                errors: errors.errors
+            })
+        })
+    }
+
     handleSubmit() {
         const user = new FormData();
         const id = this.props.match.params.id;
         this.state.avatar.name ? user.append('user[avatar]', this.state.avatar) : user.append('user[avatar]', "");
         // debugger
         this.props.processAvatar(user, id).then(() => {
-            window.location.href = `/#/users/1`;
+            window.location.href = `/#/users/${ id }`;
         }, errors => {
             this.setState({
                 errors: errors.errors
@@ -145,6 +178,7 @@ class UserShow extends React.Component {
                 <SideBar allProps={ this.props }/>
                 <section className="user-main">
                     { this.props.user ? <>
+                        { this.props.user.banner ? <img id="banner" src={ `${ this.props.user.banner }` } /> : "" }
                         <div className="user-header">
                             <div className="user-center-header">
                                 <div className="left-header">
@@ -161,7 +195,8 @@ class UserShow extends React.Component {
                                 </div>
                                 <div className="right-head">
                                     <div className="right-header">
-                                        <button>CUSTOMIZE BANNER</button>
+                                        <button onClick={ () => document.getElementById("banner-upload").click() }>CUSTOMIZE BANNER</button>
+                                        <input id="banner-upload" type="file" onChange={ this.uploadBanner }/>
                                     </div>
                                     <div className="right-header">
                                         <button onClick={ () => this.props.history.push(`/users/${ this.props.user.id }/videos/edit`) }>MANAGE VIDEOS</button>

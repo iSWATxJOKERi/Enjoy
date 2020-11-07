@@ -28,3 +28,16 @@ export const uploadAvatar = (avatar, id) => {
         })
     )
 }
+
+export const uploadBanner = (banner, id) => {
+    // debugger
+    return (
+        $.ajax({
+            method: 'PATCH',
+            url: `/api/users/${ id }`,
+            data: banner,
+            processData: false,
+            contentType: false
+        })
+    )
+}

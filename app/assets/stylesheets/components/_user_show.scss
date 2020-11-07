@@ -24,8 +24,13 @@
     width: 100%;
 }
 
+#banner {
+    height: 300px;
+}
+
 .bord {
     border-bottom: 3px solid black;
+    color: black;
 }
 
 .about-section {
@@ -144,7 +149,7 @@
     border-radius: 50px;
 }
 
-#avatar-upload {
+#avatar-upload, #banner-upload {
     display: none;
 }
 
@@ -177,12 +182,12 @@
     flex-direction: row;
     padding-left: 142px;
     list-style: none;
+    color: gray;
     li {
         padding: 13px 32px;
         vertical-align: middle;
         font-weight: 600;
         font-size: 14px;
-        color: gray;
     }
 
     li:hover {
