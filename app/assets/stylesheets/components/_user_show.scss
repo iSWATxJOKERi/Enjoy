@@ -187,21 +187,23 @@
 #avatar2 {
     position: relative;
     font-size: 50px;
-    width: 60%;
+    width: 90%;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 70px;
     background-color: darkgreen;
     color: white;
+    height: 60%;
 }
 
 .list-of-subs {
     display: flex;
     flex-direction: column;
-    width: 9%;
-    justify-content: center;
+    width: 10%;
+    justify-content: space-around;
     align-items: center;
+    min-height: 200px;
 }
 
 .uploads2 {
@@ -235,7 +237,7 @@
     display: none;
 }
 
-#show-all-vids:hover, #user-video-images:hover, #subscribe2:hover, #unsubscribe2:hover {
+#show-all-vids:hover, #user-video-images:hover, #subscribe2:hover, #unsubscribe2:hover, #subscribe3:hover, #unsubscribe3:hover {
     cursor: pointer;
 }
 
@@ -248,6 +250,26 @@
     color: white;
     position: absolute;
     right: 165px;
+}
+
+#subscribe3 {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 8px;
+    background-color: red;
+    color: white;
+    font-size: 12px;
+}
+
+#unsubscribe3 {
+    display: flex;
+    align-items: center;
+    box-sizing: border-box;
+    padding: 8px;
+    background-color: rgb(165, 165, 165);
+    color: black;
+    font-size: 12px;
 }
 
 

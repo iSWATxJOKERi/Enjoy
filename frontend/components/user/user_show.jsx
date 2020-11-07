@@ -81,6 +81,7 @@ class UserShow extends React.Component {
     }
 
     render() {
+        let use;
         let vids = [];
         let subs = [];
         let show;
@@ -100,6 +101,13 @@ class UserShow extends React.Component {
                     // debugger
                     subs.push(<SubsList key={ this.props.user.subbed_to[j] } channel={ this.props.users[this.props.user.subbed_to[j]] } allProps={ this.props }/>)
                 }
+            }
+            if(this.props.user.id !== this.props.currentUser) {
+                use = this.props.currentUser ? 
+                    <UserSub id="user-sub" channel={ this.props.user.id } user={ this.props.currentUser } allProps={ this.props }/> : 
+                    <span id="subscribe2" onClick={ () => window.location.href = "#/login" }>Login to Subscribe</span>  
+            } else {
+                use = ""
             }
         }
         return (
@@ -135,9 +143,7 @@ class UserShow extends React.Component {
                                 <li id="back-home">Home</li>
                                 <li id="show-all-vids">Videos</li>
                                 <li>About</li>
-                                { this.props.currentUser ? 
-                                    <UserSub id="user-sub" channel={ this.props.user.id } user={ this.props.currentUser } allProps={ this.props }/> : 
-                                    <span id="subscribe2" onClick={ () => window.location.href = "#/login" }>Login to Subscribe</span>  }
+                                { use }
                             </div>
                         </div>
                         <section className="user-content">

@@ -48,6 +48,7 @@ class VideoShow extends React.Component {
     }
 
     render() {
+        let use;
         let arr = [];
         let likes = this.props.video ? <Likes allProps={ this.props } video={ this.props.video } /> : null;
         let comments = this.props.video ? <Comments allProps={ this.props } video={ this.props.video } comments={ this.props.comments } /> : null;
@@ -58,6 +59,13 @@ class VideoShow extends React.Component {
                     arr.push(video)
                 }
             })
+            if(this.props.video.uploader.id !== this.props.currentUser) {
+                use = this.props.currentUser ? 
+                    <Subscription channel={ this.props.video.uploader.id } user={ this.props.currentUser } allProps={ this.props }/> : 
+                    <span id="subscribe" onClick={ () => window.location.href = "#/login" }>Login to Subscribe</span>
+            } else {
+                use = ""
+            }
         }
         // debugger
         return (
@@ -89,9 +97,7 @@ class VideoShow extends React.Component {
                                                 <div className="middle-content">
                                                     <span>{ this.props.video.uploader.username }</span>
                                                 </div>
-                                                { this.props.currentUser ? 
-                                                <Subscription channel={ this.props.video.uploader.id } user={ this.props.currentUser } allProps={ this.props }/> : 
-                                                <span id="subscribe" onClick={ () => window.location.href = "#/login" }>Login to Subscribe</span>  }
+                                                { use }
                                         </div>
                                         <div className="video-description">Description</div>
                                     </div>
