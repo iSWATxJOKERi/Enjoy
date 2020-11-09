@@ -32,7 +32,8 @@ class UserSub extends React.Component {
     componentDidUpdate(prevProps) {
         if(prevProps.allProps.like.entities.users.subscription) {
             // debugger
-            if(prevProps.allProps.like.entities.users.subscription[this.props.channel] !== this.props.allProps.like.entities.users.subscription[this.props.channel]) {
+            if(prevProps.allProps.like.entities.users.subscription[prevProps.channel] !== this.props.allProps.like.entities.users.subscription[this.props.channel]) {
+                // debugger
                 // console.log(this.state.subscribed_already)
                 this.setState({
                     subscribed_already: this.props.allProps.like.entities.users.subscription[this.props.channel] ? true : false

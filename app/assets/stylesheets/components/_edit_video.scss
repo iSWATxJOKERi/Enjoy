@@ -15,16 +15,6 @@
     }
 }
 
-.all-user-vids {
-    flex-direction: column;
-    height: 100%;
-    .videos-name {
-        padding-top: 10px;
-        padding-left: 115px;
-        font-weight: bold;
-    }
-}
-
 .all-videos {
     display: flex;
     flex-direction: row;

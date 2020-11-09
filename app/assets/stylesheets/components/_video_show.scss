@@ -42,6 +42,10 @@ video {
     height: 100%;
     width: 13.39%;
     overflow-y: scroll;
+    .li:hover {
+        cursor: pointer;
+        background-color: rgb(235, 235, 235);
+    }
 }
 
 .show-modal {
@@ -166,7 +170,6 @@ video {
 .left-info {
     display: flex;
     flex-direction: row;
-    height: 40%;
     padding: 10px 0;
     .middle-content {
         display: flex;
@@ -175,7 +178,6 @@ video {
         box-sizing: border-box;
         padding-left: 10px;
         font-weight: 600;
-        height: 70%;
     }
 }
 
@@ -204,14 +206,33 @@ video {
 
 #user4 {
     font-size: 30px;
-    height: 100%;
-    width: 5%;
+    height: 60px;
+    width: 60px;
     display: flex;
     justify-content: center;
     align-items: center;
     border-radius: 70px;
     background-color: darkgreen;
     color: white;
+}
+
+#comment-area {
+    position: relative;
+}
+
+#user5 {
+    position: absolute;
+    font-size: 30px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 70px;
+    background-color: darkgreen;
+    color: white;
+    height: 60px;
+    width: 60px;
+    z-index: 9;
+    left: 140px;
 }
 
 .video-box-title {

@@ -17,7 +17,7 @@ export default (props) => {
                 <section className="pop2">
                     <section className="logo-bar">
                         <div id="left">{ bar }</div>
-                        <div id="right"><img onClick={ () => this.props.history.push("/") } className="logo" src={ window.logo } /></div>
+                        <div id="right"><img onClick={ () => props.history.push("/") } className="logo" src={ window.logo } /></div>
                     </section>
                     <section className="first-sidebar">
                         <div onClick={ () => props.history.push("/") } className={ dir === "/" ? "li home-sb effect" : "li home-sb" }>

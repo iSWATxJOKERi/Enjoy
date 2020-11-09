@@ -197,9 +197,19 @@
 }
 
 .upload-title {
-    padding-top: 10px;
+    padding-top: 35px;
     padding-left: 115px;
     font-weight: bold;
+}
+
+.all-user-vids {
+    flex-direction: column;
+    height: 100%;
+    .videos-name {
+        padding-top: 35px;
+        padding-left: 115px;
+        font-weight: bold;
+    }
 }
 
 .uploads-section {
@@ -268,7 +278,7 @@
     height: 70%;
 }
 
-#show-all-vids:hover, #user-video-images:hover, #subscribe2:hover, #unsubscribe2:hover, #subscribe3:hover, #unsubscribe3:hover {
+#show-all-vids:hover, #user-video-images:hover, #subscribe2:hover, #unsubscribe2:hover, #subscribe3:hover, #unsubscribe3:hover, #avatar2:hover {
     cursor: pointer;
 }
 
@@ -301,6 +311,29 @@
     background-color: rgb(165, 165, 165);
     color: black;
     font-size: 12px;
+}
+
+.subs-section {
+    padding-top: 35px;
+    .list-of-subs {
+        display: flex;
+        flex-direction: column;
+        width: 10%;
+        justify-content: space-around;
+        align-items: center;
+        min-height: 200px;
+    }
+    #avatar2 {
+        position: relative;
+        font-size: 50px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 70px;
+        background-color: darkgreen;
+        color: white;
+        height: 120px;
+    }
 }
 
 

@@ -40,13 +40,18 @@ class EENavBar extends React.Component {
         const modal = document.getElementsByClassName("show-modal")[0];
         const content = document.getElementsByClassName("show-modal-content")[0];
         const button = document.getElementById("show-modal-btn");
+        const button2 = document.getElementById("show-close");
 
         button.onclick = function() {
-            if(modal.style.display == "none") {
+            if(modal.style.display == "none" || modal.style.display == "") {
                 modal.style.display = "block";
-            } else {
+            } 
+        }
+
+        button2.onclick = function() {
+            if(modal.style.display == "block") {
                 modal.style.display = "none";
-            }
+            } 
         }
 
         content.onclick = function(e) {

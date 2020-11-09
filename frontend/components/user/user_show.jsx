@@ -19,7 +19,9 @@ class UserShow extends React.Component {
             about: false,
             home: true,
             banner: null,
-            bannerUrl: null
+            bannerUrl: null,
+            user: this.props.match.params.id,
+            subs: false
         }
         this.toggleSide = this.toggleSide.bind(this);
         this.uploadAvatar = this.uploadAvatar.bind(this);
@@ -32,14 +34,28 @@ class UserShow extends React.Component {
         this.props.fetchUsers().then(() => {
             this.props.fetchUser(this.props.match.params.id).then(() => {
                 this.props.fetchVideos().then(() => {
-                    this.props.fetchSubscription(this.props.currentUser, this.props.user.id).then(() => {
-                        this.props.fetchSubscriptions(this.props.currentUser).then(() => {
+                    if(this.props.currentUser) {
+                        this.props.fetchSubscription(this.props.currentUser, this.props.user.id).then(() => {
+                            this.props.fetchSubscriptions(this.props.currentUser).then(() => {
+                                this.toggleSide();
+                            })
+                        })
+                    } else {
+                        this.props.fetchSubscriptions(this.props.user.id).then(() => {
                             this.toggleSide();
                         })
-                    })
+                    }
                 })
             })
         })
+    }
+
+    componentDidUpdate(prevProps, prevState) {
+        if(prevProps.match.params.id !== this.props.match.params.id) {
+            if(this.props.currentUser) {
+                this.props.fetchSubscription(this.props.currentUser, this.props.user.id)
+            }
+        }
     }
 
     uploadAvatar(e) {
@@ -108,7 +124,7 @@ class UserShow extends React.Component {
         const sidebar = document.getElementsByClassName("sidebar")[0];
 
         button.onclick = function() {
-            if(popbar.style.display == "flex" || popbar.style.display == "block") {
+            if(popbar.style.display == "flex" || popbar.style.display == "block" || popbar.style.display == "") {
                 popbar.style.display = "none";
                 user.style.marginLeft = "4.02%";
                 sidebar.style.display = "flex";
@@ -125,19 +141,29 @@ class UserShow extends React.Component {
             this.setState({
                 [field]: true,
                 videos: false,
-                about: false
+                about: false,
+                subs: false
             })
         } else if (field === 'about') {
             this.setState({
                 [field]: true,
                 videos: false,
-                home: false
+                home: false,
+                subs: false
             })
-        } else {
+        } else if(field === 'subs') {
+            this.setState({
+                [field]: true,
+                videos: false,
+                home: false,
+                about: false
+            })
+        }else {
             this.setState({
                 [field]: true,
                 home: false,
-                about: false
+                about: false,
+                subs: false
             })
         }
     }
@@ -147,6 +173,7 @@ class UserShow extends React.Component {
         let vids = [];
         let subs = [];
         let show;
+        let small_subs;
         let edit_avatar = <FontAwesomeIcon id="edit-avatar" icon="camera" onClick={ () => document.getElementById("avatar-upload").click() }/>
         let edit_avatar2 = <FontAwesomeIcon id="edit-avatar" icon="camera" onClick={ () => document.getElementById("avatar-upload").click() }/>
         if(this.props.user) {
@@ -164,6 +191,7 @@ class UserShow extends React.Component {
                     subs.push(<SubsList key={ this.props.user.subbed_to[j] } channel={ this.props.users[this.props.user.subbed_to[j]] } allProps={ this.props }/>)
                 }
             }
+            small_subs = subs.slice(0, 4)
             if(this.props.user.id !== this.props.currentUser) {
                 use = this.props.currentUser ? 
                     <UserSub id="user-sub" channel={ this.props.user.id } user={ this.props.currentUser } allProps={ this.props }/> : 
@@ -184,10 +212,10 @@ class UserShow extends React.Component {
                                 <div className="left-header">
                                     { this.props.user.avatar ? 
                                     <div id="hoverme">
-                                        { edit_avatar2 }
+                                        { this.props.currentUser === this.props.user.id ? edit_avatar2 : "" }
                                         <img className="user-avatar" src={ `${ this.props.user.avatar }` } onClick={ () => this.props.allProps.history.push(`/users/${ this.props.user.id }`) } />
                                     </div> : 
-                                    <span id="avatar">{ this.props.user.username[0] }{ edit_avatar }</span> }
+                                    <span id="avatar">{ this.props.user.username[0] }{  this.props.currentUser === this.props.user.id ? edit_avatar : "" }</span> }
                                     <input id="avatar-upload" type="file" onChange={ this.uploadAvatar }/>
                                 </div>
                                 <div className="middle-header">
@@ -195,17 +223,20 @@ class UserShow extends React.Component {
                                 </div>
                                 <div className="right-head">
                                     <div className="right-header">
-                                        <button onClick={ () => document.getElementById("banner-upload").click() }>CUSTOMIZE BANNER</button>
-                                        <input id="banner-upload" type="file" onChange={ this.uploadBanner }/>
+                                        { this.props.currentUser === this.props.user.id ?
+                                        <><button onClick={ () => document.getElementById("banner-upload").click() }>CUSTOMIZE BANNER</button>
+                                        <input id="banner-upload" type="file" onChange={ this.uploadBanner }/> </>: "" }
                                     </div>
                                     <div className="right-header">
-                                        <button onClick={ () => this.props.history.push(`/users/${ this.props.user.id }/videos/edit`) }>MANAGE VIDEOS</button>
+                                        { this.props.currentUser === this.props.user.id ?
+                                        <button onClick={ () => this.props.history.push(`/users/${ this.props.user.id }/videos/edit`) }>MANAGE VIDEOS</button> : "" }
                                     </div>
                                 </div>
                             </div>
                             <div className="parts-of-header">
                                 <li onClick={ () => this.toggleTabs('home') } id="back-home" className={ this.state.home ? "bord" : " "}>Home</li>
                                 <li onClick={ () => this.toggleTabs('videos') } id="show-all-vids" className={ this.state.videos ? "bord" : " "}>Videos</li>
+                                <li onClick={ () => this.toggleTabs('subs') } id="show-subs" className={ this.state.subs ? "bord" : " "}>Subscriptions</li>
                                 <li onClick={ () => this.toggleTabs('about') } id="show-stats" className={ this.state.about ? "bord" : " "}>About</li>
                                 { use }
                             </div>
@@ -214,7 +245,7 @@ class UserShow extends React.Component {
                             <div className={ this.state.home ? "uploads-section" : "hide" }>
                                 <span className="upload-title">Subscriptions</span>
                                 <div className="uploads2">
-                                    { subs.length > 0 ? subs : "Subscribe to users to see them appear here!" }
+                                    { small_subs.length > 0 ? small_subs : "Subscribe to users to see them appear here!" }
                                 </div>
                                 <span className="upload-title">Uploads</span>
                                 <div className="uploads">
@@ -228,6 +259,9 @@ class UserShow extends React.Component {
                                 <span id="s1">Stats</span>
                                 <span id="s2">{ `Joined ${ dateConverter(this.props.user.created_at)}` }</span>
                                 <span id="s3">400 views</span>
+                            </section>
+                            <section className={ this.state.subs ? "subs-section" : "hide" }>
+                                { subs }
                             </section>
                         </section> </> : null }
                 </section> 
