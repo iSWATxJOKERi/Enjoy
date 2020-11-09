@@ -18,10 +18,11 @@ class MainContent extends React.Component {
 
     componentDidMount() {
         // debugger
-        const videos = this.props.getVideos();
-        this.toggleSidebar();
-        this.setState({
-            allVideos: videos,
+        this.props.getVideos().then(videos => {
+            this.toggleSidebar();
+            this.setState({
+                allVideos: videos,
+            })
         })
     }
 
@@ -32,8 +33,9 @@ class MainContent extends React.Component {
         const dup = document.getElementsByClassName("dup")[0];
         const sidebar = document.getElementsByClassName("sidebar")[0];
 
-        button.onclick = function() {
-            if(popbar.style.display == "flex" || popbar.style.display == "block") {
+        // debugger
+        button.addEventListener('click', function() {
+            if(popbar.style.display == "flex" || popbar.style.display == "block" || popbar.style.display == "") {
                 popbar.style.display = "none";
                 videos.style.marginLeft = "4.02%";
                 dup.style.flexWrap = "wrap";
@@ -46,7 +48,7 @@ class MainContent extends React.Component {
                 dup.style.flexWrap = "wrap";
                 dup.style.paddingLeft = "80px";
             }
-        }
+        })
     }
 
     render() {

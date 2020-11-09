@@ -3,8 +3,6 @@ import React from 'react';
 import UserIconDropdown from './user_icon_dropdown';
 import VideoUploadDropdown from '../main/video/upload_dropdown';
 import '../../font_awesome';
-import { browserHistory } from 'react-router-dom';
-
 
 class NavBar extends React.Component {
     constructor(props) {
