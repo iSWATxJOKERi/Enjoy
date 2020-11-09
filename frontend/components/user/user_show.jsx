@@ -249,11 +249,11 @@ class UserShow extends React.Component {
                                 </div>
                                 <span className="upload-title">Uploads</span>
                                 <div className="uploads">
-                                    { show }
+                                    { show.length > 0 ? show : "Upload some videos for them appear here!" }
                                 </div>
                             </div>
                             <section className={ this.state.videos ? "all-user-vids" : "hide"}>
-                                <Videos allProps={ this.props } />
+                                { this.props.videos.length > 0 ? <Videos allProps={ this.props }/> : "Upload some videos for them to appear here!" } 
                             </section>
                             <section className={ this.state.about ? "about-section" : "hide"}>
                                 <span id="s1">Stats</span>
@@ -261,7 +261,7 @@ class UserShow extends React.Component {
                                 <span id="s3">400 views</span>
                             </section>
                             <section className={ this.state.subs ? "subs-section" : "hide" }>
-                                { subs }
+                                { subs.length > 0 ? subs : "Subscribe to users to see them appear here!" }
                             </section>
                         </section> </> : null }
                 </section> 

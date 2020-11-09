@@ -19,10 +19,21 @@ class MainContent extends React.Component {
     componentDidMount() {
         // debugger
         this.props.getVideos().then(videos => {
-            this.toggleSidebar();
-            this.setState({
-                allVideos: videos,
-            })
+            if(this.props.currentUser) {
+                this.props.fetchSubscriptions(this.props.currentUser).then(() => {
+                    // this.props.fetchUsers().then(() => {
+                        this.toggleSidebar();
+                        this.setState({
+                            allVideos: videos,
+                        })
+                    // })
+                })
+            } else {
+                this.toggleSidebar();
+                this.setState({
+                    allVideos: videos,
+                })
+            }
         })
     }
 

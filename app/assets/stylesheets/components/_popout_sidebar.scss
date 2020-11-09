@@ -13,6 +13,11 @@
     }
 }
 
+.li2:hover {
+    cursor: pointer;
+    background-color: rgb(235, 235, 235);
+}
+
 .li {
     // background-color: brown;
     width: 100%;
@@ -24,6 +29,51 @@
         font-size: 13px;
         font-family: 'Roboto';
         width: 60%;
+    }
+    #avatar-bar {
+        position: relative;
+        // font-size: 50px;
+        width: 25%;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 70px;
+        background-color: darkgreen;
+        color: white;
+        height: 24px;
+    }
+}
+
+.li2 {
+    box-sizing: border-box;
+    width: 100%;
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    flex-direction: row;
+    height: 50px;
+    padding-left: 10px;
+    span {
+        font-size: 13px;
+        font-family: 'Roboto';
+        width: 60%;
+    }
+    #avatar-bar {
+        position: relative;
+        // font-size: 50px;
+        width: 24px;
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        border-radius: 70px;
+        background-color: darkgreen;
+        color: white;
+        height: 24px;
+    }
+    .ua3 {
+        height: 24px;
+        width: 24px;
+        border-radius: 70px;
     }
 }
 
@@ -40,8 +90,27 @@
     justify-content: center;
     flex-direction: column;
     border-top: 1px solid lightgray;
-    height: 10%;
+    border-bottom: 1px solid lightgray;
+    height: 5%;
     padding: 10px 0px;
+}
+
+.third-sidebar {
+    display: flex;
+    // justify-content: center;
+    flex-direction: column;
+    // height: 15%;
+    padding: 10px 0px;
+    #fad {
+        #spli {
+            display: inline-block;
+            font-size: 14px;
+            padding-left: 30px;
+            color: rgb(112, 112, 112);
+            font-weight: bold;
+            padding-bottom: 10px;
+        }
+    }
 }
 
 .first-sidebar > div {
@@ -49,10 +118,17 @@
 }
 
 .second-sidebar > div {
-    height: 50%;
+    height: 100%;
 }
 
 #fifty {
     width: 25%;
     text-align: center;
 }
+
+.user-avatar3 {
+    height: 60%;
+    width: 90%;
+    border-radius: 70px;
+}
+

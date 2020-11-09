@@ -15,10 +15,11 @@ class NavBar extends React.Component {
         this.toggleClass = this.toggleClass.bind(this);
         this.toggleUpload = this.toggleUpload.bind(this);
         this.handleChange = this.handleChange.bind(this);
+        this.handleSearch = this.handleSearch.bind(this);
     }
 
     componentDidMount() {
-        this.props.fetchUser(this.props.currentUser);
+        this.props.fetchUsers();
     }
 
     toggleClass() {

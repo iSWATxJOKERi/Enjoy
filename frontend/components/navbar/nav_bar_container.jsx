@@ -2,7 +2,7 @@ import React from 'react';
 import NavBar from './nav_bar';
 import { connect } from 'react-redux';
 import { logout } from '../../actions/session_actions';
-import { fetchUser } from '../../actions/user_actions';
+import { fetchUsers } from '../../actions/user_actions';
 import { videoSearch, channelSearch } from '../../actions/search_actions';
 
 const mapStateToProps = state => {
@@ -15,7 +15,7 @@ const mapStateToProps = state => {
 const mapDispatchToProps = (dispatch, ownProps) => {
     return {
         logout: () => dispatch(logout()),
-        fetchUser: id => dispatch(fetchUser(id)),
+        fetchUsers: () => dispatch(fetchUsers()),
         getSearchVideos: query => dispatch(videoSearch(query)),
         getSearchUser: query => dispatch(channelSearch(query))
     }

@@ -10,11 +10,14 @@ class EENavBar extends React.Component {
         super(props);
         this.state = {
             online: false,
-            up: false
+            up: false,
+            search: ""
         }
         this.toggleClass = this.toggleClass.bind(this);
         this.toggleUpload = this.toggleUpload.bind(this);
         this.toggleModal = this.toggleModal.bind(this);
+        this.handleChange = this.handleChange.bind(this);
+        this.handleSearch = this.handleSearch.bind(this);
     }
 
     toggleClass() {
@@ -33,7 +36,22 @@ class EENavBar extends React.Component {
 
     componentDidMount() {
         this.toggleModal();
-        this.props.fetchUser(this.props.currentUser);
+    }
+
+    handleChange() {
+        return (e) => {
+            this.setState({
+                search: e.currentTarget.value
+            })
+        }
+    }
+
+    handleSearch(query) {
+        this.props.getSearchVideos(query).then(() => {
+            this.props.getSearchUser(query).then(() => {
+                this.props.history.replace("/search")
+            })
+        })
     }
 
     toggleModal() {
@@ -73,7 +91,7 @@ class EENavBar extends React.Component {
         const upload = <FontAwesomeIcon onClick={ this.toggleUpload } icon="video" />
         const menu = <FontAwesomeIcon icon="th" />
         const settings = <FontAwesomeIcon icon="ellipsis-v" />
-        const search = <FontAwesomeIcon icon="search" />
+        const search = <FontAwesomeIcon icon="search" onClick={ () => this.handleSearch(this.state.search) }/>
         const bell = <FontAwesomeIcon icon="bell" />
         const dropdown = <UserIconDropdown allProps={ this.props } state={ this.state } toggle={ this.toggleClass }/>
         const vdropdown = <VideoUploadDropdown allProps={ this.props } state={ this.state } toggle={ this.toggleUpload } />
@@ -90,7 +108,7 @@ class EENavBar extends React.Component {
                 </div>
                 <div className="middle-nav">
                     <div className="search-container">
-                        <input className="search-bar" placeholder="Search" type="text"/>
+                        <input className="search-bar" placeholder="Search" type="text" onChange={ this.handleChange() }/>
                         <div className="search-btn">
                             { search }
                         </div>

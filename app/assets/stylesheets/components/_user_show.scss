@@ -149,6 +149,12 @@
     border-radius: 50px;
 }
 
+.user-avatar2 {
+    height: 60%;
+    width: 90%;
+    border-radius: 70px;
+}
+
 #avatar-upload, #banner-upload {
     display: none;
 }
@@ -222,7 +228,6 @@
 .uploads {
     display: flex;
     flex-direction: row;
-    height: 100%;
     width: 100%;
     flex-wrap: wrap;
     padding-top: 10px;
@@ -249,6 +254,7 @@
     justify-content: space-around;
     align-items: center;
     min-height: 200px;
+    margin: 0 30px;
 }
 
 .uploads2 {
@@ -262,7 +268,6 @@
 
 .uploaded-item {
     width: 20%;
-    height: 30%;
     padding: 0 5px;
     h1 {
         font-size: .9rem;
@@ -278,7 +283,7 @@
     height: 70%;
 }
 
-#show-all-vids:hover, #user-video-images:hover, #subscribe2:hover, #unsubscribe2:hover, #subscribe3:hover, #unsubscribe3:hover, #avatar2:hover {
+#show-all-vids:hover, #user-video-images:hover, #subscribe2:hover, #unsubscribe2:hover, #subscribe3:hover, #unsubscribe3:hover, #avatar2:hover, .user-avatar2:hover {
     cursor: pointer;
 }
 
@@ -315,6 +320,8 @@
 
 .subs-section {
     padding-top: 35px;
+    display: flex;
+    flex-direction: row;
     .list-of-subs {
         display: flex;
         flex-direction: column;
@@ -322,6 +329,7 @@
         justify-content: space-around;
         align-items: center;
         min-height: 200px;
+        margin: 0 30px;
     }
     #avatar2 {
         position: relative;

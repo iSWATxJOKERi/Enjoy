@@ -27,7 +27,7 @@ export default class Videos extends React.Component {
             <>
                 <h1 className="videos-name">Videos</h1>
                 <div className="all-videos">
-                    { vids }
+                    { vids ? vids : "Upload videos for them to appear here!" }
                 </div>
             </>
         )

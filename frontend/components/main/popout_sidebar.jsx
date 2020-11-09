@@ -1,14 +1,21 @@
 import React from 'react';
 import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../../font_awesome';
+import SubsList2 from './sublist';
 
 export default (props) => {
+    let subs;
     const dir = props.allProps.location.pathname
     const home = <FontAwesomeIcon className={ dir === "/" ? "red" : "nada" } id="smaller" icon="home" />
     const github = <FontAwesomeIcon id="smaller" icon={["fab", "github"]} />
     const linkedin = <FontAwesomeIcon id="smaller" icon={["fab", "linkedin"]} />
     const library = <FontAwesomeIcon className={ dir === `/users/${ props.allProps.currentUser }` ? "red" : "nada" } id="smaller" icon="photo-video" />
-    const history = <FontAwesomeIcon id="smaller" icon="history" />
+    if(Object.values(props.allProps.users).length > 1) {
+        // debugger
+        subs = props.allProps.users[props.allProps.currentUser].subscriptions.map(subscription => {
+            return <SubsList2 key={ subscription.id } sub={ subscription } allProps={ props.allProps }/>
+        })
+    }
     
     return (
         <section className="pop">
@@ -31,12 +38,13 @@ export default (props) => {
                     <div id="fifty">{ library }</div>
                     <span>Library</span>
                 </div>
-                <div className="li history-sb">
-                    <div id="fifty">{ history }</div>
-                    <span>History</span>
+            </section>
+            <section className="third-sidebar">
+                <div id="fad">
+                    <span id="spli">SUBSCRIPTIONS</span>
+                    { subs ? subs.slice(0,5) : "" }
                 </div>
             </section>
         </section>
     )
-
 }

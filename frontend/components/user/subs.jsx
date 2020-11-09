@@ -11,7 +11,7 @@ class SubsList extends React.Component {
         // debugger
         let whoopty = this.props.channel ? <>
                         { this.props.channel.avatar ? 
-                            <img className="user-avatar" src={ `${ this.props.channel.avatar }` } onClick={ () => this.props.allProps.history.push(`/users/${ this.props.channel.id }`) } /> : 
+                            <img className="user-avatar2" src={ `${ this.props.channel.avatar }` } onClick={ () => this.props.allProps.history.push(`/users/${ this.props.channel.id }`) } /> : 
                             <span id="avatar2" onClick={ () => this.props.allProps.history.push(`/users/${ this.props.channel.id }`) }>{ this.props.channel.username[0] }</span> }
                             <span id="sub-name">{ this.props.channel.username }</span>
                             { this.props.allProps.currentUser === this.props.allProps.user.id ? 
