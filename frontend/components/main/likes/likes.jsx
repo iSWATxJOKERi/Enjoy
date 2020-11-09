@@ -28,7 +28,7 @@ class Likes extends React.Component {
     }
 
     componentDidUpdate(prevProps) {
-        if(this.props.video !== prevProps.video) {
+        if((this.props.video.num_likes !== prevProps.video.num_likes) || (this.props.video.num_dislikes !== prevProps.video.num_dislikes)) {
             this.setState({
                 like: this.props.video.num_likes,
                 dislike: this.props.video.num_dislikes

@@ -20,11 +20,11 @@ export const deleteLike = like => {
     )
 }
 
-export const fetchLike = (id) => {
+export const fetchLike = (id, liker_id) => {
     return (
         $.ajax({
             method: 'GET',
-            url: `api/videos/${ id }/likes`
+            url: `api/videos/${ id }/likes/?liker=${ liker_id }`
         })
     )
 }

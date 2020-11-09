@@ -76,9 +76,9 @@ export const deleteLike = like => dispatch => {
     })
 }
 
-export const fetchLike = id => dispatch => {
+export const fetchLike = (id, liker_id) => dispatch => {
     // debugger
-    return LikeApiUtil.fetchLike(id).then(like => {
+    return LikeApiUtil.fetchLike(id, liker_id).then(like => {
         dispatch(receiveLike(like))
     }, errors => {
         dispatch(receiveLikeErrors(errors.responseJSON))

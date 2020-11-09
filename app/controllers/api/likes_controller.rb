@@ -7,7 +7,7 @@ class Api::LikesController < ApplicationController
             @commentlikes = Like.all.where("likeable_id = (?) AND likeable_type = 'Comment'", params[:comment_id])
             render :index
         elsif params[:video_id]
-            @videolike = Like.all.where("likeable_id = (?) AND likeable_type = 'Video'", params[:video_id])
+            @videolike = Like.where("likeable_id = (?) AND likeable_type = 'Video' AND liker_id = (?)", params[:video_id], params[:liker])
             render :index
         end
     end
@@ -26,7 +26,7 @@ class Api::LikesController < ApplicationController
 
     def destroy
         # debugger
-        @like = Like.find_by(kind_of: params[:like][:kind_of], likeable_id: params[:like][:likeable_id], likeable_type: params[:like][:likeable_type])
+        @like = Like.find_by(id: params[:like][:id], kind_of: params[:like][:kind_of], likeable_id: params[:like][:likeable_id], likeable_type: params[:like][:likeable_type])
         # debugger
         if @like && (@like.liker_id == current_user.id)
             # debugger
@@ -34,7 +34,7 @@ class Api::LikesController < ApplicationController
             render json: @like.to_json
         else
             # debugger
-            render json: ['Not yours!']
+            render json: @like.errors.full_messages, status: 422
         end
     end
 

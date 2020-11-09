@@ -29,7 +29,7 @@ const mapDispatchToProps = dispatch => {
         fetchVideos: () => dispatch(fetchVideos()),
         createLike: like => dispatch(createLike(like)),
         removeLike: like => dispatch(deleteLike(like)),
-        fetchLike: id => dispatch(fetchLike(id)),
+        fetchLike: (id, liker_id) => dispatch(fetchLike(id, liker_id)),
         fetchComments: videoId => dispatch(fetchComments(videoId)),
         fetchComment: comment => dispatch(fetchComment(comment)),
         createComment: comment => dispatch(createComment(comment)),
