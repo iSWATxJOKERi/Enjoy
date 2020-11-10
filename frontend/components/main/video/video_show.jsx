@@ -106,7 +106,7 @@ class VideoShow extends React.Component {
                             </div> : null 
                         }
                     </div>
-                    { this.props.videos.length > 1 ? <UpNext video={ this.props.video } history={ this.props.history } videos={ arr }/> : null }
+                    { this.props.videos.length > 1 && this.props.video ? <UpNext video={ this.props.video } history={ this.props.history } videos={ arr }/> : null }
                 </section>
             </section>
         )
