@@ -37,6 +37,7 @@ export default class UploadForm extends React.Component {
         const button = document.getElementById("modal-btn");
         const x = document.getElementsByClassName("close2")[0];
 
+        // debugger
         button.onclick = function() {
             modal.style.display = "block";
         }
