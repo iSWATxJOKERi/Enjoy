@@ -38,8 +38,10 @@ export default class UploadForm extends React.Component {
         const x = document.getElementsByClassName("close2")[0];
 
         // debugger
-        button.onclick = function() {
-            modal.style.display = "block";
+        if(button) {
+            button.onclick = function() {
+                modal.style.display = "block";
+            }
         }
 
         let that = this;

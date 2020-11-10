@@ -88,36 +88,38 @@ class NavBar extends React.Component {
                     })
                 })
             } else {
-                document.getElementById("user").addEventListener('click', () => {
-                    // debugger
-                    document.addEventListener('click', (e) => {
-                        const v = document.getElementsByClassName("drop")[0];
+                if(document.getElementById("user")) {
+                    document.getElementById("user").addEventListener('click', () => {
                         // debugger
-                        if(v) {
+                        document.addEventListener('click', (e) => {
+                            const v = document.getElementsByClassName("drop")[0];
                             // debugger
-                            if(e.target !== v && e.target !== document.getElementById("user") && 
-                                e.target !== document.getElementById("user-pic3") && 
-                                e.target !== document.getElementById("user2") &&
-                                e.target !== document.getElementById("unid") &&
-                                e.target !== document.getElementById("link") &&
-                                e.target !== document.getElementById("li-1") &&
-                                e.target !== document.getElementById("log")) {
+                            if(v) {
                                 // debugger
-                                if(this._isMounted) {
-                                    this.setState({
-                                        online: false
-                                    })
-                                }
-                            } else {
-                                if(this._isMounted) {
-                                    this.setState({
-                                        online: true
-                                    })
+                                if(e.target !== v && e.target !== document.getElementById("user") && 
+                                    e.target !== document.getElementById("user-pic3") && 
+                                    e.target !== document.getElementById("user2") &&
+                                    e.target !== document.getElementById("unid") &&
+                                    e.target !== document.getElementById("link") &&
+                                    e.target !== document.getElementById("li-1") &&
+                                    e.target !== document.getElementById("log")) {
+                                    // debugger
+                                    if(this._isMounted) {
+                                        this.setState({
+                                            online: false
+                                        })
+                                    }
+                                } else {
+                                    if(this._isMounted) {
+                                        this.setState({
+                                            online: true
+                                        })
+                                    }
                                 }
                             }
-                        }
+                        })
                     })
-                })
+                }
             }
         }
     }
