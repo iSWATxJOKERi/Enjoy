@@ -35,10 +35,6 @@ class SideBar extends React.Component {
                         { library }
                         <span>Library</span>
                     </div>
-                    <div className="item history-item">
-                        { history }
-                        <span>History</span>
-                    </div>
                 </section>
             </section>
         )

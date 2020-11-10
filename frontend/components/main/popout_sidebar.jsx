@@ -11,7 +11,7 @@ export default (props) => {
     const linkedin = <FontAwesomeIcon id="smaller" icon={["fab", "linkedin"]} />
     const library = <FontAwesomeIcon className={ dir === `/users/${ props.allProps.currentUser }` ? "red" : "nada" } id="smaller" icon="photo-video" />
     if(Object.values(props.allProps.users).length > 1 && props.allProps.currentUser) {
-        // debugger
+        debugger
         subs = props.allProps.users[props.allProps.currentUser].subscriptions.map(subscription => {
             return <SubsList2 key={ subscription.id } sub={ subscription } allProps={ props.allProps }/>
         })

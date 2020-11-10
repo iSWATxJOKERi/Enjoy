@@ -19,7 +19,7 @@ class ShowPageModal extends React.Component {
 
         // debugger
         let subs;
-        if(Object.values(this.props.users).length > 1 && this.props.allProps.currentUser) {
+        if(Object.values(this.props.users).length > 1 && this.props.currentUser) {
             // debugger
             subs = this.props.users[this.props.currentUser].subscriptions.map(subscription => {
                 return <SubsList2 key={ subscription.id } sub={ subscription } allProps={ this.props }/>

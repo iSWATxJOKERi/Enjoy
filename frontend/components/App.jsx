@@ -3,7 +3,7 @@ import { Route, Switch } from 'react-router-dom';
 import NavBarContainer from './navbar/nav_bar_container';
 import LoginFormContainer from './session/login_form_container';
 import SignupFormContainer from './session/signup_form_container';
-import { AuthRoute } from '../util/route_util';
+import { AuthRoute, ProtectedRoute } from '../util/route_util';
 import MainContentContainer from './main/main_content_container';
 import UserShowContainer from './user/user_show_container';
 import VideoUploadContainer from './main/video/video_upload_container';
@@ -38,7 +38,7 @@ const App = () => {
             <Route exact path="/videos/:id" component={ EENavBarContainer } />
             <Route exact path="/videos/:id" component={ VideoShowContainer } />
             <Route exact path="/users/:id" component={ UserShowContainer } />
-            <Route exact path="/users/:id/videos/edit" component={ UserStudioContainer } />
+            <ProtectedRoute exact path="/users/:id/videos/edit" component={ UserStudioContainer } />
             <Route exact path="/videos/:id/edit" component={ VideoUpdateContainer } />
             <Route exact path="/videos/:id/delete"component={ DeleteContainer } />
             <Route exact path="/search" component={ VideoSearchContainer } />
