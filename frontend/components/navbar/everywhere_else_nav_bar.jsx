@@ -52,13 +52,17 @@ class EENavBar extends React.Component {
                             e.target !== document.getElementById("vid-icon") &&
                             e.target !== document.getElementById("modal-btn")) {
                             // debugger
-                            this.setState({
-                                up: false
-                            })
+                            if(this._isMounted) {
+                                this.setState({
+                                    up: false
+                                })
+                            }
                         } else {
-                            this.setState({
-                                up: true
-                            })
+                            if(this._isMounted) {
+                                this.setState({
+                                    up: true
+                                })
+                            }
                         }
                     }
                 })
@@ -80,13 +84,17 @@ class EENavBar extends React.Component {
                                 e.target !== document.getElementById("li-1") &&
                                 e.target !== document.getElementById("log")) {
                                 // debugger
-                                this.setState({
-                                    online: false
-                                })
+                                if(this._isMounted) {
+                                    this.setState({
+                                        online: false
+                                    })
+                                }
                             } else {
-                                this.setState({
-                                    online: true
-                                }) 
+                                if(this._isMounted) {
+                                    this.setState({
+                                        online: true
+                                    }) 
+                                }
                             }
                         }
                     })
@@ -107,13 +115,17 @@ class EENavBar extends React.Component {
                                 e.target !== document.getElementById("li-1") &&
                                 e.target !== document.getElementById("log")) {
                                 // debugger
-                                this.setState({
-                                    online: false
-                                })
+                                if(this._isMounted) {
+                                    this.setState({
+                                        online: false
+                                    })
+                                }
                             } else {
-                                this.setState({
-                                    online: true
-                                }) 
+                                if(this._isMounted) {
+                                    this.setState({
+                                        online: true
+                                    })
+                                }
                             }
                         }
                     })

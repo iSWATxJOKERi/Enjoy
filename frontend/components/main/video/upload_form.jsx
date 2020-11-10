@@ -47,15 +47,17 @@ export default class UploadForm extends React.Component {
             modal.style.display = "none";
             if(modal.style.display == "" || modal.style.display == "none") {
                 // debugger
-                that.setState({
-                    title: "",
-                    description: "",
-                    photoFile: null,
-                    videoFile: null,
-                    photoUrl: null,
-                    videoUrl: null,
-                    errors: that.props.errors
-                })
+                if(this._isMounted) {
+                    that.setState({
+                        title: "",
+                        description: "",
+                        photoFile: null,
+                        videoFile: null,
+                        photoUrl: null,
+                        videoUrl: null,
+                        errors: that.props.errors
+                    })
+                }
             }
         })
 
@@ -63,15 +65,17 @@ export default class UploadForm extends React.Component {
             if(e.target == modal) {
                 modal.style.display = "none";
                 // debugger
-                that.setState({
-                    title: "",
-                    description: "",
-                    photoFile: null,
-                    videoFile: null,
-                    photoUrl: null,
-                    videoUrl: null,
-                    errors: that.props.errors
-                })
+                if(this._isMounted) {
+                    that.setState({
+                        title: "",
+                        description: "",
+                        photoFile: null,
+                        videoFile: null,
+                        photoUrl: null,
+                        videoUrl: null,
+                        errors: that.props.errors
+                    })
+                }
             }
         })
     }
