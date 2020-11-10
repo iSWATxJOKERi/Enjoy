@@ -50,7 +50,7 @@ class VideoShow extends React.Component {
         let arr = [];
         let likes = this.props.video ? <Likes allProps={ this.props } video={ this.props.video } /> : null;
         let comments = this.props.video ? <Comments allProps={ this.props } video={ this.props.video } comments={ this.props.comments } /> : null;
-        if(this.props.videos.length > 1) {
+        if(this.props.videos.length > 1 && this.props.video) {
             // debugger
             this.props.videos.map(video => {
                 if(video !== this.props.video) {
