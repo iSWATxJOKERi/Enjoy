@@ -138,7 +138,7 @@ class Reply extends React.Component {
                                 </div>
                                 <div className="likes-reply2">
                                     <ReplyLikes psu={ this.props.psuedo[this.props.reply.id] } allProps={ this.props.allProps } reply={ this.props.reply }/>
-                                    <span onClick={ () => this.props.allProps.allProps.currentUser ? this.toggleReply : window.location.href = "#login" }>REPLY</span>
+                                    <span onClick={ () => this.props.allProps.allProps.currentUser ? this.toggleReply() : window.location.href = "#login" }>REPLY</span>
                                 </div>
                                     </> }
                     </div>

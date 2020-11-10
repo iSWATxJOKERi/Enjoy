@@ -17,6 +17,55 @@ export default class UploadForm extends React.Component {
         this.handleSubmit = this.handleSubmit.bind(this);
         this.handleFile = this.handleFile.bind(this);
         this.handleInput = this.handleInput.bind(this);
+        this.handleClear = this.handleClear.bind(this);
+    }
+
+    componentDidMount() {
+        this.handleClear();
+    }
+
+    handleClear() {
+        const modal = document.getElementsByClassName("modal")[0];
+        const button = document.getElementById("modal-btn");
+        const x = document.getElementsByClassName("close2")[0];
+
+        button.onclick = function() {
+            modal.style.display = "block";
+        }
+
+        let that = this;
+        x.addEventListener('click', function() {
+            // debugger
+            modal.style.display = "none";
+            if(modal.style.display == "" || modal.style.display == "none") {
+                // debugger
+                that.setState({
+                    title: "",
+                    description: "",
+                    photoFile: null,
+                    videoFile: null,
+                    photoUrl: null,
+                    videoUrl: null,
+                    errors: that.props.errors
+                })
+            }
+        })
+
+        modal.addEventListener('click', function(e) {
+            if(e.target == modal) {
+                modal.style.display = "none";
+                // debugger
+                that.setState({
+                    title: "",
+                    description: "",
+                    photoFile: null,
+                    videoFile: null,
+                    photoUrl: null,
+                    videoUrl: null,
+                    errors: that.props.errors
+                })
+            }
+        })
     }
 
     handleInput(field) {

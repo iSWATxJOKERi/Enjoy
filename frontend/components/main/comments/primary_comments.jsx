@@ -206,7 +206,7 @@ class PrimaryComments extends React.Component {
                             </div>
                             <div className="likes-reply">
                                 <CommentLikes psu={ this.props.psuedo[this.props.comment.id] } allProps={ this.props } comment={ this.props.comment }/>
-                                <span onClick={ () => this.props.allProps.currentUser ? this.toggleReply : window.location.href = "#login" }>REPLY</span>
+                                <span onClick={ () => this.props.allProps.currentUser ? this.toggleReply() : window.location.href = "#login" }>REPLY</span>
                             </div> 
                         </>}
                     </div>

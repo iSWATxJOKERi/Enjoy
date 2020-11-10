@@ -12,32 +12,6 @@ class VideoModal extends React.Component {
         this.handleSelectFiles = this.handleSelectFiles.bind(this)
     }
 
-    componentDidMount() {
-        // debugger
-        this.props.currentUser ? this.modal() : null 
-    }
-
-    modal() {
-        // debugger
-        const modal = document.getElementsByClassName("modal")[0];
-        const button = document.getElementById("modal-btn");
-        const x = document.getElementsByClassName("close2")[0];
-
-        button.onclick = function() {
-            modal.style.display = "block";
-        }
-
-        // x.onclick = function() {
-        //     modal.style.display = "none";
-        // }
-
-        modal.onclick = function(e) {
-            if(e.target == modal) {
-                modal.style.display = "none";
-            }
-        }
-    }
-
     handleSelectFiles() {
         const cs = this.state.uploading;
         this.setState({

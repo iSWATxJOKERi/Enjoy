@@ -8,6 +8,10 @@ export default class UserIconDropdown extends React.Component {
         super(props);
     }
 
+    componentDidMount() {
+
+    }
+
     render() {
         const user = this.props.allProps.user.avatar ? 
         <img id="user-pic3" src={ `${ this.props.allProps.user.avatar }` } onClick={ () => this.props.allProps.history.push(`/users/${ this.props.allProps.currentUser }`) } /> : 
@@ -17,13 +21,13 @@ export default class UserIconDropdown extends React.Component {
                 <div className="top">
                     { user }
                     <div className="manage">
-                        <h2 onClick={ () => this.props.allProps.history.push(`/users/${ this.props.allProps.currentUser }`)}>{ this.props.allProps.user.username }</h2>
-                        <Link to={`/users/${ this.props.allProps.currentUser }` }>Manage your account</Link>
+                        <h2 id="unid" onClick={ () => this.props.allProps.history.push(`/users/${ this.props.allProps.currentUser }`)}>{ this.props.allProps.user.username }</h2>
+                        <Link id="link" to={`/users/${ this.props.allProps.currentUser }` }>Manage your account</Link>
                     </div>
                 </div>
                 <ul className="middle">
                     <li id="li-1" onClick={ () => this.props.allProps.history.push(`/users/${ this.props.allProps.currentUser }`)}>Your Channel</li>
-                    <li className="logout" onClick={ this.props.allProps.logout }>Logout</li>
+                    <li id="log" className="logout" onClick={ this.props.allProps.logout }>Logout</li>
                 </ul>
             </section>
         )
