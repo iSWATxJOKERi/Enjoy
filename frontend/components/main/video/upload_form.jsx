@@ -50,7 +50,7 @@ export default class UploadForm extends React.Component {
             modal.style.display = "none";
             if(modal.style.display == "" || modal.style.display == "none") {
                 // debugger
-                if(this._isMounted) {
+                if(that._isMounted) {
                     that.setState({
                         title: "",
                         description: "",
@@ -68,7 +68,7 @@ export default class UploadForm extends React.Component {
             if(e.target == modal) {
                 modal.style.display = "none";
                 // debugger
-                if(this._isMounted) {
+                if(that._isMounted) {
                     that.setState({
                         title: "",
                         description: "",

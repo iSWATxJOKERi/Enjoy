@@ -16,7 +16,9 @@ class VideoShow extends React.Component {
             this.props.fetchUser(this.props.currentUser).then(() => {
                 this.props.fetchVideos().then(() => {
                     this.props.fetchVideo(this.props.match.params.id).then(() => {
+                        // debugger
                         this.props.fetchSubscription(this.props.currentUser, this.props.video.uploader.id).then(() => {
+                            // debugger
                             this.props.fetchLike(this.props.match.params.id, this.props.currentUser).then(() => {
                                 this.props.fetchComments(this.props.match.params.id)
                             })
