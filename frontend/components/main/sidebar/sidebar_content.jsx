@@ -31,7 +31,7 @@ class SideBar extends React.Component {
                         { linkedin }
                         <span>LinkedIn</span>
                     </div>
-                    <div onClick={ () => this.props.allProps.history.push(`/users/${ this.props.allProps.currentUser }`) } className={ dir === `/users/${ this.props.allProps.currentUser }` ? "red item library-item" : "item library-item" }>
+                    <div onClick={ () => this.props.allProps.currentUser ? this.props.allProps.history.push(`/users/${ this.props.allProps.currentUser }`) : window.location.href = "#/login" } className={ dir === `/users/${ this.props.allProps.currentUser }` ? "red item library-item" : "item library-item" }>
                         { library }
                         <span>Library</span>
                     </div>
