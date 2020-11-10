@@ -8,10 +8,6 @@ export default class UserIconDropdown extends React.Component {
         super(props);
     }
 
-    componentDidMount() {
-
-    }
-
     render() {
         const user = this.props.allProps.user.avatar ? 
         <img id="user-pic3" src={ `${ this.props.allProps.user.avatar }` } onClick={ () => this.props.allProps.history.push(`/users/${ this.props.allProps.currentUser }`) } /> : 

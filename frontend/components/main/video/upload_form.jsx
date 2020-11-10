@@ -3,6 +3,7 @@ import '../../../font_awesome';
 import React from 'react';
 
 export default class UploadForm extends React.Component {
+    _isMounted = false;
     constructor(props) {
         super(props);
         this.state = {
@@ -21,7 +22,14 @@ export default class UploadForm extends React.Component {
     }
 
     componentDidMount() {
-        this.handleClear();
+        this._isMounted = true;
+        if(this._isMounted) {
+            this.handleClear();
+        }
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     handleClear() {

@@ -5,6 +5,7 @@ import VideoUploadDropdown from '../main/video/upload_dropdown';
 import '../../font_awesome';
 
 class NavBar extends React.Component {
+    _isMounted = false;
     constructor(props) {
         super(props);
         this.state = {
@@ -20,89 +21,98 @@ class NavBar extends React.Component {
 
     componentDidMount() {
         // debugger
-        if(this.props.location.pathname !== "/search") {
-            this.props.fetchUsers().then(() => {
-                document.getElementById("vid-icon").addEventListener('click', () => {
+        this._isMounted = true;
+        if(this._isMounted) {
+            // debugger
+            if(this.props.location.pathname !== "/search") {
+                this.props.fetchUsers()
+            }
+        
+            document.getElementById("vid-icon").addEventListener('click', () => {
+                // debugger
+                document.addEventListener('click', (e) => {
+                    const v = document.getElementsByClassName("video-drop")[0];
+                    // debugger
+                    if(v) {
+                        // debugger
+                        if(e.target !== v && e.target !== document.getElementById("vid-icon").children[0] && 
+                            e.target !== document.getElementById("video-up").children[0] && 
+                            e.target !== document.getElementById("video-up") &&
+                            e.target !== document.getElementById("vid-icon") &&
+                            e.target !== document.getElementById("modal-btn")) {
+                            // debugger
+                            this.setState({
+                                up: false
+                            })
+                        } else {
+                            this.setState({
+                                up: true
+                            })
+                        }
+                    }
+                })
+            })
+            if(document.getElementById("user-pic2")) {
+                document.getElementById("user-pic2").addEventListener('click', () => {
                     // debugger
                     document.addEventListener('click', (e) => {
-                        const v = document.getElementsByClassName("video-drop")[0];
+                        const v = document.getElementsByClassName("drop")[0];
                         // debugger
                         if(v) {
                             // debugger
-                            if(e.target !== v && e.target !== document.getElementById("vid-icon").children[0] && 
-                                e.target !== document.getElementById("video-up").children[0] && 
-                                e.target !== document.getElementById("video-up") &&
-                                e.target !== document.getElementById("vid-icon") &&
-                                e.target !== document.getElementById("modal-btn")) {
+                            if(e.target !== v && e.target !== document.getElementById("user-pic2") && 
+                                e.target !== document.getElementById("user-pic3") && 
+                                e.target !== document.getElementById("user2") &&
+                                e.target !== document.getElementById("unid") &&
+                                e.target !== document.getElementById("link") &&
+                                e.target !== document.getElementById("li-1") &&
+                                e.target !== document.getElementById("log")) {
                                 // debugger
                                 this.setState({
-                                    up: false
+                                    online: false
                                 })
                             } else {
                                 this.setState({
-                                    up: true
-                                })
+                                    online: true
+                                }) 
                             }
                         }
                     })
                 })
-                if(document.getElementById("user-pic2")) {
-                    document.getElementById("user-pic2").addEventListener('click', () => {
+            } else {
+                document.getElementById("user").addEventListener('click', () => {
+                    // debugger
+                    document.addEventListener('click', (e) => {
+                        const v = document.getElementsByClassName("drop")[0];
                         // debugger
-                        document.addEventListener('click', (e) => {
-                            const v = document.getElementsByClassName("drop")[0];
+                        if(v) {
                             // debugger
-                            if(v) {
+                            if(e.target !== v && e.target !== document.getElementById("user") && 
+                                e.target !== document.getElementById("user-pic3") && 
+                                e.target !== document.getElementById("user2") &&
+                                e.target !== document.getElementById("unid") &&
+                                e.target !== document.getElementById("link") &&
+                                e.target !== document.getElementById("li-1") &&
+                                e.target !== document.getElementById("log")) {
                                 // debugger
-                                if(e.target !== v && e.target !== document.getElementById("user-pic2") && 
-                                    e.target !== document.getElementById("user-pic3") && 
-                                    e.target !== document.getElementById("user2") &&
-                                    e.target !== document.getElementById("unid") &&
-                                    e.target !== document.getElementById("link") &&
-                                    e.target !== document.getElementById("li-1") &&
-                                    e.target !== document.getElementById("log")) {
-                                    // debugger
-                                    this.setState({
-                                        online: false
-                                    })
-                                } else {
-                                    this.setState({
-                                        online: true
-                                    }) 
-                                }
+                                this.setState({
+                                    online: false
+                                })
+                            } else {
+                                this.setState({
+                                    online: true
+                                }) 
                             }
-                        })
+                        }
                     })
-                } else {
-                    document.getElementById("user").addEventListener('click', () => {
-                        // debugger
-                        document.addEventListener('click', (e) => {
-                            const v = document.getElementsByClassName("drop")[0];
-                            // debugger
-                            if(v) {
-                                // debugger
-                                if(e.target !== v && e.target !== document.getElementById("user") && 
-                                    e.target !== document.getElementById("user-pic3") && 
-                                    e.target !== document.getElementById("user2") &&
-                                    e.target !== document.getElementById("unid") &&
-                                    e.target !== document.getElementById("link") &&
-                                    e.target !== document.getElementById("li-1") &&
-                                    e.target !== document.getElementById("log")) {
-                                    // debugger
-                                    this.setState({
-                                        online: false
-                                    })
-                                } else {
-                                    this.setState({
-                                        online: true
-                                    }) 
-                                }
-                            }
-                        })
-                    })
-                }
-            })
+                })
+            }
         }
+    }
+
+    componentWillUnmount() {
+        // debugger
+        this._isMounted = false;
     }
 
     toggleClass() {

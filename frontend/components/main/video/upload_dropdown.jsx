@@ -4,6 +4,7 @@ import { FontAwesomeIcon } from '@fortawesome/react-fontawesome';
 import '../../../font_awesome';
 
 class VideoUploadDropdown extends React.Component {
+    _isMounted = false;
     constructor(props) {
         super(props)
         this.modal = this.modal.bind(this);
@@ -11,7 +12,12 @@ class VideoUploadDropdown extends React.Component {
     
     componentDidMount() {
         // debugger
-        this.props.allProps.currentUser ? this.modal() : null
+        this._isMounted = true;
+        this.props.allProps.currentUser && this._isMounted ? this.modal() : null
+    }
+
+    componentWillUnmount() {
+        this._isMounted = false;
     }
 
     modal() {
