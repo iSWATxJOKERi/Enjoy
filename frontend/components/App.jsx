@@ -14,17 +14,11 @@ import VideoUpdateContainer from './user/update_container';
 import DeleteContainer from './user/delete_container';
 import UserStudioContainer from './user/user_studio_container';
 import VideoSearchContainer from './main/video/video_search_container';
+import vuc from './main/video/vuc';
 
 const App = () => {
     return (
         <section className="application">
-            <Switch>
-                <Route exact path="/" component={ VideoUploadContainer } />
-                <Route exact path="/videos/:id" component={ VideoUploadContainer } />
-                <Route exact path="/users/:id" component={ VideoUploadContainer } />
-                <Route exact path="/users/:id/videos/edit" component={ VideoUploadContainer } />
-                <Route exact path="/search" component={ VideoUploadContainer } />
-            </Switch>
             <Switch>
                 <Route exact path="/" component={ NavBarContainer } />
                 <Route exact path="/users/:id" component={ NavBarContainer } />
@@ -42,6 +36,13 @@ const App = () => {
             <Route exact path="/videos/:id/edit" component={ VideoUpdateContainer } />
             <Route exact path="/videos/:id/delete"component={ DeleteContainer } />
             <Route exact path="/search" component={ VideoSearchContainer } />
+            <Switch>
+                <Route exact path="/" component={ VideoUploadContainer } />
+                <Route exact path="/users/:id" component={ VideoUploadContainer } />
+                <Route exact path="/users/:id/videos/edit" component={ VideoUploadContainer } />
+                <Route exact path="/search" component={ VideoUploadContainer } />
+            </Switch>
+            <Route exact path="/videos/:id" component={ vuc } />
         </section>
     )
 }

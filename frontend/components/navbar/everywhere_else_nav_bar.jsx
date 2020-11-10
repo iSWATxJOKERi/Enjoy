@@ -35,107 +35,107 @@ class EENavBar extends React.Component {
     }
 
     componentDidMount() {
-        this.toggleModal();
         this._isMounted = true;
-        // if(this._isMounted) {
-        //     console.log("eenb")
-        //     // debugger
-        //     this.toggleModal();
-            
-        //     document.getElementById("vid-icon2").addEventListener('click', () => {
-        //         document.addEventListener('click', (e) => {
-        //             const v = document.getElementsByClassName("video-drop")[0];
-        //             // debugger
-        //             if(v) {
-        //                 // debugger
-        //                 if(e.target !== v && e.target !== document.getElementById("vid-icon2").children[0] && 
-        //                     e.target !== document.getElementById("video-up").children[0] && 
-        //                     e.target !== document.getElementById("video-up") &&
-        //                     e.target !== document.getElementById("vid-icon") &&
-        //                     e.target !== document.getElementById("modal-btn")) {
-        //                     // debugger
-        //                     if(this._isMounted) {
-        //                         this.setState({
-        //                             up: false
-        //                         })
-        //                     }
-        //                 } else {
-        //                     if(this._isMounted) {
-        //                         this.setState({
-        //                             up: true
-        //                         })
-        //                     }
-        //                 }
-        //             }
-        //         })
-        //     })
-        //     if(document.getElementById("user-pic2")) {
-        //         // debugger
-        //         document.getElementById("user-pic2").addEventListener('click', () => {
-        //             // debugger
-        //             document.addEventListener('click', (e) => {
-        //                 const v = document.getElementsByClassName("drop")[0];
-        //                 // debugger
-        //                 if(v) {
-        //                     // debugger
-        //                     if(e.target !== v && e.target !== document.getElementById("user-pic2") && 
-        //                         e.target !== document.getElementById("user-pic3") && 
-        //                         e.target !== document.getElementById("user2") &&
-        //                         e.target !== document.getElementById("unid") &&
-        //                         e.target !== document.getElementById("link") &&
-        //                         e.target !== document.getElementById("li-1") &&
-        //                         e.target !== document.getElementById("log")) {
-        //                         // debugger
-        //                         if(this._isMounted) {
-        //                             this.setState({
-        //                                 online: false
-        //                             })
-        //                         }
-        //                     } else {
-        //                         if(this._isMounted) {
-        //                             this.setState({
-        //                                 online: true
-        //                             }) 
-        //                         }
-        //                     }
-        //                 }
-        //             })
-        //         })
-        //     } else {
-        //         if(document.getElementById("user")) {
-        //             document.getElementById("user").addEventListener('click', () => {
-        //                 // debugger
-        //                 document.addEventListener('click', (e) => {
-        //                     const v = document.getElementsByClassName("drop")[0];
-        //                     // debugger
-        //                     if(v) {
-        //                         // debugger
-        //                         if(e.target !== v && e.target !== document.getElementById("user") && 
-        //                             e.target !== document.getElementById("user-pic3") && 
-        //                             e.target !== document.getElementById("user2") &&
-        //                             e.target !== document.getElementById("unid") &&
-        //                             e.target !== document.getElementById("link") &&
-        //                             e.target !== document.getElementById("li-1") &&
-        //                             e.target !== document.getElementById("log")) {
-        //                             // debugger
-        //                             if(this._isMounted) {
-        //                                 this.setState({
-        //                                     online: false
-        //                                 })
-        //                             }
-        //                         } else {
-        //                             if(this._isMounted) {
-        //                                 this.setState({
-        //                                     online: true
-        //                                 })
-        //                             }
-        //                         }
-        //                     }
-        //                 })
-        //             })
-        //         }
-        //     }
-        // }
+        if(this._isMounted) {
+            console.log("eenb")
+            // debugger
+            this.toggleModal();
+            if(document.getElementById("vid-icon")) {
+                document.getElementById("vid-icon").addEventListener('click', () => {
+                    document.addEventListener('click', (e) => {
+                        const v = document.getElementsByClassName("video-drop")[0];
+                        // debugger
+                        if(v) {
+                            // debugger
+                            if(e.target !== v && e.target !== document.getElementById("vid-icon").children[0] && 
+                                e.target !== document.getElementById("video-up").children[0] && 
+                                e.target !== document.getElementById("video-up") &&
+                                e.target !== document.getElementById("vid-icon") &&
+                                e.target !== document.getElementById("modal-btn")) {
+                                // debugger
+                                if(this._isMounted) {
+                                    this.setState({
+                                        up: false
+                                    })
+                                }
+                            } else {
+                                if(this._isMounted) {
+                                    this.setState({
+                                        up: true
+                                    })
+                                }
+                            }
+                        }
+                    })
+                })
+            }
+            if(document.getElementById("user-pic2")) {
+                // debugger
+                document.getElementById("user-pic2").addEventListener('click', () => {
+                    // debugger
+                    document.addEventListener('click', (e) => {
+                        const v = document.getElementsByClassName("drop")[0];
+                        // debugger
+                        if(v) {
+                            // debugger
+                            if(e.target !== v && e.target !== document.getElementById("user-pic2") && 
+                                e.target !== document.getElementById("user-pic3") && 
+                                e.target !== document.getElementById("user2") &&
+                                e.target !== document.getElementById("unid") &&
+                                e.target !== document.getElementById("link") &&
+                                e.target !== document.getElementById("li-1") &&
+                                e.target !== document.getElementById("log")) {
+                                // debugger
+                                if(this._isMounted) {
+                                    this.setState({
+                                        online: false
+                                    })
+                                }
+                            } else {
+                                if(this._isMounted) {
+                                    this.setState({
+                                        online: true
+                                    }) 
+                                }
+                            }
+                        }
+                    })
+                })
+            } else {
+                if(document.getElementById("user")) {
+                    document.getElementById("user").addEventListener('click', () => {
+                        // debugger
+                        document.addEventListener('click', (e) => {
+                            const v = document.getElementsByClassName("drop")[0];
+                            // debugger
+                            if(v) {
+                                // debugger
+                                if(e.target !== v && e.target !== document.getElementById("user") && 
+                                    e.target !== document.getElementById("user-pic3") && 
+                                    e.target !== document.getElementById("user2") &&
+                                    e.target !== document.getElementById("unid") &&
+                                    e.target !== document.getElementById("link") &&
+                                    e.target !== document.getElementById("li-1") &&
+                                    e.target !== document.getElementById("log")) {
+                                    // debugger
+                                    if(this._isMounted) {
+                                        this.setState({
+                                            online: false
+                                        })
+                                    }
+                                } else {
+                                    if(this._isMounted) {
+                                        this.setState({
+                                            online: true
+                                        })
+                                    }
+                                }
+                            }
+                        })
+                    })
+                }
+            }
+        }
     }
 
     componentWillUnmount() {
@@ -193,7 +193,7 @@ class EENavBar extends React.Component {
             <img id="user-pic2" src={ `${ this.props.user.avatar }` } onClick={ this.toggleClass } /> : 
             <span id="user" onClick={ this.toggleClass }>{ this.props.currentUser ? this.props.user.username[0] : "" }</span>
         }
-        const upload = <FontAwesomeIcon id="vid-icon2" onClick={ this.toggleUpload } icon="video" />
+        const upload = <FontAwesomeIcon id="vid-icon" onClick={ this.toggleUpload } icon="video" />
         const menu = <FontAwesomeIcon icon="th" />
         const settings = <FontAwesomeIcon icon="ellipsis-v" />
         const search = <FontAwesomeIcon icon="search" onClick={ () => this.handleSearch(this.state.search) }/>

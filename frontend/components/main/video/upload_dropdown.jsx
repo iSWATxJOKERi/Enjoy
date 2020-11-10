@@ -24,8 +24,10 @@ class VideoUploadDropdown extends React.Component {
         const modal = document.getElementsByClassName("modal")[0];
         const x = document.getElementsByClassName("close")[0];
 
-        x.onclick = function() {
-            modal.style.display = "none";
+        if(x) {
+            x.onclick = function() {
+                modal.style.display = "none";
+            }
         }
     }
 

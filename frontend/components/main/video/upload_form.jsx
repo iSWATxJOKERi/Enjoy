@@ -22,6 +22,7 @@ export default class UploadForm extends React.Component {
     }
 
     componentDidMount() {
+        // debugger
         this._isMounted = true;
         if(this._isMounted) {
             this.handleClear();
