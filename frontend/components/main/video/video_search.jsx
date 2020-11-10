@@ -13,9 +13,13 @@ class VideoSearch extends React.Component {
     componentDidMount() {
         // debugger
         this.props.fetchUsers().then(() => {
-            this.props.fetchSubscriptions(this.props.currentUser).then(() => {
+            if(this.props.currentUser) {
+                this.props.fetchSubscriptions(this.props.currentUser).then(() => {
+                    this.toggleSide();
+                })
+            }else {
                 this.toggleSide();
-            })
+            }
         })
     }
 

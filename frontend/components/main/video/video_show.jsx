@@ -27,9 +27,7 @@ class VideoShow extends React.Component {
         } else {
             this.props.fetchVideos().then(() => {
                 this.props.fetchVideo(this.props.match.params.id).then(() => {
-                    this.props.fetchLike(this.props.match.params.id, this.props.currentUser).then(() => {
-                        this.props.fetchComments(this.props.match.params.id)
-                    })
+                    this.props.fetchComments(this.props.match.params.id)
                 })
             })
         }
@@ -37,12 +35,12 @@ class VideoShow extends React.Component {
 
     componentDidUpdate(prevProps) {
         if(this.props.video !== prevProps.video) {
-            this.props.fetchLike(this.props.match.params.id, this.props.currentUser).then(() => {
-                this.props.fetchComments(this.props.match.params.id).then(() => {
-                    if(this.props.currentUser) {
+            this.props.fetchComments(this.props.match.params.id).then(() => {
+                if(this.props.currentUser) {
+                    this.props.fetchLike(this.props.match.params.id, this.props.currentUser).then(() => {
                         this.props.fetchSubscription(this.props.currentUser, this.props.video.uploader.id)
-                    }
-                })
+                    })
+                }
             })
         }
     }

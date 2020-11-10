@@ -138,15 +138,15 @@ class Reply extends React.Component {
                                 </div>
                                 <div className="likes-reply2">
                                     <ReplyLikes psu={ this.props.psuedo[this.props.reply.id] } allProps={ this.props.allProps } reply={ this.props.reply }/>
-                                    <span onClick={ this.toggleReply }>REPLY</span>
+                                    <span onClick={ () => this.props.allProps.allProps.currentUser ? this.toggleReply : window.location.href = "#login" }>REPLY</span>
                                 </div>
                                     </> }
                     </div>
-                    { options }
+                    { this.props.allProps.allProps.currentUser ? <>{ options }
                     <div className={ this.state.edit ? "update-comment2" : "hide" }>
                         <span onClick={ this.handleEdit } className="edit-comment">EDIT</span>
                         <span onClick={ this.handleDelete } className="delete-comment">DELETE</span>
-                    </div>
+                    </div></> : "" }
                 </section>
                 <section className={ this.state.reply ? "create-comment3" : "hide" }>
                     <textarea id={ `update-comment-areas-${ this.props.reply.id }`} rows="1" onChange={ this.handleInput() } placeholder="Add a public reply..."/>

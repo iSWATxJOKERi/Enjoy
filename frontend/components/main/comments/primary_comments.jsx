@@ -206,15 +206,15 @@ class PrimaryComments extends React.Component {
                             </div>
                             <div className="likes-reply">
                                 <CommentLikes psu={ this.props.psuedo[this.props.comment.id] } allProps={ this.props } comment={ this.props.comment }/>
-                                <span onClick={ this.toggleReply }>REPLY</span>
+                                <span onClick={ () => this.props.allProps.currentUser ? this.toggleReply : window.location.href = "#login" }>REPLY</span>
                             </div> 
                         </>}
                     </div>
-                    { options }
+                    { this.props.allProps.currentUser ? <>{ options }
                     <div className={ this.state.edit ? "update-comment" : "hide" }>
                         <span onClick={ this.handleEdit } className="edit-comment">EDIT</span>
                         <span onClick={ this.handleDelete } className="delete-comment">DELETE</span>
-                    </div>
+                    </div></> : "" }
                 </section>
                 <section className={ this.state.reply ? "create-comment2" : "hide" }>
                     <textarea id={ `comment-areas-${ this.props.comment.id }`} rows="1" onChange={ this.handleInput() } placeholder="Add a public reply..."/>
