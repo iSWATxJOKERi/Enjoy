@@ -72,7 +72,7 @@ class VideoShow extends React.Component {
             <section className="show-video-section">
                 <section className="show-child">
                     <div className="primary">
-                        { this.props.videos.length >= 1 ? 
+                        { this.props.videos.length >= 1 && this.props.video ? 
                             <div className="primary-inner">
                                 <video preload="auto" controls autoPlay muted src={`${ this.props.video.videoUrl }`} className="video"/>
                                 <div className="video-info">
