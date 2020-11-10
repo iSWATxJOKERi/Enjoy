@@ -19,7 +19,7 @@ class ShowPageModal extends React.Component {
 
         // debugger
         let subs;
-        if(Object.values(this.props.users).length > 1) {
+        if(Object.values(this.props.users).length > 1 && this.props.allProps.currentUser) {
             // debugger
             subs = this.props.users[this.props.currentUser].subscriptions.map(subscription => {
                 return <SubsList2 key={ subscription.id } sub={ subscription } allProps={ this.props }/>
@@ -49,7 +49,7 @@ class ShowPageModal extends React.Component {
                             </div>
                         </section>
                         <section className="second-sidebar">
-                            <div onClick={ () => this.props.history.push(`/users/${ this.props.currentUser }`) } className={ dir === `/users/${ this.props.currentUser }` ? " effect li library-sb" : "li library-sb" }>
+                            <div onClick={ () => this.props.currentUser ? this.props.history.push(`/users/${ this.props.currentUser }`) : this.props.history.push(`/login`) } className={ dir === `/users/${ this.props.currentUser }` ? "effect li library-sb" : "li library-sb" }>
                                 <div id="fifty">{ library }</div>
                                 <span>Library</span>
                             </div>

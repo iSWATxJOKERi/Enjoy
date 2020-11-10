@@ -10,7 +10,7 @@ export default (props) => {
     const github = <FontAwesomeIcon id="smaller" icon={["fab", "github"]} />
     const linkedin = <FontAwesomeIcon id="smaller" icon={["fab", "linkedin"]} />
     const library = <FontAwesomeIcon className={ dir === `/users/${ props.allProps.currentUser }` ? "red" : "nada" } id="smaller" icon="photo-video" />
-    if(Object.values(props.allProps.users).length > 1) {
+    if(Object.values(props.allProps.users).length > 1 && props.allProps.currentUser) {
         // debugger
         subs = props.allProps.users[props.allProps.currentUser].subscriptions.map(subscription => {
             return <SubsList2 key={ subscription.id } sub={ subscription } allProps={ props.allProps }/>
@@ -34,7 +34,7 @@ export default (props) => {
                 </div>
             </section>
             <section className="second-sidebar">
-                <div onClick={ () => props.allProps.history.push(`/users/${ props.allProps.currentUser }`) } className={ dir === `/users/${ props.allProps.currentUser }` ? " effect li library-sb" : "li library-sb" }>
+                <div onClick={ () => props.allProps.currentUser ? props.allProps.history.push(`/users/${ props.allProps.currentUser }`) : props.allProps.history.push(`/login`) } className={ dir === `/users/${ props.allProps.currentUser }` ? " effect li library-sb" : "li library-sb" }>
                     <div id="fifty">{ library }</div>
                     <span>Library</span>
                 </div>

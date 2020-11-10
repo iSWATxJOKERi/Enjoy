@@ -208,6 +208,17 @@
     font-weight: bold;
 }
 
+#avatar-bar2 {
+    width: 11%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 70px;
+    background-color: darkgreen;
+    color: white;
+    font-size: 100px;
+}
+
 .all-user-vids {
     flex-direction: column;
     height: 100%;

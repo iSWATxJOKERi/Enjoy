@@ -9,7 +9,9 @@ class USearchItem extends React.Component {
     render() {
         return (
             <section className="search-item">
-                <img id="search-user-image" onClick={ () => this.props.history.push(`/users/${ this.props.user.id }`) } src={ `${ this.props.user.avatar }` } />
+                { this.props.user.avatar ? 
+                    <img id="search-user-image" onClick={ () => this.props.history.push(`/users/${ this.props.user.id }`) } src={ `${ this.props.user.avatar }` } /> : 
+                    <span id="avatar-bar2" onClick={ () => this.props.history.push(`/users/${ this.props.user.id }`) }>{ this.props.user.username[0] }</span> }
                 <div id="search-words">
                     <h1 onClick={ () => this.props.history.push(`/users/${ this.props.user.id }`) }>{ this.props.user.username }</h1>
                 </div>

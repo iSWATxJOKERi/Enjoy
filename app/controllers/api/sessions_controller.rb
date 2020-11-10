@@ -6,7 +6,7 @@ class Api::SessionsController < ApplicationController
         # debugger
         if @user 
             login(@user)
-            render json: @user
+            render :show
         else
             render json: {
                 email: "Invalid Email or Password",

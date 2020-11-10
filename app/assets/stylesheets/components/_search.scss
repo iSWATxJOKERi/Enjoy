@@ -42,13 +42,15 @@
 }
 
 #search-user-image {
-    width: 20%;
-    height: 70%;
+    width: 11%;
+    height: 125px;
     border-radius: 300px;
 }
 
 #search-words {
     margin-left: 10px;
+    display: flex;
+    flex-direction: column;
     h1:hover {
         cursor: pointer;
     }
