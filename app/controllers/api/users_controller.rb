@@ -65,7 +65,7 @@ class Api::UsersController < ApplicationController
         
         if @user.save
             login(@user)
-            render json: @user
+            render :show
         else
             render json: { 
                 username: @user.errors.full_messages_for(:username),

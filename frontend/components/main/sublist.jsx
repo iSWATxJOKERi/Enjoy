@@ -8,7 +8,7 @@ class SubsList2 extends React.Component {
 
     render() {
         // debugger
-        let whoopty = this.props.sub ? <>
+        let whoopty = this.props.allProps.users[this.props.sub.id] ? <>
                         { this.props.allProps.users[this.props.sub.id].avatar ? 
                             <img className="ua3" src={ `${ this.props.allProps.users[this.props.sub.id].avatar }` } onClick={ () => this.props.allProps.history.push(`/users/${ this.props.sub.id }`) } /> : 
                             <span id="avatar-bar">{ this.props.sub.username[0] }</span> }

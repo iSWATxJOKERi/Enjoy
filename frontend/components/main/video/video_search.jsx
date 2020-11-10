@@ -11,7 +11,12 @@ class VideoSearch extends React.Component {
     }
 
     componentDidMount() {
-        this.toggleSide();
+        // debugger
+        this.props.fetchUsers().then(() => {
+            this.props.fetchSubscriptions(this.props.currentUser).then(() => {
+                this.toggleSide();
+            })
+        })
     }
 
     toggleSide() {
@@ -39,7 +44,7 @@ class VideoSearch extends React.Component {
         videos = Object.values(this.props.videos).map(vid => {
             return <SearchItem key={ vid.id } history={ this.props.history } vid={ vid } />
         })
-        users = Object.values(this.props.users).map(user => {
+        users = Object.values(this.props.usearch).map(user => {
             return <USearchItem key={ user.username } history={ this.props.history } user={ user } />
         })
         return (

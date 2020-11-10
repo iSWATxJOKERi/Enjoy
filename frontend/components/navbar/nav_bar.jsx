@@ -19,7 +19,10 @@ class NavBar extends React.Component {
     }
 
     componentDidMount() {
-        this.props.fetchUsers();
+        // debugger
+        if(this.props.location.pathname !== "/search") {
+            this.props.fetchUsers();
+        }
     }
 
     toggleClass() {
