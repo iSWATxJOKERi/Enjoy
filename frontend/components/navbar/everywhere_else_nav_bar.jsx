@@ -37,7 +37,7 @@ class EENavBar extends React.Component {
     componentDidMount() {
         this._isMounted = true;
         if(this._isMounted) {
-            console.log("eenb")
+            // console.log("eenb")
             // debugger
             this.toggleModal();
             if(document.getElementById("vid-icon")) {

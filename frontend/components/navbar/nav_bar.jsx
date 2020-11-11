@@ -23,7 +23,7 @@ class NavBar extends React.Component {
         // debugger
         this._isMounted = true;
         if(this._isMounted) {
-            console.log("nb")
+            // console.log("nb")
             // debugger
             if(this.props.location.pathname !== "/search") {
                 this.props.fetchUsers()

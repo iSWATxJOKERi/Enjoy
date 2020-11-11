@@ -18,6 +18,8 @@ class UpNext extends React.Component {
         arr = vids.map(vid => {
             return <UpNextItem key={ vid.id } history={ this.props.history } video={ vid } />
         })
+        console.log(arr)
+        console.log(this.props.videos[0])
         return (
             <section className="secondary">
                 <div className="up-next">
