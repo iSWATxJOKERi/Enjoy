@@ -216,9 +216,6 @@ video {
     color: white;
 }
 
-#comment-area {
-    position: relative;
-}
 
 #user5, #uci {
     position: absolute;
@@ -232,7 +229,7 @@ video {
     height: 40px;
     width: 40px;
     z-index: 9;
-    left: 150px;
+    left: 10px;
 }
 
 .video-box-title {
@@ -293,15 +290,10 @@ video {
 }
 
 #user-pic4 {
-    font-size: 30px;
     height: 60px;
     width: 60px;
     display: flex;
-    justify-content: center;
-    align-items: center;
     border-radius: 70px;
-    background-color: darkgreen;
-    color: white;
 }
 
 #subscribe, #unsubscribe {
