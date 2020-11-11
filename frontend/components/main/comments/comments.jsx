@@ -77,6 +77,7 @@ class Comments extends React.Component {
 
     render() {
         let sort = <FontAwesomeIcon id="sort-btn" icon="sort-amount-up" />;
+        const user = <FontAwesomeIcon id="uci" icon="user-circle" />
         let primary_comments = [];
         // debugger
         if(Object.values(this.state.primary_comments).length > 0) {
@@ -92,7 +93,7 @@ class Comments extends React.Component {
                     }
                 }
             }
-            // console.log(Object.values(this.props.comments).length)
+            // console.log(this.props)
         }
         return (
             <section className="right-content">
@@ -102,9 +103,9 @@ class Comments extends React.Component {
                     <span className="sort">{ this.state.sort ? "Newest First" : "Oldest First" }</span>
                 </section>
                 <section className="create-comment">
-                    { this.props.allProps.user.avatar ? 
+                    { this.props.allProps.user ? (this.props.allProps.user.avatar ? 
                         <img id="user-pic5" src={ `${ this.props.allProps.user.avatar }` } onClick={ () => this.props.allProps.history.push(`/users/${ this.props.allProps.user.id }`) } /> : 
-                        <span id="user5">{ this.props.allProps.user.username[0] }</span> }
+                        <span id="user5">{ this.props.allProps.user.username[0] }</span>) : user }
                     <textarea id="comment-area" onClick={ () => this.props.allProps.currentUser ? (this.state.options ? null : this.toggleOptions()) : window.location.href = "#/login" } rows="1" onChange={ this.handleInput() } placeholder="Add a public comment..."/>
                     <div className={ this.state.options ? "cmt" : "hide" }>
                         <span onClick={ this.handleSubmit } className="make-comment">COMMENT</span>
