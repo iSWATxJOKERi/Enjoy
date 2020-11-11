@@ -59,7 +59,7 @@ class VideoShow extends React.Component {
                     arr.push(video)
                 }
             })
-            console.log(arr);
+            // console.log(arr);
             if(this.props.video.uploader.id !== this.props.currentUser) {
                 use = this.props.currentUser ? 
                     <Subscription channel={ this.props.video.uploader.id } user={ this.props.currentUser } allProps={ this.props }/> : 
@@ -68,6 +68,7 @@ class VideoShow extends React.Component {
                 use = ""
             }
         }
+        console.log(arr);
         // debugger
         return (
             <section className="show-video-section">
