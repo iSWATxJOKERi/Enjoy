@@ -102,9 +102,9 @@ class Comments extends React.Component {
                     <span className="sort">{ this.state.sort ? "Newest First" : "Oldest First" }</span>
                 </section>
                 <section className="create-comment">
-                    { this.props.video.avatarUrl ? 
-                        <img id="user-pic5" src={ `${ this.props.video.avatarUrl }` } onClick={ () => this.props.allProps.history.push(`/users/${ this.props.video.uploader.id }`) } /> : 
-                        <span id="user5">{ this.props.video.uploader.username[0] }</span> }
+                    { this.props.allProps.user.avatar ? 
+                        <img id="user-pic5" src={ `${ this.props.allProps.user.avatar }` } onClick={ () => this.props.allProps.history.push(`/users/${ this.props.allProps.user.id }`) } /> : 
+                        <span id="user5">{ this.props.allProps.user.username[0] }</span> }
                     <textarea id="comment-area" onClick={ () => this.props.allProps.currentUser ? (this.state.options ? null : this.toggleOptions()) : window.location.href = "#/login" } rows="1" onChange={ this.handleInput() } placeholder="Add a public comment..."/>
                     <div className={ this.state.options ? "cmt" : "hide" }>
                         <span onClick={ this.handleSubmit } className="make-comment">COMMENT</span>

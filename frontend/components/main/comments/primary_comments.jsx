@@ -185,7 +185,7 @@ class PrimaryComments extends React.Component {
             <section>
                 <section className="comment-box">
                     { this.props.comment.avatarUrl ? 
-                    <img id="user-pic5" src={ `${ this.props.comment.avatarUrl }` } onClick={ () => this.props.history.push(`/users/${ this.props.comment.commenter.id }`) } /> : 
+                    <img id="user-pic7" src={ `${ this.props.comment.avatarUrl }` } onClick={ () => this.props.history.push(`/users/${ this.props.comment.commenter.id }`) } /> : 
                     <div className="commenter-avatar">{ this.props.comment.commenter.username[0] }</div> }
                     <div className="actual-comment">
                         { this.state.update ? 

@@ -73,7 +73,7 @@
     font-size: 14px;
 }
 
-.likes-reply, .cancel-comment {
+.likes-reply, .cancel-comment, .likes-reply2 {
     color: rgb(88, 88, 88);
 }
 
@@ -239,13 +239,34 @@
     left: 150px;
 }
 
+#user-pic7 {
+    position: absolute;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 70px;
+    background-color: darkgreen;
+    color: white;
+    height: 40px;
+    width: 40px;
+    z-index: 9;
+    left: 10px;
+}
+
 #user-pic6 {
-    width: 3%;
-    img {
-        border-radius: 70px;
-        width: 100%;
-        height: 55%;
-    }
+    position: absolute;
+    font-size: 20px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    border-radius: 70px;
+    background-color: darkgreen;
+    color: white;
+    height: 40px;
+    width: 40px;
+    z-index: 9;
+    left: 10px;
 }
 
 #repliee {

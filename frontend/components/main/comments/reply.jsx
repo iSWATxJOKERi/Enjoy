@@ -112,7 +112,7 @@ class Reply extends React.Component {
             <>
                 <section className="comment-box2">
                     { this.props.reply.avatarUrl ? 
-                    <div id="user-pic6"><img src={ `${ this.props.reply.avatarUrl }` } onClick={ () => this.props.allProps.allProps.history.push(`/users/${ this.props.reply.commenter.id }`) } /></div> : 
+                    <img id="user-pic6" src={ `${ this.props.reply.avatarUrl }` } onClick={ () => this.props.allProps.allProps.history.push(`/users/${ this.props.reply.commenter.id }`) } /> : 
                     <div className="commenter-avatar">{ this.props.reply.commenter.username[0] }</div> }
                     <div className="actual-comment2">
                         { this.state.update ? 
