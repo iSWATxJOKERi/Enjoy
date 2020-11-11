@@ -66,10 +66,10 @@ class UserShow extends React.Component {
                 avatar: file,
                 avatarUrl: fileReader.result
             })
+            this.handleSubmit();
         }
         if(file) {
             fileReader.readAsDataURL(file);
-            this.handleSubmit();
         }
     }
 
@@ -81,10 +81,10 @@ class UserShow extends React.Component {
                 banner: file,
                 bannerUrl: fileReader.result
             })
+            this.handleBanner();
         }
         if(file) {
             fileReader.readAsDataURL(file);
-            this.handleBanner();
         }
     }
 
@@ -200,6 +200,7 @@ class UserShow extends React.Component {
                 use = ""
             }
         }
+        // console.log(this.state)
         return (
             <section className="main-content">
                 <PopoutSidebar allProps={ this.props }/>
