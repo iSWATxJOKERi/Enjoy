@@ -2,7 +2,7 @@
 
 <img src="/app/assets/images/Group_2.png" alt="video-index" width="100">
 
-[Enjoy](https://clipd.herokuapp.com), a [YouTube](https://youtube.com) clone, is an online video-sharing platform where users can create accounts, watch/upload/stream videos, leave comments, likes and subscribe on content. Users can also customize their profile to upload avatars or banners.
+[Enjoy](https://enjoy-dog.herokuapp.com), a [YouTube](https://youtube.com) clone, is an online video-sharing platform where users can create accounts, watch/upload/stream videos, leave comments, likes and subscribe on content. Users can also customize their profile to upload avatars or banners.
 
 ## Technology
 ### Ruby on Rails , JavaScript , React / Redux , postgreSQL , HTML5 , SCSS , AWS , Heroku , Webpack
