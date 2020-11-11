@@ -48,6 +48,7 @@ class VideoShow extends React.Component {
     }
 
     render() {
+        console.log(this.props.videos)
         let use;
         let arr = [];
         let likes = this.props.video ? <Likes allProps={ this.props } video={ this.props.video } /> : null;
