@@ -102,7 +102,7 @@ class VideoShow extends React.Component {
                                                 </div>
                                                 { use }
                                         </div>
-                                        <div className="video-description">Description</div>
+                                        <p className="video-description">{ this.props.video.description }</p>
                                     </div>
                                     { comments }
                                 </div>
